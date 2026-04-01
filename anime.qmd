@@ -382,6 +382,13 @@ ggplot(chart1_df, aes(x = year, y = n)) +
 type_totals <- chart1_df %>% count(type, wt = n, name = "total_titles")
 keep_types  <- type_totals %>% filter(total_titles >= 50) %>% pull(type)
 chart1_df   <- chart1_df %>% filter(type %in% keep_types)
+
+ggsave(
+  filename = "chart1_releases_by_year.png",
+  path = "/Users/ksm/Desktop/Artometrics/anime",
+  width = 12, height = 7, dpi = 300, bg = "white"
+)
+
 ```
 
 ### BEFORE THE MACHINE
@@ -571,6 +578,13 @@ type_quality %>%
     `9+ (count)` = n_ge_9,
     `Share 9+`
   )
+
+ggsave(
+  filename = "chart2_hitrate_by_format.png",
+  path = "/Users/ksm/Desktop/Artometrics/anime",
+  width = 10, height = 6, dpi = 300, bg = "white"
+)
+
 ```
 
 ### YOUR ODDS OF FINDING SOMETHING GREAT
@@ -801,6 +815,11 @@ knitr::kable(
   )
 )
 
+ggsave(
+  filename = "chart3_popularity_vs_score.png",
+  path = "/Users/ksm/Desktop/Artometrics/anime",
+  width = 10, height = 6, dpi = 300, bg = "white"
+)
 
 ```
 
@@ -981,6 +1000,12 @@ ggplot(studio_summ, aes(y = reorder(studio_label, median_score), x = median_scor
     plot.title = element_text(face = "bold"),
     plot.margin = margin(10, 30, 10, 10)
   )
+ggsave(
+  filename = "chart4_studio_rankings.png",
+  path = "/Users/ksm/Desktop/Artometrics/anime",
+  width = 12, height = 8, dpi = 300, bg = "white"
+)
+
 ```
 
 ```{r}
@@ -1004,6 +1029,7 @@ studio_fast_facts <- studio_summ %>%
   )
 
 studio_fast_facts
+
 ```
 
 ### THE CONSISTENCY QUESTION
@@ -1251,6 +1277,14 @@ knitr::kable(
   genre_fast_facts,
   caption = "Chart 5 fast facts: Top 15 'hidden gem' genres (high median score + relatively less popular). Genres are multi-label tags."
 )
+
+ggsave(
+  filename = "chart5_genre_map.png",
+  path = "/Users/ksm/Desktop/Artometrics/anime",
+  width = 12, height = 8, dpi = 300, bg = "white"
+)
+
+
 ```
 
 ### THE MAIN HALL

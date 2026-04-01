@@ -1,0 +1,1774 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>ANIME</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="anime_files/libs/clipboard/clipboard.min.js"></script>
+<script src="anime_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="anime_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="anime_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="anime_files/libs/quarto-html/popper.min.js"></script>
+<script src="anime_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="anime_files/libs/quarto-html/anchor.min.js"></script>
+<link href="anime_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="anime_files/libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="anime_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="anime_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="anime_files/libs/bootstrap/bootstrap-d6a003b94517c951b2d65075d42fb01b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="anime.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">ANIME</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="fast-facts" class="level2">
+<h2 class="anchored" data-anchor-id="fast-facts">FAST FACTS</h2>
+<section id="a-century-of-data" class="level3">
+<h3 class="anchored" data-anchor-id="a-century-of-data">A CENTURY OF DATA</h3>
+<p>This MyAnimeList dataset covers <strong>13,631 unique anime titles</strong> spanning <strong>1917 to 2019</strong>—closer to a century-scale archive than a “modern seasonal TV” snapshot. That scope is what makes it worth analyzing as an industry story, not just a rankings list. It lets you trace anime from its earliest roots in short films and prewar theater shorts all the way through the standardized seasonal production machine of the 2010s. At the same time, the long horizon also means the dataset includes many niche or archival entries—shorts, early films, obscure OVAs and ONAs—that behave very differently from the mainstream TV hits most readers picture when they hear “anime.” The key interpretive move throughout this analysis is separating <strong>catalog reality</strong> (what exists) from <strong>fan-canon popularity</strong> (what people actually watch and talk about).</p>
+</section>
+<section id="more-than-just-tv" class="level3">
+<h3 class="anchored" data-anchor-id="more-than-just-tv">MORE THAN JUST TV</h3>
+<p>The format breakdown shows that <strong>TV is the largest single category but not the majority of the dataset</strong>. TV accounts for <strong>4,260 titles (31.3%)</strong>, followed by <strong>Movies (2,657; 19.5%)</strong>, <strong>OVAs (2,378; 17.4%)</strong>, <strong>Specials (2,003; 14.7%)</strong>, <strong>ONAs (1,321; 9.7%)</strong>, and <strong>Music (1,011; 7.4%)</strong>. In other words, most titles in this archive are <strong>non-TV</strong>—which matters for every chart that follows. When you see a studio ranking, a genre score, or a popularity curve, you’re looking at a mixed system that includes theatrical releases, direct-to-video OVAs, broadcast specials, and web originals alongside the TV series that dominate the cultural conversation. The numbers don’t lie about which format fans think of first; they just remind you that the industry is bigger and stranger than the seasonal airing calendar suggests.</p>
+</section>
+<section id="what-6.38-actually-means" class="level3">
+<h3 class="anchored" data-anchor-id="what-6.38-actually-means">WHAT 6.38 ACTUALLY MEANS</h3>
+<p>On ratings, the dataset baseline is deliberately modest: the overall <strong>median MAL score is 6.38</strong> (mean <strong>6.29</strong>, standard deviation <strong>~1.10</strong>). That number is the calibration point for everything that follows. When you rank studios or genres later, the real question isn’t “who broke 8”—it’s “who can stay <strong>consistently above 6.38</strong> across a meaningful number of titles?” A show landing at 7.5 is genuinely performing above the field. A studio holding a median of 7.0 across 100+ titles is doing something structurally different from one that spiked once. MAL scores skew toward the center of the scale—most titles live in a middle band between 5 and 7—which means true greatness (8+) is a relatively thin slice of the total distribution, and anything labeled “elite” has cleared a real bar.</p>
+</section>
+<section id="three-ways-to-be-the-best" class="level3">
+<h3 class="anchored" data-anchor-id="three-ways-to-be-the-best">THREE WAYS TO BE THE BEST</h3>
+<p>The “top titles” lists reveal three distinct definitions of “best,” and they don’t fully overlap. <strong>Highest-rated</strong> measures prestige. <strong>Most members</strong> measures reach. <strong>Most favorited</strong> measures intensity—the kind of devotion that makes someone hit a heart button, not just add a show to their backlog. The biggest-audience list is dominated by cultural gateway shows: <strong>Death Note</strong> (the series that arguably got more people into anime than any other single title in the 2000s), <strong>Attack on Titan</strong> (which became a global mainstream event by its final arc), <strong>Sword Art Online</strong> (controversial but massive, essentially defining the isekai boom), <strong>One Punch Man</strong> (a meme-to-phenomenon pipeline in a single season), and <strong>Tokyo Ghoul</strong> (peak Crunchyroll-era viral reach). These are titles that didn’t just find an audience—they recruited one. Meanwhile the top favorites list skews toward the prestige canon: <strong>Fullmetal Alchemist: Brotherhood</strong>, which held the #1 MAL score for over a decade and remains the most common answer to “where do I start?”; <strong>Steins;Gate</strong>, the time-travel thriller that built one of the most devoted fanbases in the medium; and <strong>Hunter x Hunter (2011)</strong>, which turned a long-running shonen adaptation into a consensus artistic achievement. Favorites capture something closer to devotion than raw scale—these are the shows people recommend to their closest friends, not just anyone who asks.</p>
+</section>
+<section id="longevity-is-not-greatness" class="level3">
+<h3 class="anchored" data-anchor-id="longevity-is-not-greatness">LONGEVITY IS NOT GREATNESS</h3>
+<p>The longest-running title in the dataset is a perfect counterexample to the idea that more episodes equals more impact. <strong>Lan Mao</strong> (Blue Cat)—a Chinese children’s TV series, not a Japanese production—tops the episode count at <strong>3,057 episodes</strong>, with a MAL score around <strong>5.64</strong> and a small member count. It’s a useful wrinkle for two reasons. First, it’s a reminder that this dataset includes non-Japanese animation cataloged on MAL, meaning “anime” here is a broader category than the strict Japanese-origin definition. Second, and more importantly, it anchors one of the clearest through-lines in this analysis: <strong>longevity is usually an industrial scheduling outcome</strong>, not a signal of universal acclaim. Long-running shows tend to be kids’ programming, domestic serials, or evergreen formats designed to fill time slots reliably—not the prestige-driven storytelling that generates high scores and devoted fanbases. The dataset makes this point cleanly: anime has multiple axes of bigness—<strong>long-running</strong>, <strong>widely watched</strong>, <strong>highly rated</strong>, and <strong>most beloved</strong>—and the most interesting analysis comes from showing how those axes diverge.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># FAST FACTS (recommended)</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Uses SAFE SETUP objects:</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   anime (title-level), anime_genres, anime_studios</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># If you don't have anime_genres/anime_studios, see fallback at bottom.</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- scope ----</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>anime <span class="ot">&lt;-</span> anime <span class="sc">%&gt;%</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">aired_from_year =</span> lubridate<span class="sc">::</span><span class="fu">year</span>(start_date))</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>n_titles <span class="ot">&lt;-</span> <span class="fu">nrow</span>(anime)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>year_min <span class="ot">&lt;-</span> anime <span class="sc">%&gt;%</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">min_year =</span> <span class="fu">min</span>(aired_from_year, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(min_year)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>year_max <span class="ot">&lt;-</span> anime <span class="sc">%&gt;%</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">max_year =</span> <span class="fu">max</span>(aired_from_year, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(max_year)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>type_counts <span class="ot">&lt;-</span> anime <span class="sc">%&gt;%</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(type), type <span class="sc">!=</span> <span class="st">""</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(type, <span class="at">sort =</span> <span class="cn">TRUE</span>, <span class="at">name =</span> <span class="st">"n"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">pct =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n),</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">pct_label =</span> scales<span class="sc">::</span><span class="fu">percent</span>(pct, <span class="at">accuracy =</span> <span class="fl">0.1</span>)</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- peak lists (prestige vs reach vs intensity) ----</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>top_rated <span class="ot">&lt;-</span> anime <span class="sc">%&gt;%</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(score), score <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(score)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, type, score, members, favorites) <span class="sc">%&gt;%</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">10</span>)</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>top_members <span class="ot">&lt;-</span> anime <span class="sc">%&gt;%</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(members), members <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(members)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, type, members, favorites, popularity, score) <span class="sc">%&gt;%</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">10</span>)</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>top_favorites <span class="ot">&lt;-</span> anime <span class="sc">%&gt;%</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(favorites), favorites <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(favorites)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, type, favorites, members, popularity, score) <span class="sc">%&gt;%</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">10</span>)</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- outlier: longest runner ----</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>most_episodes <span class="ot">&lt;-</span> anime <span class="sc">%&gt;%</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(episodes), episodes <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(episodes)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, type, episodes, score, members, favorites) <span class="sc">%&gt;%</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">1</span>)</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- top genres/studios (by #titles tagged) ----</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>top_genres <span class="ot">&lt;-</span> anime_genres <span class="sc">%&gt;%</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(genre), genre <span class="sc">!=</span> <span class="st">""</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(genre, <span class="at">sort =</span> <span class="cn">TRUE</span>, <span class="at">name =</span> <span class="st">"titles"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">10</span>)</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>top_studios <span class="ot">&lt;-</span> anime_studios <span class="sc">%&gt;%</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(studio), studio <span class="sc">!=</span> <span class="st">""</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(studio, <span class="at">sort =</span> <span class="cn">TRUE</span>, <span class="at">name =</span> <span class="st">"titles"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">10</span>)</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- score summary (nice for a one-liner) ----</span></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>score_summary <span class="ot">&lt;-</span> anime <span class="sc">%&gt;%</span></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_score   =</span> <span class="fu">mean</span>(score, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>    <span class="at">median_score =</span> <span class="fu">median</span>(score, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_score     =</span> <span class="fu">sd</span>(score, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- package into one object for printing in Quarto ----</span></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>fast_facts <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>  <span class="at">n_titles =</span> n_titles,</span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>  <span class="at">year_range =</span> <span class="fu">c</span>(year_min, year_max),</span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>  <span class="at">type_counts =</span> type_counts,</span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>  <span class="at">score_summary =</span> score_summary,</span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>  <span class="at">top_rated =</span> top_rated,</span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>  <span class="at">top_members =</span> top_members,</span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>  <span class="at">top_favorites =</span> top_favorites,</span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>  <span class="at">most_episodes =</span> most_episodes,</span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>  <span class="at">top_genres =</span> top_genres,</span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>  <span class="at">top_studios =</span> top_studios</span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>fast_facts</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$n_titles
+[1] 13631
+
+$year_range
+[1] 1917 2019
+
+$type_counts
+# A tibble: 7 × 4
+  type        n       pct pct_label
+  &lt;chr&gt;   &lt;int&gt;     &lt;dbl&gt; &lt;chr&gt;    
+1 TV       4260 0.313     31.3%    
+2 Movie    2657 0.195     19.5%    
+3 OVA      2378 0.174     17.4%    
+4 Special  2003 0.147     14.7%    
+5 ONA      1321 0.0969    9.7%     
+6 Music    1011 0.0742    7.4%     
+7 Unknown     1 0.0000734 0.0%     
+
+$score_summary
+# A tibble: 1 × 3
+  mean_score median_score sd_score
+       &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;
+1       6.29         6.38     1.10
+
+$top_rated
+# A tibble: 10 × 5
+   name                                     type  score members favorites
+   &lt;chr&gt;                                    &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;
+ 1 Tanabata Monogatari                      OVA   10         55         0
+ 2 Violence Voyager                         Movie 10         65         0
+ 3 Tat-chan - Momo-chan no Fushigina Taiken OVA    9.8       51         0
+ 4 Xing You Ji: Fengbao Famila              ONA    9.33     171         0
+ 5 Tatakae! Dokan-kun: Robolympic-hen       TV     9.25      31         0
+ 6 Pussy                                    Movie  9.25      21         0
+ 7 Fullmetal Alchemist: Brotherhood         TV     9.24 1355349    120331
+ 8 Steins;Gate                              TV     9.14 1139182    104173
+ 9 Kimi no Na wa.                           Movie  9.14  900593     43260
+10 Gintama°                                 TV     9.13  232437      6375
+
+$top_members
+# A tibble: 10 × 6
+   name                             type  members favorites popularity score
+   &lt;chr&gt;                            &lt;chr&gt;   &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt;
+ 1 Death Note                       TV    1610561     96146          1  8.66
+ 2 Shingeki no Kyojin               TV    1500958     70555          2  8.48
+ 3 Sword Art Online                 TV    1442099     53268          3  7.58
+ 4 Fullmetal Alchemist: Brotherhood TV    1355349    120331          4  9.24
+ 5 One Punch Man                    TV    1195384     35969          5  8.71
+ 6 Tokyo Ghoul                      TV    1148869     32274          6  7.98
+ 7 Steins;Gate                      TV    1139182    104173          7  9.14
+ 8 Angel Beats!                     TV    1105583     38504          8  8.29
+ 9 No Game No Life                  TV    1098928     35211          9  8.38
+10 Naruto                           TV    1091313     39356         10  7.9 
+
+$top_favorites
+# A tibble: 10 × 6
+   name                             type  favorites members popularity score
+   &lt;chr&gt;                            &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt;
+ 1 Fullmetal Alchemist: Brotherhood TV       120331 1355349          4  9.24
+ 2 Steins;Gate                      TV       104173 1139182          7  9.14
+ 3 Death Note                       TV        96146 1610561          1  8.66
+ 4 One Piece                        TV        76869  803871         36  8.53
+ 5 Hunter x Hunter (2011)           TV        76048  840943         30  9.12
+ 6 Shingeki no Kyojin               TV        70555 1500958          2  8.48
+ 7 Code Geass: Hangyaku no Lelouch  TV        68684 1082349         11  8.77
+ 8 Tengen Toppa Gurren Lagann       TV        54079  868611         25  8.72
+ 9 Sword Art Online                 TV        53268 1442099          3  7.58
+10 Clannad: After Story             TV        50079  660561         58  9   
+
+$most_episodes
+# A tibble: 1 × 6
+  name    type  episodes score members favorites
+  &lt;chr&gt;   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;
+1 Lan Mao TV        3057  5.64     448         0
+
+$top_genres
+# A tibble: 10 × 2
+   genre         titles
+   &lt;chr&gt;          &lt;int&gt;
+ 1 Comedy          5219
+ 2 Action          3197
+ 3 Fantasy         2659
+ 4 Adventure       2567
+ 5 Sci-Fi          2224
+ 6 Drama           2216
+ 7 Kids            2205
+ 8 Shounen         1771
+ 9 Slice of Life   1583
+10 Romance         1567
+
+$top_studios
+# A tibble: 10 × 2
+   studio            titles
+   &lt;chr&gt;              &lt;int&gt;
+ 1 Toei Animation       737
+ 2 Sunrise              457
+ 3 Madhouse             340
+ 4 J.C.Staff            322
+ 5 Production I.G       297
+ 6 TMS Entertainment    275
+ 7 Studio Deen          264
+ 8 Studio Pierrot       251
+ 9 OLM                  209
+10 Nippon Animation     206</code></pre>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="chart-1-anime-releases-per-year-by-type-line-chart" class="level2">
+<h2 class="anchored" data-anchor-id="chart-1-anime-releases-per-year-by-type-line-chart">CHART 1 — ANIME RELEASES PER YEAR BY TYPE (LINE CHART)</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- Chart 1 (FIXED): drop Unknown, facets + raw line + LOESS only when enough data ----</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span>(<span class="st">"aired_from_year"</span> <span class="sc">%in%</span> <span class="fu">names</span>(anime))) {</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  anime <span class="ot">&lt;-</span> anime <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">aired_from_year =</span> lubridate<span class="sc">::</span><span class="fu">year</span>(start_date))</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>valid_types <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"TV"</span>, <span class="st">"Movie"</span>, <span class="st">"OVA"</span>, <span class="st">"Special"</span>, <span class="st">"ONA"</span>, <span class="st">"Music"</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>chart1_df <span class="ot">&lt;-</span> anime <span class="sc">%&gt;%</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(aired_from_year),</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span><span class="fu">is.na</span>(type), type <span class="sc">!=</span> <span class="st">""</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>         type <span class="sc">%in%</span> valid_types) <span class="sc">%&gt;%</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(<span class="at">year =</span> aired_from_year, type, <span class="at">name =</span> <span class="st">"n"</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>total_by_year <span class="ot">&lt;-</span> chart1_df <span class="sc">%&gt;%</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total =</span> <span class="fu">sum</span>(n), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>start_year <span class="ot">&lt;-</span> total_by_year <span class="sc">%&gt;%</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(total <span class="sc">&gt;=</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">min_year =</span> <span class="fu">min</span>(year, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(min_year)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>end_year <span class="ot">&lt;-</span> <span class="fu">max</span>(chart1_df<span class="sc">$</span>year, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>chart1_df <span class="ot">&lt;-</span> chart1_df <span class="sc">%&gt;%</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">&gt;=</span> start_year, year <span class="sc">&lt;=</span> end_year)</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>smooth_df <span class="ot">&lt;-</span> chart1_df <span class="sc">%&gt;%</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(type) <span class="sc">%&gt;%</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(dplyr<span class="sc">::</span><span class="fu">n_distinct</span>(year) <span class="sc">&gt;=</span> <span class="dv">12</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(chart1_df, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> n)) <span class="sc">+</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">0.9</span>, <span class="at">alpha =</span> <span class="fl">0.60</span>) <span class="sc">+</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> smooth_df,</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">"loess"</span>,</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">span =</span> <span class="fl">0.35</span>,</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> <span class="fl">1.1</span></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> type, <span class="at">scales =</span> <span class="st">"free_y"</span>, <span class="at">ncol =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> scales<span class="sc">::</span><span class="fu">pretty_breaks</span>(<span class="at">n =</span> <span class="dv">8</span>)) <span class="sc">+</span></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma) <span class="sc">+</span></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Anime titles released per year, by format"</span>,</span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="fu">paste0</span>(</span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Counts use first air date. LOESS shown only when enough yearly data exists. Window: "</span>,</span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>      start_year, <span class="st">"–"</span>, end_year, <span class="st">"."</span></span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Titles released (count)"</span></span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>    <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>)</span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="anime_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>type_totals <span class="ot">&lt;-</span> chart1_df <span class="sc">%&gt;%</span> <span class="fu">count</span>(type, <span class="at">wt =</span> n, <span class="at">name =</span> <span class="st">"total_titles"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>keep_types  <span class="ot">&lt;-</span> type_totals <span class="sc">%&gt;%</span> <span class="fu">filter</span>(total_titles <span class="sc">&gt;=</span> <span class="dv">50</span>) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(type)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>chart1_df   <span class="ot">&lt;-</span> chart1_df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(type <span class="sc">%in%</span> keep_types)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">filename =</span> <span class="st">"chart1_releases_by_year.png"</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> <span class="st">"/Users/ksm/Desktop/Artometrics/anime"</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">width =</span> <span class="dv">12</span>, <span class="at">height =</span> <span class="dv">7</span>, <span class="at">dpi =</span> <span class="dv">300</span>, <span class="at">bg =</span> <span class="st">"white"</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+</div>
+<section id="before-the-machine" class="level3">
+<h3 class="anchored" data-anchor-id="before-the-machine">BEFORE THE MACHINE</h3>
+<p>This chart shows anime transforming from a low-volume, film-anchored medium into a modern multi-pipeline industry. In the early decades, <strong>Movies</strong> are the main visible output channel—and even then, output is sparse and irregular. The 1958 release of <em>Hakujaden</em> (Toei Animation’s first color feature film, widely considered the first anime feature in the modern sense) represents the kind of milestone that exists in a thin catalog rather than a crowded one. Production in this era is driven by individual studios making deliberate theatrical bets, not by an always-on serial system. The long flat baseline across most formats isn’t “no anime existed”—it’s that the industry hadn’t yet evolved the infrastructure, the distribution networks, or the financing mechanisms to ship content at scale. What you’re seeing in the early flat lines is a craft economy, not an industrial one.</p>
+</section>
+<section id="the-home-video-explosion" class="level3">
+<h3 class="anchored" data-anchor-id="the-home-video-explosion">THE HOME VIDEO EXPLOSION</h3>
+<p>The first real regime shift appears in the <strong>late 1980s into the early 1990s</strong>, where <strong>OVA</strong> output spikes sharply—and the spike is historically legible once you name the titles driving it. <em>Megazone 23</em> (1985) is often cited as the first major OVA release, a direct-to-video science fiction film that proved the format could carry serious, adult-oriented storytelling outside the constraints of TV scheduling. What followed was a boom: <em>Bubblegum Crisis</em> (1987), <em>Gunbuster</em> (1988), <em>Record of Lodoss War</em> (1990), <em>Tenchi Muyo!</em> (1992)—a wave of productions that used home video as a distribution model rather than a workaround. OVAs were direct-to-consumer, less constrained by broadcast standards, and often used for higher-risk, niche, or premium projects that TV wouldn’t greenlight. The key point is that OVAs aren’t just a format—they’re evidence of a <strong>distribution shift</strong>. VHS made a new production lane economically viable, and the chart shows exactly when that lane opened. Their gradual decline through the 1990s and 2000s tracks the same logic in reverse: as TV and later streaming became dominant channels, the specific niche OVAs filled started to close.</p>
+</section>
+<section id="how-tv-took-over" class="level3">
+<h3 class="anchored" data-anchor-id="how-tv-took-over">HOW TV TOOK OVER</h3>
+<p>The modern industrial takeoff runs from the <strong>late 1990s through the 2010s</strong>, driven by multiple pipelines scaling simultaneously. <strong>TV</strong> is the core engine, and the inflection point is the mid-to-late 1990s: <em>Neon Genesis Evangelion</em> (1995) didn’t just become a phenomenon—it proved that TV anime could sustain psychological ambition and cultural impact serious enough to force the industry to treat the format as prestige territory, not just children’s programming. What followed was the build-out: the standardized seasonal production model (12–13 episodes per cour, committee-based financing, quarterly release cadence) that turned TV anime from irregular output into a reliable throughput machine. By the early 2000s, that machine was running the Big Three simultaneously—<em>One Piece</em> (1999–), <em>Naruto</em> (2002–2007), <em>Bleach</em> (2004–2012)—each logging hundreds of episodes and anchoring entire generations of fans. The steepening curve through the 2010s reflects what happens when that industrial system meets global streaming distribution: more titles, faster cycles, wider reach, and a structural incentive to keep the pipeline full.</p>
+</section>
+<section id="the-glue-between-seasons" class="level3">
+<h3 class="anchored" data-anchor-id="the-glue-between-seasons">THE GLUE BETWEEN SEASONS</h3>
+<p><strong>Specials</strong> rise hard in the 2000s–2010s, which fits how the franchise economy works once TV is the dominant format. Specials aren’t standalone projects—they’re how large franchises maintain engagement outside the strict TV-season cadence. Recap episodes, bonus OVA-style installments packaged as “specials,” promotional one-offs tied to Blu-ray releases, crossover events, holiday installments—all of these get logged as Specials in the dataset. As the Big Three and their successors built out massive franchises with passionate year-round audiences, Specials became the connective tissue between cours. Think of them as a <strong>flexible support channel</strong> that expands as the broader franchise ecosystem expands: the more properties a studio has running, the more supplementary content gets produced and cataloged alongside them.</p>
+</section>
+<section id="the-platform-era-arrives" class="level3">
+<h3 class="anchored" data-anchor-id="the-platform-era-arrives">THE PLATFORM ERA ARRIVES</h3>
+<p>The most important late-era signal is <strong>ONA</strong>. It’s essentially nonexistent for most of the timeline and then explodes in the <strong>2010s</strong>—a clean structural break marking the arrival of web-first distribution as a real production lane rather than an exception. Early ONAs were often short-form experiments: <em>Shelter</em> (2016, the Porter Robinson collaboration that went viral), YouTube-native shorts, promotional animations for games or music releases. Then the platform era arrived in force. Netflix’s push into anime originals—<em>Devilman Crybaby</em> (2018, Masaaki Yuasa’s reimagining that became the template for what a streaming-native anime could look and feel like), <em>Violet Evergarden</em> (co-produced with Kyoto Animation), <em>Aggretsuko</em> (a workplace comedy short-form series that found a global audience on the platform)—changed what “web-first” could mean at scale. ONAs reflect a structural reality: <strong>digital release lowers the barrier to entry, shortens cycles, diversifies episode structures, and creates a production lane that doesn’t depend on a broadcast slot or a home video window.</strong></p>
+</section>
+<section id="everything-gets-cataloged-now" class="level3">
+<h3 class="anchored" data-anchor-id="everything-gets-cataloged-now">EVERYTHING GETS CATALOGED NOW</h3>
+<p>The <strong>Music</strong> facet ramps late and fast, which reflects two things at once: real growth in music video and promotional short production tied to the franchise economy, and a cataloging effect where modern web ecosystems index small-format releases far more completely than older archives did. Music videos and short animated promotions have always existed in the industry—idol tie-ins, OP/ED animation shorts, character songs—but they’re now being logged at scale. Because Music is lower-count and irregular, it’s naturally more volatile year-to-year. Its late rise still reinforces the same macro thesis as ONA: <strong>the 2010s aren’t just more anime—they’re more formats, more release types, and more of the industry’s total output being tracked.</strong></p>
+</section>
+<section id="industrialization-then-diversification" class="level3">
+<h3 class="anchored" data-anchor-id="industrialization-then-diversification">INDUSTRIALIZATION, THEN DIVERSIFICATION</h3>
+<p>Anime’s growth is best described as <strong>industrialization followed by diversification</strong>. Movies anchor the early catalog. OVAs mark the home-video distribution boom of the late 1980s. TV becomes the throughput engine through the 2000s, running the Big Three and the standardized seasonal system simultaneously. ONAs mark the platform era. Specials and Music expand in the background as franchise infrastructure. Chart 1 sets the stage for everything that follows: once anime enters a high-throughput, multi-channel era, you should expect downstream changes in audience size, rating dynamics, studio behavior, and the economics of what gets produced—all of which the remaining charts map out.</p>
+<hr>
+</section>
+</section>
+<section id="chart-2-hit-rate-of-high-scoring-titles-by-format-8-8.5-9" class="level2">
+<h2 class="anchored" data-anchor-id="chart-2-hit-rate-of-high-scoring-titles-by-format-8-8.5-9">CHART 2 — HIT-RATE OF HIGH-SCORING TITLES BY FORMAT (8+, 8.5+, 9+)</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- Chart 2: 8+ hit-rate by format + full summary table ----</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>valid_types <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"TV"</span>,<span class="st">"Movie"</span>,<span class="st">"OVA"</span>,<span class="st">"Special"</span>,<span class="st">"ONA"</span>,<span class="st">"Music"</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>chart2_df <span class="ot">&lt;-</span> anime <span class="sc">%&gt;%</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(score), score <span class="sc">&gt;</span> <span class="dv">0</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span><span class="fu">is.na</span>(type), type <span class="sc">%in%</span> valid_types) <span class="sc">%&gt;%</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(animeID, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>type_quality <span class="ot">&lt;-</span> chart2_df <span class="sc">%&gt;%</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(type) <span class="sc">%&gt;%</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_titles     =</span> <span class="fu">n</span>(),</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">median_score =</span> <span class="fu">median</span>(score, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_ge_8  =</span> <span class="fu">sum</span>(score <span class="sc">&gt;=</span> <span class="dv">8</span>,   <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_ge_85 =</span> <span class="fu">sum</span>(score <span class="sc">&gt;=</span> <span class="fl">8.5</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_ge_9  =</span> <span class="fu">sum</span>(score <span class="sc">&gt;=</span> <span class="dv">9</span>,   <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">p_ge_8  =</span> <span class="fu">mean</span>(score <span class="sc">&gt;=</span> <span class="dv">8</span>,   <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">p_ge_85 =</span> <span class="fu">mean</span>(score <span class="sc">&gt;=</span> <span class="fl">8.5</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">p_ge_9  =</span> <span class="fu">mean</span>(score <span class="sc">&gt;=</span> <span class="dv">9</span>,   <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">type =</span> forcats<span class="sc">::</span><span class="fu">fct_reorder</span>(type, p_ge_8),</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">paste0</span>(</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>      scales<span class="sc">::</span><span class="fu">percent</span>(p_ge_8, <span class="at">accuracy =</span> <span class="fl">0.1</span>),</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>      <span class="st">" ("</span>, n_ge_8, <span class="st">"/"</span>, scales<span class="sc">::</span><span class="fu">comma</span>(n_titles), <span class="st">")"</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(type_quality, <span class="fu">aes</span>(<span class="at">x =</span> p_ge_8, <span class="at">y =</span> type)) <span class="sc">+</span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">alpha =</span> <span class="fl">0.9</span>) <span class="sc">+</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> label), <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.05</span>, <span class="at">size =</span> <span class="fl">3.6</span>) <span class="sc">+</span></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>(<span class="at">accuracy =</span> <span class="dv">1</span>),</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(type_quality<span class="sc">$</span>p_ge_8) <span class="sc">*</span> <span class="fl">1.18</span>)</span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Which anime format is most likely to be an 8+?"</span>,</span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Bars show the share of titles scoring ≥ 8 in each format. Labels include sample size (n)."</span>,</span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Percent of titles scoring 8+"</span>,</span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="cn">NULL</span></span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="anime_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>type_quality <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">median_score =</span> <span class="fu">round</span>(median_score, <span class="dv">2</span>),</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Share 8+</span><span class="st">`</span>   <span class="ot">=</span> scales<span class="sc">::</span><span class="fu">percent</span>(p_ge_8,  <span class="at">accuracy =</span> <span class="fl">0.1</span>),</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Share 8.5+</span><span class="st">`</span> <span class="ot">=</span> scales<span class="sc">::</span><span class="fu">percent</span>(p_ge_85, <span class="at">accuracy =</span> <span class="fl">0.1</span>),</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Share 9+</span><span class="st">`</span>   <span class="ot">=</span> scales<span class="sc">::</span><span class="fu">percent</span>(p_ge_9,  <span class="at">accuracy =</span> <span class="fl">0.1</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">Type =</span> type,</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Titles (n)</span><span class="st">`</span> <span class="ot">=</span> n_titles,</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Median score</span><span class="st">`</span> <span class="ot">=</span> median_score,</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">8+ (count)</span><span class="st">`</span> <span class="ot">=</span> n_ge_8,</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Share 8+</span><span class="st">`</span>,</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">8.5+ (count)</span><span class="st">`</span> <span class="ot">=</span> n_ge_85,</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Share 8.5+</span><span class="st">`</span>,</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">9+ (count)</span><span class="st">`</span> <span class="ot">=</span> n_ge_9,</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Share 9+</span><span class="st">`</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 9
+  Type    `Titles (n)` `Median score` `8+ (count)` `Share 8+` `8.5+ (count)`
+  &lt;fct&gt;          &lt;int&gt;          &lt;dbl&gt;        &lt;int&gt; &lt;chr&gt;               &lt;int&gt;
+1 Movie           2640           6.3           128 4.8%                   25
+2 Music            985           5.19            2 0.2%                    0
+3 ONA             1308           5.69           16 1.2%                    4
+4 OVA             2348           6.3            70 3.0%                    8
+5 Special         1996           6.44           41 2.1%                    2
+6 TV              4240           6.79          346 8.2%                   81
+# ℹ 3 more variables: `Share 8.5+` &lt;chr&gt;, `9+ (count)` &lt;int&gt;, `Share 9+` &lt;chr&gt;</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">filename =</span> <span class="st">"chart2_hitrate_by_format.png"</span>,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> <span class="st">"/Users/ksm/Desktop/Artometrics/anime"</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">width =</span> <span class="dv">10</span>, <span class="at">height =</span> <span class="dv">6</span>, <span class="at">dpi =</span> <span class="dv">300</span>, <span class="at">bg =</span> <span class="st">"white"</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="your-odds-of-finding-something-great" class="level3">
+<h3 class="anchored" data-anchor-id="your-odds-of-finding-something-great">YOUR ODDS OF FINDING SOMETHING GREAT</h3>
+<p>This chart answers a brutally practical viewer question: <strong>“If I pick a title at random in this format, what are the odds it’s actually great?”</strong> Instead of comparing average scores—which compress differences and hide the elite tail—you’re measuring <strong>hit-rate</strong>: the share of titles that clear an “I’d recommend this” threshold. Here that threshold is <strong>8+</strong>, with <strong>8.5+</strong> and <strong>9+</strong> included as progressively rarer prestige tiers. The first headline is clear: <strong>TV is the highest-yield hunting ground for 8+ titles</strong>. About <strong>8.2%</strong> of TV titles are rated <strong>8+</strong> (<strong>346 out of 4,240</strong>), meaningfully higher than every other format. The next closest is <strong>Movies at 4.8% (128/2,640)</strong>, then <strong>OVA at 3.0% (70/2,348)</strong>, <strong>Special at 2.1% (41/1,996)</strong>, <strong>ONA at 1.2% (16/1,308)</strong>, and <strong>Music at 0.2% (2/985)</strong>. Read that as a simple random-pick expectation: out of 100 picks, TV gives you ~8 hits, Movies ~5, OVAs ~3, Specials ~2, ONAs ~1, and Music essentially zero. <strong>It’s probability, not vibes.</strong></p>
+</section>
+<section id="why-tv-wins" class="level3">
+<h3 class="anchored" data-anchor-id="why-tv-wins">WHY TV WINS</h3>
+<p>What makes TV’s lead especially meaningful is that it’s not just “TV has more titles.” You’ve already normalized by format—TV is winning on <strong>rate</strong>, which means something structural is happening. TV is where the medium’s consensus classics tend to live: <em>Fullmetal Alchemist: Brotherhood</em> (MAL’s long-running #1, a 64-episode TV series), <em>Attack on Titan</em>, <em>Steins;Gate</em>, <em>Hunter x Hunter (2011)</em>, <em>Vinland Saga</em>, <em>Demon Slayer</em>—all TV productions. Weekly release cycles build sustained communities, long-form storytelling allows character investment that movies can’t match in runtime, and seasonal discourse creates the kind of collective attention that stabilizes a title’s reputation at the top of the rating scale. TV isn’t only the main output pipeline—it’s the <strong>highest-yield engine for top-end audience approval</strong>, not because every TV show is good, but because the format’s conditions favor the slow-burn consensus that produces durable 8+ scores.</p>
+</section>
+<section id="the-prestige-myth" class="level3">
+<h3 class="anchored" data-anchor-id="the-prestige-myth">THE PRESTIGE MYTH</h3>
+<p>Movies are the interesting second-place result because people often assume film is anime’s prestige lane—and for good reason. <em>Spirited Away</em> won the Academy Award for Best Animated Feature in 2003, the first (and still only) anime film to do so. <em>Your Name</em> (2016) became the highest-grossing anime film in history at the time of its release, crossing $358 million worldwide. <em>Princess Mononoke</em>, <em>Akira</em>, <em>Grave of the Fireflies</em>—the upper tier of anime film is genuinely among the most celebrated animation ever made. But the chart reveals what happens when you look at the whole Movies bucket rather than its famous ceiling: it’s a deeply <strong>mixed market</strong>. Franchise extensions, compilation films that recut TV arcs for theaters, side stories designed for existing fans, smaller productions that never find wide distribution—all of these sit in the same bucket as Ghibli. That mix drags the hit-rate to 4.8%, well below TV’s 8.2%, not because anime films are bad, but because “anime film” as a category includes everything from <em>Spirited Away</em> to a 45-minute recap movie packaged as a theatrical event. When a film does land at the top, it lands hard—but <strong>the odds per random pick are lower than TV.</strong></p>
+</section>
+<section id="gems-in-a-deep-catalog" class="level3">
+<h3 class="anchored" data-anchor-id="gems-in-a-deep-catalog">GEMS IN A DEEP CATALOG</h3>
+<p>The OVA result is historically coherent. OVAs have produced some of the medium’s most celebrated niche works—<em>Hellsing Ultimate</em> (the gold-standard vampire action OVA), <em>Legend of the Galactic Heroes</em> (a 110-episode space opera released entirely as OVAs between 1988 and 1997, which maintains an exceptionally high MAL score to this day), <em>FLCL</em> (6 episodes, endlessly referenced, never quite replicated). These are real titles that clear the 8+ bar. But as a bucket, OVAs also include enormous amounts of deep catalog material: forgotten direct-to-video releases from the 1980s and 1990s, niche genre experiments that found small audiences, fan-service releases attached to existing franchises. The hit-rate of <strong>3.0%</strong> reflects that full range—OVAs can absolutely produce standout titles, but the probability of hitting one by random selection is lower than TV or Movies. OVAs are a reminder that <strong>format innovation doesn’t automatically translate into mass approval</strong>; it creates a wider range of outcomes, from cult classics to forgotten experiments.</p>
+</section>
+<section id="the-support-lanes" class="level3">
+<h3 class="anchored" data-anchor-id="the-support-lanes">THE SUPPORT LANES</h3>
+<p>Specials and ONAs function as secondary lanes, and their hit-rates reflect exactly what those lanes are designed to do. <strong>Specials</strong> exist to extend franchise attention between seasons—recap episodes, holiday one-offs, Blu-ray bonus content, promotional shorts. Their job isn’t to produce iconic standalone works; it’s to maintain engagement within an existing property’s orbit. A lower hit-rate is logical when you’re pulling from a population of support content rather than ambitious originals. <strong>ONAs</strong> are more heterogeneous: some are top-tier originals (<em>Devilman Crybaby</em> sits well above 8 and is an ONA), but many are short-form experiments, platform promotional releases, or web-native projects where production constraints and distribution priorities differ fundamentally from TV. The ONA line reads like a platform-era pattern: <strong>more content, faster cycles, wider variance, and lower probability that any single title builds the sustained audience consensus that produces a locked-in 8+ score.</strong></p>
+</section>
+<section id="how-rare-is-a-masterpiece" class="level3">
+<h3 class="anchored" data-anchor-id="how-rare-is-a-masterpiece">HOW RARE IS A MASTERPIECE</h3>
+<p>The rarity ladder is where the story sharpens further. Even in the best-performing format, <strong>8.5+ is only 1.9% of TV titles</strong> and <strong>9+ is only 0.3%</strong>—roughly 11 titles out of 4,240. That’s the quiet truth the chart exposes: <strong>masterpiece-level scores are rare in every format.</strong> TV doesn’t produce floods of 9+ shows; it just gives you the best odds in a world where truly elite titles are scarce everywhere. The summary table adds a second context layer: <strong>median score by format</strong>. TV not only has the best 8+ hit-rate—it has the highest median (<strong>6.79</strong>), meaning the entire TV distribution is shifted upward relative to other formats. Movies and OVAs sit at <strong>6.30</strong>, Specials at <strong>6.44</strong>, ONA at <strong>5.69</strong>, Music at <strong>5.19</strong>. TV isn’t winning only because it creates more hits— it’s winning because <strong>the typical TV title is rated higher too.</strong></p>
+</section>
+<section id="shop-near-the-entrance" class="level3">
+<h3 class="anchored" data-anchor-id="shop-near-the-entrance">SHOP NEAR THE ENTRANCE</h3>
+<p>If you want the best odds of finding an 8+ title quickly, TV is the most efficient format to browse—not because films and OVAs don’t have elite entries (they do, and some of the most celebrated works in the medium live there), but because <strong>the hit-rate per random pick is highest in TV, and the median floor is highest in TV.</strong> In your newsletter arc, Chart 2 pairs directly with Chart 1: once anime becomes a high-throughput, multi-pipeline industry, TV remains the lane where audience consensus and top-end ratings concentrate—even as the platform era expands every other release type simultaneously.</p>
+<hr>
+</section>
+</section>
+<section id="chart-3-popularity-rank-vs-score-log-scale" class="level2">
+<h2 class="anchored" data-anchor-id="chart-3-popularity-rank-vs-score-log-scale">CHART 3 — POPULARITY RANK VS SCORE (LOG SCALE)</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Chart 3 (REPLACEMENT): Popularity deciles -&gt; score (median + IQR)</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># + a fast-facts table for the same bins</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Idea:</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   - Popularity is MAL rank (1 = most popular)</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co">#   - Use log10(popularity) and cut into 10 equal-count bins (deciles)</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">#   - Plot median score with IQR ribbon (25th–75th percentile)</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co">#   - Include a summary table to read exact figures</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Assumes: `anime` exists (title-level) with columns:</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co">#   animeID, score, popularity, type</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>valid_types <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"TV"</span>,<span class="st">"Movie"</span>,<span class="st">"OVA"</span>,<span class="st">"Special"</span>,<span class="st">"ONA"</span>,<span class="st">"Music"</span>)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- base universe (title-level, cleaned) ----</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>plot_df <span class="ot">&lt;-</span> anime <span class="sc">%&gt;%</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(score), score <span class="sc">&gt;</span> <span class="dv">0</span>,</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span><span class="fu">is.na</span>(popularity), popularity <span class="sc">&gt;</span> <span class="dv">0</span>,</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span><span class="fu">is.na</span>(type), type <span class="sc">%in%</span> valid_types) <span class="sc">%&gt;%</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(animeID, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>pop_cap <span class="ot">&lt;-</span> <span class="dv">12000</span>  <span class="co"># keep consistent with your prior Chart 3</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>df_cap <span class="ot">&lt;-</span> plot_df <span class="sc">%&gt;%</span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(popularity <span class="sc">&lt;=</span> pop_cap) <span class="sc">%&gt;%</span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">log_pop =</span> <span class="fu">log10</span>(popularity)</span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- decile bins (equal-count bins on log popularity) ----</span></span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: since rank is reversed conceptually, Decile 1 = most popular group</span></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>df_bins <span class="ot">&lt;-</span> df_cap <span class="sc">%&gt;%</span></span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">pop_decile =</span> <span class="fu">ntile</span>(log_pop, <span class="dv">10</span>),</span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">pop_decile =</span> <span class="fu">factor</span>(pop_decile, <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>                        <span class="at">labels =</span> <span class="fu">paste0</span>(<span class="st">"D"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>))</span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- summarise by decile ----</span></span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a>chart3_bins <span class="ot">&lt;-</span> df_bins <span class="sc">%&gt;%</span></span>
+<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(pop_decile) <span class="sc">%&gt;%</span></span>
+<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">pop_min =</span> <span class="fu">min</span>(popularity, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">pop_max =</span> <span class="fu">max</span>(popularity, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">pop_med =</span> <span class="fu">median</span>(popularity, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">score_med =</span> <span class="fu">median</span>(score, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">score_q25 =</span> <span class="fu">quantile</span>(score, <span class="fl">0.25</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">score_q75 =</span> <span class="fu">quantile</span>(score, <span class="fl">0.75</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">score_mean =</span> <span class="fu">mean</span>(score, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">share_8p =</span> <span class="fu">mean</span>(score <span class="sc">&gt;=</span> <span class="dv">8</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb11-55"><a href="#cb11-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb11-56"><a href="#cb11-56" aria-hidden="true" tabindex="-1"></a>    <span class="co"># nice label: show the popularity rank range inside each decile</span></span>
+<span id="cb11-57"><a href="#cb11-57" aria-hidden="true" tabindex="-1"></a>    <span class="at">pop_range =</span> <span class="fu">paste0</span>(<span class="fu">comma</span>(pop_min), <span class="st">"–"</span>, <span class="fu">comma</span>(pop_max))</span>
+<span id="cb11-58"><a href="#cb11-58" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-59"><a href="#cb11-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-60"><a href="#cb11-60" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- plot (median + IQR ribbon) ----</span></span>
+<span id="cb11-61"><a href="#cb11-61" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(chart3_bins, <span class="fu">aes</span>(<span class="at">x =</span> pop_decile, <span class="at">y =</span> score_med, <span class="at">group =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb11-62"><a href="#cb11-62" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> score_q25, <span class="at">ymax =</span> score_q75), <span class="at">alpha =</span> <span class="fl">0.20</span>) <span class="sc">+</span></span>
+<span id="cb11-63"><a href="#cb11-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">1.1</span>) <span class="sc">+</span></span>
+<span id="cb11-64"><a href="#cb11-64" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.2</span>) <span class="sc">+</span></span>
+<span id="cb11-65"><a href="#cb11-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb11-66"><a href="#cb11-66" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Do popular anime score higher?"</span>,</span>
+<span id="cb11-67"><a href="#cb11-67" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="fu">paste0</span>(</span>
+<span id="cb11-68"><a href="#cb11-68" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Titles are binned into popularity deciles (D1 = most popular). "</span>,</span>
+<span id="cb11-69"><a href="#cb11-69" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Popularity is MAL rank (1 = most popular); capped at rank ≤ "</span>, pop_cap, <span class="st">". "</span>,</span>
+<span id="cb11-70"><a href="#cb11-70" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Line = median score; band = IQR (25th–75th percentile)."</span></span>
+<span id="cb11-71"><a href="#cb11-71" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb11-72"><a href="#cb11-72" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Popularity decile (D1 most popular → D10 least popular within cap)"</span>,</span>
+<span id="cb11-73"><a href="#cb11-73" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"MAL score"</span></span>
+<span id="cb11-74"><a href="#cb11-74" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb11-75"><a href="#cb11-75" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb11-76"><a href="#cb11-76" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb11-77"><a href="#cb11-77" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb11-78"><a href="#cb11-78" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">10</span>),</span>
+<span id="cb11-79"><a href="#cb11-79" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb11-80"><a href="#cb11-80" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">11</span>, <span class="at">lineheight =</span> <span class="fl">1.1</span>)</span>
+<span id="cb11-81"><a href="#cb11-81" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="anime_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- table (fast facts for analysis) ----</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>chart3_table <span class="ot">&lt;-</span> chart3_bins <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Popularity decile</span><span class="st">`</span> <span class="ot">=</span> pop_decile,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Titles (n)</span><span class="st">`</span> <span class="ot">=</span> n,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Popularity rank range</span><span class="st">`</span> <span class="ot">=</span> pop_range,</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Median popularity rank</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">round</span>(pop_med, <span class="dv">0</span>),</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Median score</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">round</span>(score_med, <span class="dv">2</span>),</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">IQR (25–75%)</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">paste0</span>(<span class="fu">round</span>(score_q25, <span class="dv">2</span>), <span class="st">"–"</span>, <span class="fu">round</span>(score_q75, <span class="dv">2</span>)),</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Mean score</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">round</span>(score_mean, <span class="dv">2</span>),</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Share 8+</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">percent</span>(share_8p, <span class="at">accuracy =</span> <span class="fl">0.1</span>)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  chart3_table,</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="fu">paste0</span>(</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Chart 3 fast facts by popularity decile (rank ≤ "</span>, pop_cap,</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">"). D1 contains the most popular titles; D10 the least popular within the cap."</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Chart 3 fast facts by popularity decile (rank ≤ 12000). D1 contains the most popular titles; D10 the least popular within the cap.</caption>
+<colgroup>
+<col style="width: 15%">
+<col style="width: 9%">
+<col style="width: 18%">
+<col style="width: 19%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 9%">
+<col style="width: 7%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Popularity decile</th>
+<th style="text-align: right;">Titles (n)</th>
+<th style="text-align: left;">Popularity rank range</th>
+<th style="text-align: right;">Median popularity rank</th>
+<th style="text-align: right;">Median score</th>
+<th style="text-align: left;">IQR (25–75%)</th>
+<th style="text-align: right;">Mean score</th>
+<th style="text-align: left;">Share 8+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">D1</td>
+<td style="text-align: right;">1023</td>
+<td style="text-align: left;">1–1,044</td>
+<td style="text-align: right;">517</td>
+<td style="text-align: right;">7.73</td>
+<td style="text-align: left;">7.37–8.16</td>
+<td style="text-align: right;">7.72</td>
+<td style="text-align: left;">34.4%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D2</td>
+<td style="text-align: right;">1023</td>
+<td style="text-align: left;">1,047–2,110</td>
+<td style="text-align: right;">1572</td>
+<td style="text-align: right;">7.37</td>
+<td style="text-align: left;">7–7.7</td>
+<td style="text-align: right;">7.33</td>
+<td style="text-align: left;">12.4%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">D3</td>
+<td style="text-align: right;">1023</td>
+<td style="text-align: left;">2,110–3,205</td>
+<td style="text-align: right;">2642</td>
+<td style="text-align: right;">7.17</td>
+<td style="text-align: left;">6.73–7.53</td>
+<td style="text-align: right;">7.10</td>
+<td style="text-align: left;">5.5%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D4</td>
+<td style="text-align: right;">1023</td>
+<td style="text-align: left;">3,205–4,379</td>
+<td style="text-align: right;">3776</td>
+<td style="text-align: right;">6.97</td>
+<td style="text-align: left;">6.57–7.37</td>
+<td style="text-align: right;">6.90</td>
+<td style="text-align: left;">2.8%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">D5</td>
+<td style="text-align: right;">1023</td>
+<td style="text-align: left;">4,379–5,755</td>
+<td style="text-align: right;">5034</td>
+<td style="text-align: right;">6.76</td>
+<td style="text-align: left;">6.37–7.15</td>
+<td style="text-align: right;">6.70</td>
+<td style="text-align: left;">0.5%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D6</td>
+<td style="text-align: right;">1023</td>
+<td style="text-align: left;">5,756–7,238</td>
+<td style="text-align: right;">6511</td>
+<td style="text-align: right;">6.57</td>
+<td style="text-align: left;">6.14–6.99</td>
+<td style="text-align: right;">6.50</td>
+<td style="text-align: left;">0.1%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">D7</td>
+<td style="text-align: right;">1023</td>
+<td style="text-align: left;">7,242–8,562</td>
+<td style="text-align: right;">7916</td>
+<td style="text-align: right;">6.40</td>
+<td style="text-align: left;">5.91–6.78</td>
+<td style="text-align: right;">6.28</td>
+<td style="text-align: left;">0.0%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D8</td>
+<td style="text-align: right;">1023</td>
+<td style="text-align: left;">8,564–9,787</td>
+<td style="text-align: right;">9187</td>
+<td style="text-align: right;">6.13</td>
+<td style="text-align: left;">5.59–6.51</td>
+<td style="text-align: right;">5.99</td>
+<td style="text-align: left;">0.0%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">D9</td>
+<td style="text-align: right;">1022</td>
+<td style="text-align: left;">9,788–10,927</td>
+<td style="text-align: right;">10364</td>
+<td style="text-align: right;">5.92</td>
+<td style="text-align: left;">5.42–6.31</td>
+<td style="text-align: right;">5.82</td>
+<td style="text-align: left;">0.0%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D10</td>
+<td style="text-align: right;">1022</td>
+<td style="text-align: left;">10,928–12,000</td>
+<td style="text-align: right;">11477</td>
+<td style="text-align: right;">5.75</td>
+<td style="text-align: left;">5.26–6.18</td>
+<td style="text-align: right;">5.71</td>
+<td style="text-align: left;">0.3%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">filename =</span> <span class="st">"chart3_popularity_vs_score.png"</span>,</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> <span class="st">"/Users/ksm/Desktop/Artometrics/anime"</span>,</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">width =</span> <span class="dv">10</span>, <span class="at">height =</span> <span class="dv">6</span>, <span class="at">dpi =</span> <span class="dv">300</span>, <span class="at">bg =</span> <span class="st">"white"</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="the-front-gallery" class="level3">
+<h3 class="anchored" data-anchor-id="the-front-gallery">THE FRONT GALLERY</h3>
+<p>Popularity on MyAnimeList is an <strong>attention register</strong>—a rank that tracks how many people have added a title to their lists, not whether it is objectively great. But the two turn out to be deeply correlated. Within the top 12,000 popularity ranks, the <strong>median score slides from 7.73 in D1 (most popular) to 5.75 in D10 (least popular)</strong>—almost a two-point drop across the distribution. The “elite” zone becomes rare with startling speed: <strong>34.4% of D1 titles score 8+</strong>, but that collapses to <strong>12.4% in D2</strong>, <strong>5.5% in D3</strong>, and near-zero through much of the bottom half. D1 is where the front gallery lives: <em>Death Note</em>, <em>Fullmetal Alchemist: Brotherhood</em>, <em>Attack on Titan</em>, <em>Sword Art Online</em>, <em>One Punch Man</em>—titles with member counts in the millions that have been watched, finished, rated, argued about, and recommended so many times that their scores have stabilized into something close to cultural consensus. The deeper deciles are the archive: vast, uneven, and mostly unvisited.</p>
+</section>
+<section id="why-the-popular-shows-score-higher" class="level3">
+<h3 class="anchored" data-anchor-id="why-the-popular-shows-score-higher">WHY THE POPULAR SHOWS SCORE HIGHER</h3>
+<p>The correlation isn’t accidental—it’s structural. When a show like <em>Attack on Titan</em> builds an audience of millions, it gets rated by millions. That volume stabilizes the score: outlier ratings (the 10s from devoted fans, the 1s from people who bounced in episode two) get averaged out by the mass in the middle, and what’s left is a reliable signal. Low-popularity titles have the opposite problem: a few hundred ratings means a few polarized opinions carry outsized weight, producing scores that are either artificially inflated or deflated depending on who showed up. The scores in D1 aren’t necessarily “more correct”—they’re <strong>more statistically stable</strong>, which in a rating ecosystem reads as higher and more trustworthy. Popularity doesn’t just reflect quality; it manufactures the conditions that make quality legible.</p>
+</section>
+<section id="fame-makes-itself" class="level3">
+<h3 class="anchored" data-anchor-id="fame-makes-itself">FAME MAKES ITSELF</h3>
+<p>There’s a second mechanism at work beyond statistical stability: <strong>visibility creates more visibility</strong>. When <em>Sword Art Online</em> premiered in 2012, it became one of Crunchyroll’s most-streamed titles almost immediately—which meant it appeared at the top of every recommendations list, every “what to watch next” algorithm, and every “most popular this season” banner. That placement drove more viewers to it, which drove more ratings, which kept it ranked high, which drove more viewers. This is the feedback loop that economists call cumulative advantage and anime fans just call hype: early traction begets more traction, and the gap between a show that catches fire in week one and a show that doesn’t can widen dramatically even if the underlying quality is similar. It’s why <em>Sword Art Online</em> has more members than many objectively higher-rated shows—it won the attention game early and the algorithm kept paying out. The decile gradient you see in this chart is partly a quality signal and partly a <strong>record of which shows got lucky with timing, placement, and platform momentum.</strong></p>
+</section>
+<section id="what-lives-in-the-back-rooms" class="level3">
+<h3 class="anchored" data-anchor-id="what-lives-in-the-back-rooms">WHAT LIVES IN THE BACK ROOMS</h3>
+<p>The bottom deciles aren’t full of bad anime—they’re full of <strong>unseen anime</strong>. <em>Legend of the Galactic Heroes</em>, a 110-episode space opera OVA series from 1988, maintains one of the highest MAL scores in the dataset despite sitting deep in the popularity ranks; it simply never had the distribution infrastructure to build a mass audience. Dozens of titles from the 1980s and 1990s exist in similar positions: genuinely accomplished work that accumulated small, devoted followings and correspondingly small member counts, leaving their scores statistically fragile. The wide IQR bands in D7 through D10 tell that story visually—more variance, more noise, more titles where the score reflects a few hundred passionate fans rather than a broad cultural verdict. The back rooms are where discovery happens, but also where the expected score falls and the signal-to-noise ratio drops. The question isn’t whether great anime exists out there—it does—it’s whether you’re willing to accept lower average odds and higher variance in exchange for the chance of finding something the algorithm never surfaced.</p>
+</section>
+<section id="the-algorithm-problem" class="level3">
+<h3 class="anchored" data-anchor-id="the-algorithm-problem">THE ALGORITHM PROBLEM</h3>
+<p>The gradient this chart reveals isn’t purely organic—it’s partly manufactured by the discovery systems that sit on top of the catalog. Streaming platforms and recommendation engines systematically favor already-popular titles: Crunchyroll’s homepage, Netflix’s “trending” row, MAL’s own “top anime” lists all amplify visibility for content that already has high member counts. Research on recommender systems calls this <strong>popularity bias</strong>—the tendency of algorithms to over-expose the head of the distribution and under-represent the long tail, compounding existing visibility gaps over time. In practical terms, this means the decile gradient you’re observing isn’t just “popular = good.” It’s also “popular = gets recommended = gets more popular = gets more ratings = looks more authoritative.” The back rows of the archive stay undiscovered not only because the work is less compelling—but because no system is actively pointing people toward them.</p>
+</section>
+<section id="shop-with-your-eyes-open" class="level3">
+<h3 class="anchored" data-anchor-id="shop-with-your-eyes-open">SHOP WITH YOUR EYES OPEN</h3>
+<p>The practical takeaway is crisp: <strong>popularity is a strong signal of higher average ratings, but it is also a mechanism that concentrates attention.</strong> If you want reliably high-scoring picks, you shop near the entrance—D1 and D2, where the median score stays above 7 and the 8+ hit-rate is meaningful. If you want discovery, you walk deeper into the stacks—accepting that the expected score falls, the variance rises, and the chance of finding something genuinely idiosyncratic and underseen increases. Neither strategy is wrong. But knowing which one you’re running, and why the distribution looks the way it does, makes you a smarter browser of a catalog that is much larger and stranger than any algorithm is going to show you on its own.</p>
+<hr>
+</section>
+</section>
+<section id="chart-4-which-studios-score-highest-median-score-with-iqr" class="level2">
+<h2 class="anchored" data-anchor-id="chart-4-which-studios-score-highest-median-score-with-iqr">CHART 4 — WHICH STUDIOS SCORE HIGHEST? (MEDIAN SCORE WITH IQR)</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># STUDIO RANKING (median + IQR + size + color)</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Requires: anime_studios (animeID, studio) and anime (animeID, score, type)</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- build studio-level frame ----</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>studio_df <span class="ot">&lt;-</span> anime_studios <span class="sc">%&gt;%</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(animeID, studio) <span class="sc">%&gt;%</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    anime <span class="sc">%&gt;%</span> <span class="fu">distinct</span>(animeID, score, type),</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">by =</span> <span class="st">"animeID"</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(studio), studio <span class="sc">!=</span> <span class="st">""</span>,</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span><span class="fu">is.na</span>(score), score <span class="sc">&gt;</span> <span class="dv">0</span>,</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span><span class="fu">is.na</span>(type), type <span class="sc">!=</span> <span class="st">""</span>)</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- studio summaries ----</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>studio_summ <span class="ot">&lt;-</span> studio_df <span class="sc">%&gt;%</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(studio) <span class="sc">%&gt;%</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_titles     =</span> <span class="fu">n</span>(),</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">median_score =</span> <span class="fu">median</span>(score, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">q1           =</span> <span class="fu">quantile</span>(score, <span class="fl">0.25</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">q3           =</span> <span class="fu">quantile</span>(score, <span class="fl">0.75</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">tv_share     =</span> <span class="fu">mean</span>(type <span class="sc">==</span> <span class="st">"TV"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n_titles <span class="sc">&gt;=</span> <span class="dv">20</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(median_score)) <span class="sc">%&gt;%</span></span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">20</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">studio_label =</span> <span class="fu">paste0</span>(studio, <span class="st">" (n="</span>, n_titles, <span class="st">")"</span>))</span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>overall_median <span class="ot">&lt;-</span> anime <span class="sc">%&gt;%</span></span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(animeID, score) <span class="sc">%&gt;%</span></span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">overall_median =</span> <span class="fu">median</span>(score, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(overall_median)</span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- plot ----</span></span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(studio_summ, <span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">reorder</span>(studio_label, median_score), <span class="at">x =</span> median_score)) <span class="sc">+</span></span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbarh</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> q1, <span class="at">xmax =</span> q3), <span class="at">height =</span> <span class="dv">0</span>, <span class="at">linewidth =</span> <span class="fl">0.7</span>, <span class="at">color =</span> <span class="st">"grey20"</span>) <span class="sc">+</span></span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> n_titles, <span class="at">color =</span> tv_share), <span class="at">alpha =</span> <span class="fl">0.95</span>) <span class="sc">+</span></span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> overall_median, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">linewidth =</span> <span class="fl">0.7</span>, <span class="at">color =</span> <span class="st">"grey35"</span>) <span class="sc">+</span></span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(</span>
+<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a>    <span class="st">"text"</span>,</span>
+<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> overall_median,</span>
+<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="cn">Inf</span>,</span>
+<span id="cb14-47"><a href="#cb14-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">paste0</span>(<span class="st">"Overall median = "</span>, <span class="fu">round</span>(overall_median, <span class="dv">2</span>)),</span>
+<span id="cb14-48"><a href="#cb14-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.05</span>, <span class="at">vjust =</span> <span class="fl">1.3</span>,</span>
+<span id="cb14-49"><a href="#cb14-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">3.6</span>, <span class="at">color =</span> <span class="st">"grey20"</span></span>
+<span id="cb14-50"><a href="#cb14-50" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb14-51"><a href="#cb14-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis_c</span>(</span>
+<span id="cb14-52"><a href="#cb14-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">option =</span> <span class="st">"D"</span>,</span>
+<span id="cb14-53"><a href="#cb14-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>(<span class="at">accuracy =</span> <span class="dv">1</span>),</span>
+<span id="cb14-54"><a href="#cb14-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">"TV share"</span></span>
+<span id="cb14-55"><a href="#cb14-55" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb14-56"><a href="#cb14-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_size_continuous</span>(<span class="at">name =</span> <span class="st">"Titles (n)"</span>) <span class="sc">+</span></span>
+<span id="cb14-57"><a href="#cb14-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb14-58"><a href="#cb14-58" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Which studios score highest?"</span>,</span>
+<span id="cb14-59"><a href="#cb14-59" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Top 20 by median MAL score (min 20 titles). Bars = IQR. Point size = output volume. Color = % of titles that are TV."</span>,</span>
+<span id="cb14-60"><a href="#cb14-60" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Median MAL score"</span>,</span>
+<span id="cb14-61"><a href="#cb14-61" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="cn">NULL</span></span>
+<span id="cb14-62"><a href="#cb14-62" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb14-63"><a href="#cb14-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">clip =</span> <span class="st">"off"</span>) <span class="sc">+</span></span>
+<span id="cb14-64"><a href="#cb14-64" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb14-65"><a href="#cb14-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb14-66"><a href="#cb14-66" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb14-67"><a href="#cb14-67" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb14-68"><a href="#cb14-68" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="dv">10</span>, <span class="dv">30</span>, <span class="dv">10</span>, <span class="dv">10</span>)</span>
+<span id="cb14-69"><a href="#cb14-69" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="anime_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">filename =</span> <span class="st">"chart4_studio_rankings.png"</span>,</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> <span class="st">"/Users/ksm/Desktop/Artometrics/anime"</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">width =</span> <span class="dv">12</span>, <span class="at">height =</span> <span class="dv">8</span>, <span class="at">dpi =</span> <span class="dv">300</span>, <span class="at">bg =</span> <span class="st">"white"</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- studio fast facts table ----</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>studio_fast_facts <span class="ot">&lt;-</span> studio_summ <span class="sc">%&gt;%</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">tv_share =</span> scales<span class="sc">::</span><span class="fu">percent</span>(tv_share, <span class="at">accuracy =</span> <span class="dv">1</span>),</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">iqr =</span> <span class="fu">round</span>(q3 <span class="sc">-</span> q1, <span class="dv">2</span>),</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">median_score =</span> <span class="fu">round</span>(median_score, <span class="dv">2</span>),</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">q1 =</span> <span class="fu">round</span>(q1, <span class="dv">2</span>),</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">q3 =</span> <span class="fu">round</span>(q3, <span class="dv">2</span>)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">Studio =</span> studio,</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Titles (n)</span><span class="st">`</span> <span class="ot">=</span> n_titles,</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Median score</span><span class="st">`</span> <span class="ot">=</span> median_score,</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Q1</span><span class="st">`</span> <span class="ot">=</span> q1,</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Q3</span><span class="st">`</span> <span class="ot">=</span> q3,</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">IQR</span><span class="st">`</span> <span class="ot">=</span> iqr,</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">TV share</span><span class="st">`</span> <span class="ot">=</span> tv_share</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>studio_fast_facts</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 20 × 7
+   Studio             `Titles (n)` `Median score`    Q1    Q3   IQR `TV share`
+   &lt;chr&gt;                     &lt;int&gt;          &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     
+ 1 "Bones"                     115           7.46  6.95  7.9   0.95 45%       
+ 2 "White Fox"                  33           7.45  6.77  8     1.23 52%       
+ 3 "David Production"           25           7.43  7.38  7.85  0.47 60%       
+ 4 "Kyoto Animation"           110           7.43  6.67  7.89  1.21 26%       
+ 5 "GoHands"                    27           7.4   6.52  7.66  1.15 33%       
+ 6 "Wit Studio"                 37           7.39  7.04  7.84  0.8  27%       
+ 7 "Lerche"                     47           7.37  6.86  7.62  0.77 47%       
+ 8 "AIC A.S.T.A."               27           7.34  6.42  7.59  1.17 41%       
+ 9 "TYO Animations"             31           7.34  6.61  7.62  1.01 32%       
+10 "P.A. Works"                 43           7.33  6.56  7.7   1.14 44%       
+11 "A-1 Pictures"              190           7.3   6.7   7.73  1.03 45%       
+12 "Trigger"                    23           7.28  5.88  7.62  1.74 30%       
+13 "Shaft"                     125           7.25  6.65  7.86  1.21 41%       
+14 "\"Brains Base\""            90           7.24  6.64  7.69  1.04 48%       
+15 "Seven Arcs"                 21           7.23  6.96  7.48  0.52 57%       
+16 "MAPPA"                      42           7.21  6.5   7.76  1.26 57%       
+17 "Manglobe"                   34           7.21  6.85  7.58  0.74 47%       
+18 "ufotable"                   60           7.21  6.69  7.69  1    23%       
+19 "8bit"                       36           7.2   6.82  7.56  0.74 53%       
+20 "Studio Deen"               264           7.2   6.53  7.62  1.1  57%       </code></pre>
+</div>
+</div>
+<section id="the-consistency-question" class="level3">
+<h3 class="anchored" data-anchor-id="the-consistency-question">THE CONSISTENCY QUESTION</h3>
+<p>This chart answers a deceptively hard question—<em>which studios score highest on MyAnimeList</em>—by using <strong>median score</strong> (the typical title) instead of averages, which can be hijacked by a single massive hit or a string of misfires. Across the top-20 studios with at least 20 titles, the leaders cluster tightly around the <strong>low-to-mid 7s</strong>, while the overall median of all studio-credited titles sits at <strong>~6.38</strong>. In other words: once you filter to studios with real volume, the top tier isn’t separated by a full point—it’s separated by <strong>tenths</strong>. This is exactly what you’d expect in a mature rating ecosystem where most shows occupy the same band. The leaderboard here isn’t about who made the single best show. It’s about <strong>who can stay above the platform’s baseline across a meaningful number of titles</strong>—which is a much harder thing to do.</p>
+</section>
+<section id="bones-and-kyoani-the-gold-standard" class="level3">
+<h3 class="anchored" data-anchor-id="bones-and-kyoani-the-gold-standard">BONES AND KYOANI: THE GOLD STANDARD</h3>
+<p>At the top, <strong>Bones</strong> and <strong>Kyoto Animation</strong> stand out as the clearest examples of scale and quality coexisting. Bones’ case rests on a catalog that includes some of the most celebrated titles in the medium: <em>Fullmetal Alchemist: Brotherhood</em>—MAL’s long-running #1, a 64-episode adaptation widely considered the gold standard of shonen storytelling—alongside <em>Mob Psycho 100</em>, <em>My Hero Academia</em>, <em>Soul Eater</em>, and <em>Noragami</em>. That’s not a studio that peaked once; it’s a studio that has produced consensus favorites across multiple genres and eras. The median stays high because the floor stays high. <strong>Kyoto Animation</strong> is a different kind of story. Where Bones operates at volume, KyoAni built its reputation on deliberate, almost obsessive craft—an in-house training pipeline, refusal to outsource animation work, and a catalog defined by visual precision: <em>Clannad</em>, <em>K-On!</em>, <em>Hibike! Euphonium</em>, <em>A Silent Voice</em>, <em>Violet Evergarden</em>. In July 2019, an arson attack on their main studio killed 36 people—the deadliest mass killing in Japan in decades. The industry’s response was immediate and global: crowdfunding campaigns, tributes from studios worldwide, a production community that suddenly understood KyoAni not just as a company but as a community of artists. That tragedy reframed how the anime world talks about what studios actually are. Their median score in this chart is a data point; what sits behind it is something closer to a legacy.</p>
+</section>
+<section id="the-boutique-studios" class="level3">
+<h3 class="anchored" data-anchor-id="the-boutique-studios">THE BOUTIQUE STUDIOS</h3>
+<p>A second pattern is the presence of smaller studios whose high medians are built on precision rather than volume. <strong>White Fox</strong> is the clearest example: a studio whose entire reputation rests on a handful of titles executed exceptionally well. <em>Steins;Gate</em>—the time-travel thriller that holds one of the highest MAL scores in the dataset and built one of the most devoted fanbases in the medium—is a White Fox production. So is <em>Re:Zero</em>, which redefined what an isekai could do with psychological depth and consequence. Two franchises, enormous cultural footprint, very small catalog. That’s the boutique model: high selectivity, high hit-rate, high sensitivity to any single title underperforming. <strong>David Production</strong> operates similarly: closely associated with <em>JoJo’s Bizarre Adventure</em> (all animated parts) and <em>Cells at Work</em>, a studio whose identity is essentially inseparable from the franchises it’s built around. Both studios show tight IQRs in the chart—small spread around the median—which is the signature of a studio that doesn’t swing wildly because it doesn’t take many swings.</p>
+</section>
+<section id="the-wild-card" class="level3">
+<h3 class="anchored" data-anchor-id="the-wild-card">THE WILD CARD</h3>
+<p><strong>Trigger</strong> is the most interesting outlier in this chart because its wide IQR is not a weakness—it’s a brand signature. Founded in 2011 by ex-Gainax staff including director Hiroyuki Imaishi, Trigger built its identity on loud, high-style, unapologetically maximalist originals: <em>Kill la Kill</em>, <em>Little Witch Academia</em>, <em>SSSS.Gridman</em>, <em>Promare</em>. These are shows that don’t try to appeal to everyone—they go hard in a specific direction and trust that the audience who connects with that direction will connect deeply. The result is exactly what the chart shows: a high median (the fans who stay love it) alongside a wide IQR (the audience that bounces bounces hard). When you see a wide IQR bar on this chart, read it as <strong>variance in reception, not inconsistency in effort</strong>. Trigger makes exactly the shows it intends to make. Whether that lands depends entirely on whether you’re the kind of viewer they’re making them for.</p>
+</section>
+<section id="the-industrial-giants" class="level3">
+<h3 class="anchored" data-anchor-id="the-industrial-giants">THE INDUSTRIAL GIANTS</h3>
+<p>At the other end of the output spectrum sit studios like <strong>A-1 Pictures</strong> and <strong>Studio Deen</strong>—large dots on the chart, lower medians, and a catalog range that explains exactly why. A-1 Pictures is part of the Aniplex/Sony machine, which means it operates at industrial scale: <em>Sword Art Online</em>, <em>Your Lie in April</em>, <em>Anohana</em>, <em>Erased</em>, <em>Kaguya-sama: Love Is War</em> all carry the A-1 credit. That’s a range from consensus classics to broadly popular but divisive titles, and the median reflects it. You don’t run hundreds of productions without absorbing significant variance in quality—some projects are passion-driven, others are committee-driven, and the catalog average is the average of both. <strong>Studio Deen</strong> carries the most historically loaded reputation in this chart: “Deen quality” became an actual meme in the anime community, shorthand for inconsistent or underwhelming animation on otherwise solid source material (the original <em>Fate/stay night</em> adaptation is the canonical example). Their lower median isn’t surprising—it’s a data-driven confirmation of a reputation that fans had already reached on their own.</p>
+</section>
+<section id="what-the-dot-size-tells-you" class="level3">
+<h3 class="anchored" data-anchor-id="what-the-dot-size-tells-you">WHAT THE DOT SIZE TELLS YOU</h3>
+<p>The dot size in this chart encodes output volume, and it’s worth reading alongside the median rather than separately. A small dot with a high median (White Fox, David Production) says: <em>high precision, low sample size, sensitive to change</em>. One underperforming franchise could meaningfully shift that median. A large dot with a high median (Bones) says: <em>the quality is load-bearing across real volume</em>, which is a structurally harder thing to sustain. A large dot with a lower median (A-1 Pictures, Studio Deen) says: <em>industrial scale with mixed results</em>, which is essentially the expected outcome when a studio is producing enough content to serve every corner of the market. The color layer—TV share—adds one more read: studios with high TV share are building their reputation through the seasonal pipeline, while studios with lower TV share are mixing in films, OVAs, and specials that behave differently in the rating ecosystem. Neither is better; they’re just different business models, and the chart lets you see both at once.</p>
+</section>
+<section id="the-real-winner-here" class="level3">
+<h3 class="anchored" data-anchor-id="the-real-winner-here">THE REAL WINNER HERE</h3>
+<p>The studios that top this chart aren’t the ones with the single biggest hit—almost every studio in anime has at least one title that broke through. The winners are the ones whose <strong>typical show stays above the platform’s baseline despite real volume</strong>. That’s a different kind of achievement than a peak. It requires consistent sourcing (choosing the right projects), consistent execution (delivering on what the source material promises), and consistent audience trust (building the kind of reputation that makes fans show up for your next title before they know what it is). Bones and Kyoto Animation have all three. That’s why they’re at the top of this chart, and why the distance between them and the industrial giants below them—measured in tenths of a score point—represents something much larger than the numbers suggest.</p>
+<hr>
+</section>
+</section>
+<section id="chart-5-genre-map-popularity-vs-well-rated" class="level2">
+<h2 class="anchored" data-anchor-id="chart-5-genre-map-popularity-vs-well-rated">CHART 5 — GENRE MAP: POPULARITY VS WELL-RATED</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>valid_types <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"TV"</span>,<span class="st">"Movie"</span>,<span class="st">"OVA"</span>,<span class="st">"Special"</span>,<span class="st">"ONA"</span>,<span class="st">"Music"</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- base universe ----</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>base_titles <span class="ot">&lt;-</span> anime <span class="sc">%&gt;%</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(animeID),</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span><span class="fu">is.na</span>(score), score <span class="sc">&gt;</span> <span class="dv">0</span>,</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span><span class="fu">is.na</span>(popularity), popularity <span class="sc">&gt;</span> <span class="dv">0</span>,</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span><span class="fu">is.na</span>(type), type <span class="sc">%in%</span> valid_types) <span class="sc">%&gt;%</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(animeID, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>total_titles <span class="ot">&lt;-</span> base_titles <span class="sc">%&gt;%</span> <span class="fu">distinct</span>(animeID) <span class="sc">%&gt;%</span> <span class="fu">nrow</span>()</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- join genres (multi-label) to titles ----</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>genre_title <span class="ot">&lt;-</span> anime_genres <span class="sc">%&gt;%</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(animeID, genre) <span class="sc">%&gt;%</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(genre), genre <span class="sc">!=</span> <span class="st">""</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(base_titles <span class="sc">%&gt;%</span> <span class="fu">select</span>(animeID, score, popularity), <span class="at">by =</span> <span class="st">"animeID"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">log_pop =</span> <span class="fu">log10</span>(popularity))</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- genre stats ----</span></span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>min_n <span class="ot">&lt;-</span> <span class="dv">80</span></span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>genre_stats <span class="ot">&lt;-</span> genre_title <span class="sc">%&gt;%</span></span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(genre) <span class="sc">%&gt;%</span></span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_titles =</span> <span class="fu">n_distinct</span>(animeID),</span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">pct_titles =</span> n_titles <span class="sc">/</span> total_titles,</span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">score_med =</span> <span class="fu">median</span>(score, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">score_mean =</span> <span class="fu">mean</span>(score, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">pop_med =</span> <span class="fu">median</span>(popularity, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">log_pop_med =</span> <span class="fu">median</span>(log_pop, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">share_8p =</span> <span class="fu">mean</span>(score <span class="sc">&gt;=</span> <span class="dv">8</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n_titles <span class="sc">&gt;=</span> min_n) <span class="sc">%&gt;%</span></span>
+<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">hidden_gem =</span> <span class="fu">scale</span>(score_med)[,<span class="dv">1</span>] <span class="sc">+</span> <span class="fu">scale</span>(log_pop_med)[,<span class="dv">1</span>]</span>
+<span id="cb18-38"><a href="#cb18-38" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb18-39"><a href="#cb18-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-40"><a href="#cb18-40" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- labels ----</span></span>
+<span id="cb18-41"><a href="#cb18-41" aria-hidden="true" tabindex="-1"></a>labels_df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
+<span id="cb18-42"><a href="#cb18-42" aria-hidden="true" tabindex="-1"></a>  genre_stats <span class="sc">%&gt;%</span> <span class="fu">slice_max</span>(n_titles, <span class="at">n =</span> <span class="dv">8</span>),</span>
+<span id="cb18-43"><a href="#cb18-43" aria-hidden="true" tabindex="-1"></a>  genre_stats <span class="sc">%&gt;%</span> <span class="fu">slice_max</span>(score_med, <span class="at">n =</span> <span class="dv">8</span>),</span>
+<span id="cb18-44"><a href="#cb18-44" aria-hidden="true" tabindex="-1"></a>  genre_stats <span class="sc">%&gt;%</span> <span class="fu">slice_max</span>(hidden_gem, <span class="at">n =</span> <span class="dv">8</span>)</span>
+<span id="cb18-45"><a href="#cb18-45" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-46"><a href="#cb18-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(genre, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb18-47"><a href="#cb18-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-48"><a href="#cb18-48" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- quadrant cutoffs ----</span></span>
+<span id="cb18-49"><a href="#cb18-49" aria-hidden="true" tabindex="-1"></a>x_cut <span class="ot">&lt;-</span> <span class="fu">median</span>(genre_stats<span class="sc">$</span>pop_med, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb18-50"><a href="#cb18-50" aria-hidden="true" tabindex="-1"></a>y_cut <span class="ot">&lt;-</span> <span class="fu">median</span>(genre_stats<span class="sc">$</span>score_med, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb18-51"><a href="#cb18-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-52"><a href="#cb18-52" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(genre_stats, <span class="fu">aes</span>(<span class="at">x =</span> pop_med, <span class="at">y =</span> score_med, <span class="at">size =</span> n_titles)) <span class="sc">+</span></span>
+<span id="cb18-53"><a href="#cb18-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> x_cut, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">alpha =</span> <span class="fl">0.25</span>) <span class="sc">+</span></span>
+<span id="cb18-54"><a href="#cb18-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> y_cut, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">alpha =</span> <span class="fl">0.25</span>) <span class="sc">+</span></span>
+<span id="cb18-55"><a href="#cb18-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.55</span>) <span class="sc">+</span></span>
+<span id="cb18-56"><a href="#cb18-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_reverse</span>(<span class="at">trans =</span> <span class="st">"log10"</span>, <span class="at">labels =</span> comma) <span class="sc">+</span></span>
+<span id="cb18-57"><a href="#cb18-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_size_continuous</span>(<span class="at">labels =</span> comma) <span class="sc">+</span></span>
+<span id="cb18-58"><a href="#cb18-58" aria-hidden="true" tabindex="-1"></a>  ggrepel<span class="sc">::</span><span class="fu">geom_text_repel</span>(</span>
+<span id="cb18-59"><a href="#cb18-59" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> labels_df,</span>
+<span id="cb18-60"><a href="#cb18-60" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> genre),</span>
+<span id="cb18-61"><a href="#cb18-61" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">3.2</span>,</span>
+<span id="cb18-62"><a href="#cb18-62" aria-hidden="true" tabindex="-1"></a>    <span class="at">max.overlaps =</span> <span class="cn">Inf</span>,</span>
+<span id="cb18-63"><a href="#cb18-63" aria-hidden="true" tabindex="-1"></a>    <span class="at">box.padding =</span> <span class="fl">0.25</span>,</span>
+<span id="cb18-64"><a href="#cb18-64" aria-hidden="true" tabindex="-1"></a>    <span class="at">point.padding =</span> <span class="fl">0.15</span>,</span>
+<span id="cb18-65"><a href="#cb18-65" aria-hidden="true" tabindex="-1"></a>    <span class="at">seed =</span> <span class="dv">42</span>,</span>
+<span id="cb18-66"><a href="#cb18-66" aria-hidden="true" tabindex="-1"></a>    <span class="at">show.legend =</span> <span class="cn">FALSE</span></span>
+<span id="cb18-67"><a href="#cb18-67" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb18-68"><a href="#cb18-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb18-69"><a href="#cb18-69" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Genre map: what's popular vs what's well-rated?"</span>,</span>
+<span id="cb18-70"><a href="#cb18-70" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="fu">paste0</span>(</span>
+<span id="cb18-71"><a href="#cb18-71" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Each point is a genre tag (multi-label). X = median MAL popularity rank (log-scaled, reversed). "</span>,</span>
+<span id="cb18-72"><a href="#cb18-72" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Y = median score. Bubble size = # of titles tagged. Labels highlight notable genres (size, score, hidden gems)."</span></span>
+<span id="cb18-73"><a href="#cb18-73" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb18-74"><a href="#cb18-74" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Median popularity rank (log scale; 1 = most popular)"</span>,</span>
+<span id="cb18-75"><a href="#cb18-75" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Median MAL score"</span>,</span>
+<span id="cb18-76"><a href="#cb18-76" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="st">"Titles tagged"</span></span>
+<span id="cb18-77"><a href="#cb18-77" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb18-78"><a href="#cb18-78" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb18-79"><a href="#cb18-79" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb18-80"><a href="#cb18-80" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb18-81"><a href="#cb18-81" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb18-82"><a href="#cb18-82" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">11</span>, <span class="at">lineheight =</span> <span class="fl">1.1</span>)</span>
+<span id="cb18-83"><a href="#cb18-83" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="anime_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- hidden gem table ----</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>genre_fast_facts <span class="ot">&lt;-</span> genre_stats <span class="sc">%&gt;%</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Titles (n)</span><span class="st">`</span> <span class="ot">=</span> n_titles,</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">% of titles</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">percent</span>(pct_titles, <span class="at">accuracy =</span> <span class="fl">0.1</span>),</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Median score</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">round</span>(score_med, <span class="dv">2</span>),</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Median popularity rank</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">round</span>(pop_med, <span class="dv">0</span>),</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Share 8+</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">percent</span>(share_8p, <span class="at">accuracy =</span> <span class="fl">0.1</span>),</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Hidden-gem index</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">round</span>(hidden_gem, <span class="dv">2</span>)</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">Genre =</span> genre,</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Titles (n)</span><span class="st">`</span>,</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">% of titles</span><span class="st">`</span>,</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Median score</span><span class="st">`</span>,</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Median popularity rank</span><span class="st">`</span>,</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Share 8+</span><span class="st">`</span>,</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Hidden-gem index</span><span class="st">`</span></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(<span class="st">`</span><span class="at">Hidden-gem index</span><span class="st">`</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">15</span>)</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>  genre_fast_facts,</span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">"Chart 5 fast facts: Top 15 'hidden gem' genres (high median score + relatively less popular). Genres are multi-label tags."</span></span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Chart 5 fast facts: Top 15 ‘hidden gem’ genres (high median score + relatively less popular). Genres are multi-label tags.</caption>
+<colgroup>
+<col style="width: 14%">
+<col style="width: 11%">
+<col style="width: 12%">
+<col style="width: 13%">
+<col style="width: 23%">
+<col style="width: 9%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Genre</th>
+<th style="text-align: right;">Titles (n)</th>
+<th style="text-align: left;">% of titles</th>
+<th style="text-align: right;">Median score</th>
+<th style="text-align: right;">Median popularity rank</th>
+<th style="text-align: left;">Share 8+</th>
+<th style="text-align: right;">Hidden-gem index</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Historical</td>
+<td style="text-align: right;">964</td>
+<td style="text-align: left;">7.1%</td>
+<td style="text-align: right;">6.56</td>
+<td style="text-align: right;">9220</td>
+<td style="text-align: left;">7.1%</td>
+<td style="text-align: right;">0.98</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Police</td>
+<td style="text-align: right;">212</td>
+<td style="text-align: left;">1.6%</td>
+<td style="text-align: right;">7.18</td>
+<td style="text-align: right;">4472</td>
+<td style="text-align: left;">10.8%</td>
+<td style="text-align: right;">0.77</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Shoujo</td>
+<td style="text-align: right;">624</td>
+<td style="text-align: left;">4.6%</td>
+<td style="text-align: right;">6.86</td>
+<td style="text-align: right;">5692</td>
+<td style="text-align: left;">6.6%</td>
+<td style="text-align: right;">0.63</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sports</td>
+<td style="text-align: right;">617</td>
+<td style="text-align: left;">4.6%</td>
+<td style="text-align: right;">6.70</td>
+<td style="text-align: right;">6711</td>
+<td style="text-align: left;">9.6%</td>
+<td style="text-align: right;">0.63</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Adventure</td>
+<td style="text-align: right;">2561</td>
+<td style="text-align: left;">18.9%</td>
+<td style="text-align: right;">6.68</td>
+<td style="text-align: right;">6783</td>
+<td style="text-align: left;">5.5%</td>
+<td style="text-align: right;">0.61</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Martial Arts</td>
+<td style="text-align: right;">323</td>
+<td style="text-align: left;">2.4%</td>
+<td style="text-align: right;">6.83</td>
+<td style="text-align: right;">5679</td>
+<td style="text-align: left;">5.3%</td>
+<td style="text-align: right;">0.56</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Space</td>
+<td style="text-align: right;">419</td>
+<td style="text-align: left;">3.1%</td>
+<td style="text-align: right;">6.68</td>
+<td style="text-align: right;">6290</td>
+<td style="text-align: left;">5.7%</td>
+<td style="text-align: right;">0.47</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Drama</td>
+<td style="text-align: right;">2214</td>
+<td style="text-align: left;">16.4%</td>
+<td style="text-align: right;">6.90</td>
+<td style="text-align: right;">4990</td>
+<td style="text-align: left;">10.6%</td>
+<td style="text-align: right;">0.45</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fantasy</td>
+<td style="text-align: right;">2649</td>
+<td style="text-align: left;">19.6%</td>
+<td style="text-align: right;">6.61</td>
+<td style="text-align: right;">6554</td>
+<td style="text-align: left;">5.5%</td>
+<td style="text-align: right;">0.41</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Shounen</td>
+<td style="text-align: right;">1770</td>
+<td style="text-align: left;">13.1%</td>
+<td style="text-align: right;">7.10</td>
+<td style="text-align: right;">3973</td>
+<td style="text-align: left;">10.7%</td>
+<td style="text-align: right;">0.39</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Mecha</td>
+<td style="text-align: right;">969</td>
+<td style="text-align: left;">7.2%</td>
+<td style="text-align: right;">6.62</td>
+<td style="text-align: right;">6306</td>
+<td style="text-align: left;">3.4%</td>
+<td style="text-align: right;">0.36</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mystery</td>
+<td style="text-align: right;">605</td>
+<td style="text-align: left;">4.5%</td>
+<td style="text-align: right;">7.27</td>
+<td style="text-align: right;">3297</td>
+<td style="text-align: left;">16.5%</td>
+<td style="text-align: right;">0.36</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Military</td>
+<td style="text-align: right;">471</td>
+<td style="text-align: left;">3.5%</td>
+<td style="text-align: right;">7.02</td>
+<td style="text-align: right;">4176</td>
+<td style="text-align: left;">8.9%</td>
+<td style="text-align: right;">0.33</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Slice of Life</td>
+<td style="text-align: right;">1577</td>
+<td style="text-align: left;">11.7%</td>
+<td style="text-align: right;">6.61</td>
+<td style="text-align: right;">6263</td>
+<td style="text-align: left;">7.4%</td>
+<td style="text-align: right;">0.32</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Kids</td>
+<td style="text-align: right;">2158</td>
+<td style="text-align: left;">16.0%</td>
+<td style="text-align: right;">5.86</td>
+<td style="text-align: right;">13087</td>
+<td style="text-align: left;">1.0%</td>
+<td style="text-align: right;">0.29</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">filename =</span> <span class="st">"chart5_genre_map.png"</span>,</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> <span class="st">"/Users/ksm/Desktop/Artometrics/anime"</span>,</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">width =</span> <span class="dv">12</span>, <span class="at">height =</span> <span class="dv">8</span>, <span class="at">dpi =</span> <span class="dv">300</span>, <span class="at">bg =</span> <span class="st">"white"</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="the-main-hall" class="level3">
+<h3 class="anchored" data-anchor-id="the-main-hall">THE MAIN HALL</h3>
+<p>In this chart, each point is a <strong>genre tag</strong> (multi-label, so a single title can contribute to several bubbles). The x-axis is <strong>median MAL popularity rank</strong> (lower number = more popular), while the y-axis is <strong>median MAL score</strong>—a rough map of <em>attention</em> versus <em>reputation</em>. The dense middle cluster—<strong>Comedy, Action, Sci-Fi, Fantasy, Adventure</strong>—is the museum’s main hall: large bubbles, broad reach, and median scores that settle in the mid-6s rather than the top of the scale. These are the genres that define anime’s public face. Action is where the Big Three live (<em>One Piece</em>, <em>Naruto</em>, <em>Bleach</em>), each running hundreds of episodes and accumulating members by the million. Comedy is where <em>Gintama</em> sits—a show that somehow managed to be simultaneously one of the longest-running comedies and one of the highest-rated anime on the platform, a genuine outlier in a genre where most titles land in the mid-pack. Sci-Fi has <em>Steins;Gate</em> and <em>Neon Genesis Evangelion</em> at the top and hundreds of more obscure titles dragging the median down. In large genres, <strong>the ceiling is real but so is the floor</strong>, and the median reflects the full distribution, not just the titles you can name.</p>
+</section>
+<section id="more-titles-middle-scores" class="level3">
+<h3 class="anchored" data-anchor-id="more-titles-middle-scores">MORE TITLES, MIDDLE SCORES</h3>
+<p>The pattern across the main hall genres is consistent: <strong>high volume produces middle medians</strong>. When a genre is a production workhorse—when studios are shipping Action or Fantasy titles every season because that’s what the market demands—you get a wide range of quality. Some projects are passion-driven adaptations of beloved source material; others are committee-greenlit productions chasing a trend. The median score settles where the full range averages out, which in a competitive, high-throughput genre is reliably “watchable but not exceptional.” This isn’t a knock on these genres—it’s what happens when any category scales. The more Action anime gets made, the more dilution happens around the hits. <em>Dragon Ball Z</em> and <em>Attack on Titan</em> don’t stop being great because there are five hundred other action shows in the dataset; they just stop being statistically representative of what a random Action pick looks like.</p>
+</section>
+<section id="the-curators-rooms" class="level3">
+<h3 class="anchored" data-anchor-id="the-curators-rooms">THE CURATOR’S ROOMS</h3>
+<p>The more interesting story is in the genres that score like prestige niches while remaining only moderately popular. <strong>Mystery</strong> stands out with a <strong>median score of 7.27</strong> and a <strong>16.5% share of titles scoring 8+</strong>—the highest 8+ share of any genre in the table. The titles driving that number are exactly what you’d expect from a genre that rewards patience and craft: <em>Monster</em> (Naoki Urasawa’s slow-burn thriller, 74 episodes, universally regarded as one of the great anime of the 2000s), <em>Hyouka</em> (Kyoto Animation’s understated high school mystery series, beloved by the fans who find it and largely invisible to everyone else). <strong>Police</strong> follows a similar logic: <em>Psycho-Pass</em> and <em>Ghost in the Shell: Stand Alone Complex</em> anchor a genre that produces fewer titles but lands them at a higher rate. These are the curator’s rooms—quieter, less trafficked, but reliably satisfying for the visitor who makes it inside. The genres themselves act as a filter: they attract viewers who specifically want that kind of storytelling, which means the audience rating them tends to be self-selected and engaged rather than casual.</p>
+</section>
+<section id="the-historical-problem" class="level3">
+<h3 class="anchored" data-anchor-id="the-historical-problem">THE HISTORICAL PROBLEM</h3>
+<p>The biggest “hidden gem” signal in the dataset belongs to <strong>Historical</strong>—not because it’s the highest-scoring genre, but because of how far its popularity rank sits from its score. With <strong>964 tagged titles</strong>, a <strong>median score of 6.56</strong>, and a <strong>median popularity rank of 9,220</strong>, Historical sits deeper in the archive than almost any other genre while maintaining a respectable reputation among those who find it. The titles in this space are genuinely accomplished: <em>Vinland Saga</em> (the Viking epic that became one of the most critically praised anime of the late 2010s, a show that takes its historical setting seriously in ways most anime don’t), <em>Kingdom</em> (one of the longest-running and most consistently rated historical epics in the dataset), <em>The Rose of Versailles</em> (a foundational shojo title from 1979 that helped define the genre and still maintains a devoted following). What keeps these shows out of the mainstream isn’t quality—it’s friction. Historical anime often demands patience, prior investment in setting and context, and tolerance for slower pacing than the action-driven seasonal titles that dominate the platform’s front page. In a market where attention is the scarcest resource, friction is a serious disadvantage regardless of what’s on the other side of it.</p>
+</section>
+<section id="why-kids-scores-last" class="level3">
+<h3 class="anchored" data-anchor-id="why-kids-scores-last">WHY KIDS SCORES LAST</h3>
+<p><strong>Kids</strong> is the genre where the gap between cultural footprint and MAL score is most stark. With <strong>2,158 tagged titles (16.0% of the dataset)</strong>, it’s one of the largest genre categories—and yet it shows a <strong>median score of 5.86</strong> and a <strong>1.0% share of 8+ titles</strong>, the lowest of any major genre. This isn’t because <em>Doraemon</em> or <em>Pokémon</em> are bad shows—both are enormous cultural institutions in Japan and globally, shows that have shaped the childhoods of multiple generations. The low scores reflect something about <strong>who rates on MAL and what they’re rating for</strong>. MAL’s rating culture skews toward adult viewers applying adult critical frameworks: narrative complexity, thematic depth, emotional ambiguity, animation craft in service of mature storytelling. Children’s programming is optimized for entirely different goals—accessibility, repetition, gentle pacing, reassurance—and those goals are genuinely less legible to a rating system built around the preferences of a different audience. Kids anime doesn’t score low because it fails. It scores low because it’s being judged by a rubric it was never designed to pass.</p>
+</section>
+<section id="what-the-map-is-really-showing" class="level3">
+<h3 class="anchored" data-anchor-id="what-the-map-is-really-showing">WHAT THE MAP IS REALLY SHOWING</h3>
+<p>Chart 5 is ultimately a map of how <strong>attention and reputation distribute unevenly across a large catalog</strong>—and why that unevenness isn’t random. The main hall genres are popular because they’re accessible, high-volume, and platform-promoted; their middle medians reflect the cost of that scale. The curator’s rooms score higher because self-selected audiences rate more generously and the genre itself acts as a quality filter; their lower popularity reflects the friction of asking casual viewers to find them. Historical sits in the archive because the discovery systems don’t surface it, not because the work doesn’t merit attention. Kids scores last because the rating culture doesn’t speak its language. None of this is a verdict on taste—it’s a tour through an attention economy where the map of what’s watched and the map of what’s good only partially overlap, and knowing where they diverge is more useful than pretending they’re the same thing.</p>
+<hr>
+</section>
+</section>
+<section id="limitations" class="level2">
+<h2 class="anchored" data-anchor-id="limitations">LIMITATIONS</h2>
+<section id="what-this-data-cant-tell-you" class="level3">
+<h3 class="anchored" data-anchor-id="what-this-data-cant-tell-you">WHAT THIS DATA CAN’T TELL YOU</h3>
+<p>Every analysis is bounded by its data, and this one is no exception. The five charts above describe a real industry across a real timespan—but they describe it from a specific vantage point: a 2019 snapshot of one platform’s user-generated ratings, filtered to titles with nonzero rank and popularity. Before drawing hard conclusions, it’s worth naming the edges of that vantage point explicitly. Four limitations are significant enough to change how you should read the numbers.</p>
+</section>
+<section id="the-cutoff-problem" class="level3">
+<h3 class="anchored" data-anchor-id="the-cutoff-problem">THE CUTOFF PROBLEM</h3>
+<p>This dataset was scraped in 2019, which means everything that has happened in anime since then is absent. <em>Demon Slayer: Kimetsu no Yaiba</em> broke domestic box office records in Japan and became one of the fastest-spreading anime properties globally—it’s not here. <em>Jujutsu Kaisen</em>, <em>Chainsaw Man</em>, <em>Spy x Family</em>, the final arc of <em>Attack on Titan</em>—none of it is in this analysis. The studio rankings, genre medians, and format trends are snapshots of an industry through 2019, not the industry as it exists today. The structural patterns described—TV’s dominance, the ONA surge, the platform era’s arrival—are real and durable, but the specific numbers would shift with five more years of data, and some studios’ positions on the leaderboard would shift significantly.</p>
+</section>
+<section id="whos-actually-rating" class="level3">
+<h3 class="anchored" data-anchor-id="whos-actually-rating">WHO’S ACTUALLY RATING</h3>
+<p>MyAnimeList is not a representative sample of all anime viewers—it’s a self-selected community of dedicated fans who track and rate their watching. Casual viewers, children, people watching dubbed versions on mainstream platforms, and audiences in markets where MAL is less dominant (China, Southeast Asia, Latin America) are systematically underrepresented in the rating data. This matters most for two chart interpretations: Kids anime scores low partly because children don’t rate on MAL, and popularity ranks reflect the MAL community’s preferences rather than true global viewership. A show like <em>Doraemon</em> that is genuinely watched by millions of Japanese children every week will appear less “popular” in this dataset than a niche action series with a passionate MAL-active fanbase.</p>
+</section>
+<section id="the-multi-label-problem" class="level3">
+<h3 class="anchored" data-anchor-id="the-multi-label-problem">THE MULTI-LABEL PROBLEM</h3>
+<p>Genre tags in this dataset are multi-label, meaning a single title contributes to every genre it’s tagged under. <em>Fullmetal Alchemist: Brotherhood</em> appears in Action, Adventure, Drama, Fantasy, Magic, Military, and Shounen simultaneously. This inflates the score medians of genres that tend to appear alongside high-rated titles—genres like Military or Supernatural may score well partly because they frequently co-tag with acclaimed Action or Drama series rather than because standalone Military or Supernatural titles are independently exceptional. Genre statistics here describe tag behavior as much as they describe genre quality, and the two are not the same thing.</p>
+</section>
+<section id="small-samples-unstable-medians" class="level3">
+<h3 class="anchored" data-anchor-id="small-samples-unstable-medians">SMALL SAMPLES, UNSTABLE MEDIANS</h3>
+<p>Studio and genre medians become less reliable as sample size shrinks. A studio like White Fox with a small catalog has a median that could shift meaningfully if one or two under performing titles were added. The minimum thresholds applied in this analysis (20 titles for studios, 80 tagged titles for genres) reduce but don’t eliminate this instability. Boutique studios with high medians should be interpreted as “has maintained quality across a small but real catalog,” not as “will definitely maintain this median as their catalog grows.” Similarly, genres near the minimum threshold should be treated as directional signals rather than precise measurements.</p>
+<hr>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">CONCLUSION</h2>
+<section id="the-industry-in-full" class="level3">
+<h3 class="anchored" data-anchor-id="the-industry-in-full">THE INDUSTRY IN FULL</h3>
+<p>What this dataset describes, across all five charts, is an industry that transformed itself structurally at least three times in a hundred years—and is still transforming. It started as a craft economy of theatrical films and shorts, became a home-video-driven OVA market in the late 1980s, industrialized into a high-throughput seasonal TV machine through the 2000s, and entered a platform era in the 2010s where the number of release formats multiplied alongside the number of titles. Each of those shifts left a signature in the data: the early Movie baseline, the OVA spike, the TV acceleration, the ONA explosion. The charts don’t just describe anime—they describe what happens to a creative industry when it scales.</p>
+</section>
+<section id="three-things-that-held-true-across-all-of-it" class="level3">
+<h3 class="anchored" data-anchor-id="three-things-that-held-true-across-all-of-it">THREE THINGS THAT HELD TRUE ACROSS ALL OF IT</h3>
+<p>Three patterns run through every chart in this analysis and are worth naming directly. First: <strong>TV is the primary engine</strong>—for output volume, for audience size, for score concentration, and for the consensus classics that define how most people think about anime. Every other format is interesting and sometimes excellent, but none of them dislodged TV as the format where the industry’s most important work tends to happen. Second: <strong>popularity and quality are correlated but not identical</strong>. The decile analysis shows they move together—more popular titles genuinely do score higher on average—but the genre map and the studio chart both show cases where quality exists without visibility, and visibility without equivalent quality. The gap between those two maps is where the most interesting recommendations live. Third: <strong>consistency beats peaks</strong>. The studios at the top of the ranking chart aren’t necessarily the ones with the single most celebrated title—they’re the ones whose typical show stays above the baseline across real volume. That’s a harder thing to sustain than a single hit, and the data rewards it accordingly.</p>
+</section>
+<section id="where-this-leaves-the-reader" class="level3">
+<h3 class="anchored" data-anchor-id="where-this-leaves-the-reader">WHERE THIS LEAVES THE READER</h3>
+<p>If there’s a practical takeaway from a century of anime data, it’s this: <strong>the catalog is vast, the attention economy is real, and the best titles are not evenly distributed across it</strong>. TV and the most popular deciles give you the best odds per random pick. Mystery, Police, and Historical give you a higher hit-rate per title if you’re willing to browse outside the front page. Bones and Kyoto Animation give you the most reliable studio signal if you’re using studio as a filter. And if you go deep enough into the archive—past the platform recommendations, past the seasonal buzz, past the titles that won the attention game early—you’ll find work that never found its audience, sitting with a stable score and a small member count, waiting. The dataset ends in 2019. The catalog keeps growing.</p>
+<hr>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">REFERENCES</h2>
+<p>Anderson, C. (2004, October). The long tail. <em>Wired</em>. https://www.wired.com/2004/10/tail/</p>
+<p>Hughes, R. (2023). <em>MyAnimeList top animes</em> [Dataset]. Kaggle. https://www.kaggle.com/datasets/reyadgh/my-anime-list-scraped-dataset</p>
+<p>Mock, T. (2019, April 23). <em>Anime data</em> [TidyTuesday dataset]. GitHub. https://github.com/rfordatascience/tidytuesday/blob/master/data/2019/2019-04-23/readme.md</p>
+<p>Rosen, S. (1981). The economics of superstars. <em>The American Economic Review</em>, <em>71</em>(5), 845–858. https://home.uchicago.edu/~vlima/courses/econ201/Superstars.pdf</p>
+<p>Salganik, M. J., Dodds, P. S., &amp; Watts, D. J. (2006). Experimental study of inequality and unpredictability in an artificial cultural market. <em>Science</em>, <em>311</em>(5762), 854–856. https://www.princeton.edu/~mjs3/salganik_dodds_watts06_full.pdf</p>
+<p>Simon, H. A. (1971). Designing organizations for an information-rich world. In M. Greenberger (Ed.), <em>Computers, communications, and the public interest</em> (pp.&nbsp;37–72). Johns Hopkins Press.</p>
+<p>Varian, H. R. (1995). The information economy. <em>Scientific American</em>. https://people.ischool.berkeley.edu/~hal/pages/sciam.html</p>
+<p>Wikipedia contributors. (2024a). <em>A-1 Pictures</em>. Wikipedia. https://en.wikipedia.org/wiki/A-1_Pictures</p>
+<p>Wikipedia contributors. (2024b). <em>Bones (studio)</em>. Wikipedia. https://en.wikipedia.org/wiki/Bones_%28studio%29</p>
+<p>Wikipedia contributors. (2024c). <em>David Production</em>. Wikipedia. https://en.wikipedia.org/wiki/David_Production</p>
+<p>Wikipedia contributors. (2024d). <em>Matthew effect</em>. Wikipedia. https://en.wikipedia.org/wiki/Matthew_effect</p>
+<p>Wikipedia contributors. (2024e). <em>Studio Trigger</em>. Wikipedia. https://en.wikipedia.org/wiki/Studio_Trigger</p>
+<p>Wikipedia contributors. (2024f). <em>White Fox</em>. Wikipedia. https://en.wikipedia.org/wiki/White_Fox</p>
+<p>Yin, H., Wang, Q., Zheng, K., Li, Z., &amp; Yang, X. (2023). A survey on popularity bias in recommender systems. <em>arXiv</em>. https://arxiv.org/abs/2308.01118</p>
+<p>Kyoto Animation. (n.d.). <em>Our works</em>. https://www.kyotoanimation.co.jp/en/works/</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
