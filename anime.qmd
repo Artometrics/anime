@@ -385,7 +385,7 @@ chart1_df   <- chart1_df %>% filter(type %in% keep_types)
 
 ggsave(
   filename = "chart1_releases_by_year.png",
-  path = "/Users/ksm/Desktop/Artometrics/anime",
+  path = ".",
   width = 12, height = 7, dpi = 300, bg = "white"
 )
 
@@ -581,7 +581,7 @@ type_quality %>%
 
 ggsave(
   filename = "chart2_hitrate_by_format.png",
-  path = "/Users/ksm/Desktop/Artometrics/anime",
+  path = ".",
   width = 10, height = 6, dpi = 300, bg = "white"
 )
 
@@ -817,7 +817,7 @@ knitr::kable(
 
 ggsave(
   filename = "chart3_popularity_vs_score.png",
-  path = "/Users/ksm/Desktop/Artometrics/anime",
+  path = ".",
   width = 10, height = 6, dpi = 300, bg = "white"
 )
 
@@ -1000,9 +1000,10 @@ ggplot(studio_summ, aes(y = reorder(studio_label, median_score), x = median_scor
     plot.title = element_text(face = "bold"),
     plot.margin = margin(10, 30, 10, 10)
   )
+
 ggsave(
   filename = "chart4_studio_rankings.png",
-  path = "/Users/ksm/Desktop/Artometrics/anime",
+  path = ".",
   width = 12, height = 8, dpi = 300, bg = "white"
 )
 
@@ -1280,10 +1281,9 @@ knitr::kable(
 
 ggsave(
   filename = "chart5_genre_map.png",
-  path = "/Users/ksm/Desktop/Artometrics/anime",
+  path = ".",
   width = 12, height = 8, dpi = 300, bg = "white"
 )
-
 
 ```
 
