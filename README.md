@@ -24,7 +24,7 @@ Five charts working through what the MAL archive actually shows:
 
 ## Read the full article
 
-[artometrics.com](https://artometrics.com)
+[artometrics.com/anime](https://www.artometrics.com/anime/)
 
 ## Tools
 
