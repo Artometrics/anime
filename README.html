@@ -360,31 +360,56 @@ TidyTuesday dataset</a>.</p>
 <div id="whats-in-this-repo" class="section level2">
 <h2>What’s in this repo</h2>
 <ul>
-<li><code>anime.qmd</code> — Quarto markdown file containing all R code,
-analysis, and write-up</li>
-<li><code>tidy_anime.xlsx</code> — raw dataset export</li>
+<li><code>anime.qmd</code> — Quarto markdown file containing all R, SQL,
+and Python code, analysis, and write-up</li>
+<li><code>tidy_anime.xlsx</code> — raw dataset export (convenience copy;
+analysis reads directly from TidyTuesday URL)</li>
 <li><code>chart1_releases_by_year.png</code> — anime releases per year
 by format</li>
 <li><code>chart2_hitrate_by_format.png</code> — hit-rate of 8+ titles by
 format</li>
 <li><code>chart3_popularity_vs_score.png</code> — popularity rank vs MAL
 score (decile analysis)</li>
-<li><code>chart4_studio_rankings.png</code> — studio rankings by median
-score</li>
+<li><code>chart4_studio_rankings.png</code> — studio consistency by
+median score and output volume</li>
 <li><code>chart5_genre_map.png</code> — genre map: popularity vs
 rating</li>
+<li><code>chart6_source_shift.png</code> — source material shift: the
+rise of the light novel</li>
+<li><code>chart7_episode_collapse.png</code> — the 12-episode
+standardization by era</li>
+<li><code>chart8_maturity_score.png</code> — score distributions by
+content rating</li>
+<li><code>chart9_devotion_index.png</code> — reach vs obsession: the
+devotion index</li>
+<li><code>chart10_genre_lifecycles.png</code> — genre lifecycles over 40
+years of TV anime</li>
+<li><code>chart11_era_scoring.png</code> — MAL score distributions by
+decade</li>
+<li><code>chart12_survivor_bias.png</code> — survivor bias: episode
+count vs score</li>
 </ul>
 </div>
 <div id="what-the-analysis-covers" class="section level2">
 <h2>What the analysis covers</h2>
-<p>Five charts working through what the MAL archive actually shows:</p>
+<p>Twelve charts and a polyglot Trinity analysis (R + SQL + Python)
+working through what the MAL archive actually shows:</p>
 <ol style="list-style-type: decimal">
 <li>How the industry grew — format by format, decade by decade</li>
 <li>Which formats produce the best odds of finding a great title</li>
 <li>Why popular shows score higher (and what lives in the back
 rooms)</li>
-<li>Which studios are the most consistent</li>
+<li>Which studios are the most consistent across volume</li>
 <li>Where the hidden gems are hiding by genre</li>
+<li>How studios shifted from manga to light novel source material</li>
+<li>How the 1-cour standard took over TV anime</li>
+<li>Whether mature content ratings actually predict better scores</li>
+<li>The difference between shows people watch and shows people
+worship</li>
+<li>The rise and fall of Mecha, and the rise of Fantasy and Slice of
+Life</li>
+<li>Whether modern anime is actually better or just rated higher</li>
+<li>Why bad shows don’t run forever</li>
 </ol>
 </div>
 <div id="read-the-full-article" class="section level2">
@@ -395,7 +420,9 @@ rooms)</li>
 <h2>Tools</h2>
 <ul>
 <li>R / Quarto</li>
-<li>tidyverse, ggplot2, ggrepel, lubridate, scales</li>
+<li>tidyverse · ggplot2 · ggrepel · ggtext · ggridges · lubridate ·
+scales · DBI · RSQLite · reticulate</li>
+<li>Python (pandas · numpy) · SQL (SQLite in-memory)</li>
 </ul>
 </div>
 <div id="disclosure" class="section level2">

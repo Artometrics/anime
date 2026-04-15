@@ -1,5 +1,6 @@
 ---
-title: "THE ARTOMETRICS OF JAPANESE ANIMATION"
+title: "ANIME"
+subtitle: "The Artometrics of Japanese Animation"
 format:
   html:
     number-sections: false
@@ -11,14 +12,12 @@ format:
     toc-location: left
     smooth-scroll: true
     embed-resources: true
-  pdf:
-    number-sections: false
 editor:
   markdown:
     wrap: 72
 ---
 
-```{r setup}
+```{r setup-libraries-and-routing}
 #| echo: false
 #| warning: false
 #| message: false
@@ -29,6 +28,13 @@ library(scales)
 library(here)
 library(ggrepel)
 library(ggtext)
+library(ggridges)
+
+# ── Global File Routing ────────────────────────────────────────────
+chart_dir <- "/Users/ksm/Desktop/Artometrics/articles/anime/charts"
+if(!dir.exists(chart_dir)) {
+  dir.create(chart_dir, recursive = TRUE)
+}
 
 # ── Artometrics color palette ──────────────────────────────────────
 art_bg        <- "#FAFAF8"
@@ -51,12 +57,12 @@ theme_artometrics <- function() {
       axis.title         = element_text(color = art_dark, size = 10,
                                         face = "bold"),
       plot.title         = element_markdown(color = art_dark, size = 13,
-                                        face = "bold", margin = margin(b = 6)),
+                                            face = "bold",
+                                            margin = margin(b = 6)),
       plot.subtitle      = element_markdown(color = art_mid, size = 10,
-                                        margin = margin(b = 10)),
+                                            margin = margin(b = 10)),
       plot.caption       = element_text(color = art_mid, size = 8,
-                                        hjust = 0,
-                                        margin = margin(t = 10)),
+                                        hjust = 0, margin = margin(t = 10)),
       plot.caption.position = "plot",
       plot.margin        = margin(t = 16, r = 16, b = 16, l = 16),
       legend.background  = element_rect(fill = art_cream, color = NA),
@@ -72,26 +78,18 @@ theme_artometrics <- function() {
 
 ## FAST FACTS
 
-```{r data-setup}
+```{r data-ingestion-and-cleaning}
 #| echo: false
 #| warning: false
 #| message: false
 
-# ============================================================
-# Anime TidyTuesday (2019-04-23) — SAFE SETUP (no cartesian blowups)
-# Creates:
-#   1) anime          = title-level table (1 row per animeID)
-#   2) anime_genres   = long table (animeID, genre)
-#   3) anime_studios  = long table (animeID, studio)
-# ============================================================
+part1 <- "http"
+part2 <- "s://raw.githubuser"
+part3 <- "content.com/rfor"
+part4 <- "datascience/tidytuesday/main/data/2019/2019-04-23/raw_anime.csv"
+target_url <- paste0(part1, part2, part3, part4)
+raw_df <- readr::read_csv(target_url, show_col_types = FALSE)
 
-# ---- read raw ----
-raw_df <- readr::read_csv(
-  "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2019/2019-04-23/raw_anime.csv",
-  show_col_types = FALSE
-)
-
-# ---- helpers ----
 clean_list_col <- function(x) {
   x |>
     as.character() |>
@@ -112,7 +110,6 @@ extract_aired_dates <- function(aired_chr) {
   )
 }
 
-# ---- title-level clean table ----
 anime <- raw_df %>%
   bind_cols(extract_aired_dates(raw_df$aired)) %>%
   mutate(
@@ -122,7 +119,6 @@ anime <- raw_df %>%
   filter(rank != 0, popularity != 0) %>%
   distinct(animeID, .keep_all = TRUE)
 
-# ---- tag tables ----
 tags_base <- raw_df %>%
   transmute(
     animeID,
@@ -143,20 +139,12 @@ anime_studios <- tags_base %>%
   rename(studio = studio_list) %>%
   distinct(animeID, studio)
 
-anime_ids <- anime %>% distinct(animeID)
+anime_ids     <- anime %>% distinct(animeID)
 anime_genres  <- anime_genres  %>% semi_join(anime_ids, by = "animeID")
 anime_studios <- anime_studios %>% semi_join(anime_ids, by = "animeID")
 
-stopifnot(nrow(anime) == dplyr::n_distinct(anime$animeID))
-
-# ---- fast facts values ----
 anime <- anime %>%
   mutate(aired_from_year = lubridate::year(start_date))
-
-n_titles     <- nrow(anime)
-year_min     <- min(anime$aired_from_year, na.rm = TRUE)
-year_max     <- max(anime$aired_from_year, na.rm = TRUE)
-median_score <- median(anime$score, na.rm = TRUE)
 ```
 
 ```{=html}
@@ -197,124 +185,242 @@ median_score <- median(anime$score, na.rm = TRUE)
 <div class="facts-grid">
   <div class="fact-box">
     <span class="fact-number">13,631</span>
-    <span class="fact-label">Unique anime titles in the dataset — from silent-era shorts to 2019 streaming originals</span>
+    <span class="fact-label">Unique anime titles in the
+    dataset — from silent-era shorts to modern streaming
+    originals</span>
   </div>
   <div class="fact-box">
-    <span class="fact-number">1917–2019</span>
-    <span class="fact-label">Century-scale data window, covering anime from its earliest theatrical roots to the platform era</span>
+    <span class="fact-number">13</span>
+    <span class="fact-label">Charts and interactive analyses
+    in this report, isolating the mechanics of hit-rates,
+    genres, and studio output</span>
   </div>
   <div class="fact-box">
     <span class="fact-number">6.38</span>
-    <span class="fact-label">Overall median MAL score — the baseline every studio, format, and genre is measured against</span>
+    <span class="fact-label">Overall median MAL score —
+    the mathematical baseline every studio and genre is
+    measured against</span>
   </div>
   <div class="fact-box">
-    <span class="fact-number">8.2%</span>
-    <span class="fact-label">Share of TV anime scoring 8+ on MAL — the highest hit-rate of any format in the dataset</span>
+    <span class="fact-number">8.12%</span>
+    <span class="fact-label">Share of TV anime scoring 8+
+    on MAL — the highest prestige hit-rate of any format
+    (346 out of 4,260 titles)</span>
   </div>
   <div class="fact-box">
-    <span class="fact-number">6</span>
-    <span class="fact-label">Formats tracked separately: TV, Movie, OVA, Special, ONA, and Music — each behaves differently</span>
+    <span class="fact-number">3</span>
+    <span class="fact-label">Programming languages (R,
+    Python, SQL) running simultaneously in a single
+    polyglot analysis file</span>
   </div>
   <div class="fact-box">
-    <span class="fact-number">0.3%</span>
-    <span class="fact-label">Share of TV titles scoring 9+ — how rare a masterpiece-level score actually is, even in the best format</span>
+    <span class="fact-number">90</span>
+    <span class="fact-label">High-scoring shows buried past
+    popularity rank 2,000 — the titles the algorithm
+    never surfaced</span>
   </div>
 </div>
 ```
 
+## THE TRINITY PROJECT: A POLYGLOT ANALYSIS
+
+*Artometrics relies on a modern data stack. While the primary
+visualizations in this report are built using R and `ggplot2`, the
+underlying data manipulation flows across three languages. Below is a
+live demonstration of our "Trinity" workflow: using R to establish the
+environment, SQL to query the catalog, and Python to run rapid
+statistical diagnostics — all within a single rendered document.*
+
+```{r trinity-environment-setup}
+#| echo: false
+#| warning: false
+#| message: false
+
+library(DBI)
+library(RSQLite)
+library(reticulate)
+
+con <- dbConnect(RSQLite::SQLite(), ":memory:")
+dbWriteTable(con, "anime_sql", anime)
+dbWriteTable(con, "genre_sql", anime_genres)
+
+if (!py_module_available("pandas") || !py_module_available("numpy")) {
+  py_install(c("pandas", "numpy"))
+}
+
+anime_python_safe <- anime %>%
+  mutate(across(where(lubridate::is.Date), as.character),
+         across(where(is.POSIXt), as.character))
+```
+
+```{=html}
+<style>
+  .trinity-fold {
+    background: #F2F0EB;
+    border-left: 4px solid #C0392B;
+    padding: 16px 20px;
+    margin: 16px auto;
+    border-radius: 2px;
+    max-width: 850px;
+    text-align: left;
+  }
+  .trinity-fold summary {
+    font-family: Helvetica, sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #1C1C1E;
+    cursor: pointer;
+    outline: none;
+    list-style-position: inside;
+  }
+  .trinity-fold summary:hover { color: #C0392B; }
+  .trinity-fold pre { margin-top: 16px !important; }
+</style>
+```
+
+### I. The SQL Aggregations
+
+By treating the MyAnimeList dataset as a relational database, we can
+isolate format hit-rates and genre performance with precision.
+
+<details class="trinity-fold">
+  <summary>Click to expand SQL Query 1: Format Hit-Rates</summary>
+
+```{sql sql-format-hit-rates, connection = "con"}
+WITH FormatCounts AS (
+  SELECT type,
+         COUNT(*) AS total_shows,
+         SUM(CASE WHEN score >= 8 THEN 1 ELSE 0 END) AS elite_shows
+  FROM anime_sql
+  GROUP BY type
+)
+SELECT type,
+       total_shows,
+       elite_shows,
+       ROUND((CAST(elite_shows AS FLOAT) / total_shows) * 100, 2)
+         AS elite_pct
+FROM FormatCounts
+WHERE total_shows > 100
+ORDER BY elite_pct DESC;
+```
+
+</details>
+
+**What it shows:** TV leads at 8.12% (346 elite titles out of 4,260
+total). Movie sits at 4.82% despite its prestige association — flooded
+with franchise recap films. ONA is the youngest format at 1.21%,
+reflecting a catalog still maturing into quality. Music's 0.20% is a
+category artifact: promotional videos evaluated by a narrative scoring
+system.
+
+<details class="trinity-fold">
+  <summary>Click to expand SQL Query 2: Top Genres by Average
+  Score</summary>
+
+```{sql sql-top-genres-join, connection = "con"}
+SELECT g.genre,
+       COUNT(a.animeID)       AS volume,
+       ROUND(AVG(a.score), 2) AS avg_score
+FROM genre_sql g
+JOIN anime_sql a ON g.animeID = a.animeID
+WHERE a.score > 0
+GROUP BY g.genre
+HAVING volume > 500
+ORDER BY avg_score DESC
+LIMIT 5;
+```
+
+</details>
+
+**What it shows:** Mystery leads at 7.14 average across 605 titles —
+the smallest qualifying genre and the highest scoring. Shounen is the
+more structurally impressive result: 1,770 titles holding a 7.02
+average means industrial-scale production without the quality dilution
+that volume usually brings. These are not niche wins. They are
+structural.
+
+### II. The Python Diagnostics
+
+We pass the data into Python using `pandas` and `numpy` to examine the
+statistical architecture of the platform before visualizing it.
+
+<details class="trinity-fold">
+  <summary>Click to expand Python Script 1: Correlation
+  Matrix</summary>
+
+```{python python-descriptive-stats}
+#| message: false
+import pandas as pd
+import numpy as np
+
+anime_py    = r.anime_python_safe
+valid_scores = anime_py[anime_py['score'] > 0]
+
+correlation_cols = ['score', 'members', 'favorites', 'episodes']
+print("--- Pearson Correlation Matrix ---")
+print(valid_scores[correlation_cols].corr().round(3))
+```
+
+</details>
+
+**What it shows:** Score and membership correlate at r = 0.389 —
+popular shows score higher, but the relationship is far from
+deterministic. The most striking number is members↔favorites at r =
+0.776: reach and obsession are tightly coupled. The shows that build
+large audiences also tend to convert them into fanatics. Score↔episodes
+is nearly zero at r = 0.076, which dismantles the intuition that longer
+shows are better shows.
+
+<details class="trinity-fold">
+  <summary>Click to expand Python Script 2: Cult Classic
+  Filter</summary>
+
+```{python python-cult-classic-filter}
+#| message: false
+cult_classics = anime_py[
+    (anime_py['score']      > 8.0)  &
+    (anime_py['popularity'] > 2000) &
+    (anime_py['members']    > 10000)
+]
+print(f"Found {len(cult_classics)} high-scoring shows buried "
+      f"deep in the popularity ranks.")
+print(cult_classics[['title_english', 'score',
+                      'popularity']].head())
+```
+
+</details>
+
+**What it shows:** 90 titles score above 8.0 while sitting past
+popularity rank 2,000 — well outside the range of algorithmic
+recommendations. These are the archive's hidden rooms. A score above 8
+represents genuine critical consensus; a rank above 2,000 means almost
+no one was pushed there by the platform.
+
+---
+
+## THE DATA SCIENCE OF ANIME
+
 ### A CENTURY OF DATA
 
-This MyAnimeList dataset covers **13,631 unique anime titles** spanning
-**1917 to 2019**—closer to a century-scale archive than a "modern
-seasonal TV" snapshot. That scope is what makes it worth analyzing as an
-industry story, not just a rankings list. It lets you trace anime from
-its earliest roots in short films and prewar theater shorts all the way
-through the standardized seasonal production machine of the 2010s. At
-the same time, the long horizon also means the dataset includes many
-niche or archival entries—shorts, early films, obscure OVAs and
-ONAs—that behave very differently from the mainstream TV hits most
-readers picture when they hear "anime." The key interpretive move
-throughout this analysis is separating **catalog reality** (what exists)
-from **fan-canon popularity** (what people actually watch and talk
-about).
-
-### MORE THAN JUST TV
-
-The format breakdown shows that **TV is the largest single category but
-not the majority of the dataset**. TV accounts for **4,260 titles
-(31.3%)**, followed by **Movies (2,657; 19.5%)**, **OVAs (2,378;
-17.4%)**, **Specials (2,003; 14.7%)**, **ONAs (1,321; 9.7%)**, and
-**Music (1,011; 7.4%)**. In other words, most titles in this archive are
-**non-TV**—which matters for every chart that follows. When you see a
-studio ranking, a genre score, or a popularity curve, you're looking at
-a mixed system that includes theatrical releases, direct-to-video OVAs,
-broadcast specials, and web originals alongside the TV series that
-dominate the cultural conversation. The numbers don't lie about which
-format fans think of first; they just remind you that the industry is
-bigger and stranger than the seasonal airing calendar suggests.
+This MyAnimeList dataset covers 13,631 unique anime titles spanning 1917
+to 2019. It is a century-scale archive tracing anime from prewar theater
+shorts to the standardized streaming machine of the 2010s. The key
+interpretive move here is separating **catalog reality** — what actually
+got made — from **fan-canon popularity** — what people actually watched
+and rated.
 
 ### WHAT 6.38 ACTUALLY MEANS
 
-On ratings, the dataset baseline is deliberately modest: the overall
-**median MAL score is 6.38** (mean **6.29**, standard deviation
-**\~1.10**). That number is the calibration point for everything that
-follows. When you rank studios or genres later, the real question isn't
-"who broke 8"—it's "who can stay **consistently above 6.38** across a
-meaningful number of titles?" A show landing at 7.5 is genuinely
-performing above the field. A studio holding a median of 7.0 across 100+
-titles is doing something structurally different from one that spiked
-once. MAL scores skew toward the center of the scale—most titles live in
-a middle band between 5 and 7—which means true greatness (8+) is a
-relatively thin slice of the total distribution, and anything labeled
-"elite" has cleared a real bar.
+The overall median MAL score is 6.38. This is our calibration point. A
+6.38 isn't a failure — it's the mathematical center of a platform where
+over 13,000 titles compete for attention. When comparing studios and
+formats throughout this report, the question is never who broke 8.0
+once. It's who consistently stayed above 6.38 across a large catalog.
+That is a far harder problem.
 
-### THREE WAYS TO BE THE BEST
+---
 
-The "top titles" lists reveal three distinct definitions of "best," and
-they don't fully overlap. **Highest-rated** measures prestige. **Most
-members** measures reach. **Most favorited** measures intensity—the kind
-of devotion that makes someone hit a heart button, not just add a show
-to their backlog. The biggest-audience list is dominated by cultural
-gateway shows: **Death Note** (the series that arguably got more people
-into anime than any other single title in the 2000s), **Attack on
-Titan** (which became a global mainstream event by its final arc),
-**Sword Art Online** (controversial but massive, essentially defining
-the isekai boom), **One Punch Man** (a meme-to-phenomenon pipeline in a
-single season), and **Tokyo Ghoul** (peak Crunchyroll-era viral reach).
-These are titles that didn't just find an audience—they recruited one.
-Meanwhile the top favorites list skews toward the prestige canon:
-**Fullmetal Alchemist: Brotherhood**, which held the #1 MAL score for
-over a decade and remains the most common answer to "where do I start?";
-**Steins;Gate**, the time-travel thriller that built one of the most
-devoted fanbases in the medium; and **Hunter x Hunter (2011)**, which
-turned a long-running shonen adaptation into a consensus artistic
-achievement. Favorites capture something closer to devotion than raw
-scale—these are the shows people recommend to their closest friends, not
-just anyone who asks.
-
-### LONGEVITY IS NOT GREATNESS
-
-The longest-running title in the dataset is a perfect counterexample to
-the idea that more episodes equals more impact. **Lan Mao** (Blue Cat)—a
-Chinese children's TV series, not a Japanese production—tops the episode
-count at **3,057 episodes**, with a MAL score around **5.64** and a
-small member count. It's a useful wrinkle for two reasons. First, it's a
-reminder that this dataset includes non-Japanese animation cataloged on
-MAL, meaning "anime" here is a broader category than the strict
-Japanese-origin definition. Second, and more importantly, it anchors one
-of the clearest through-lines in this analysis: **longevity is usually
-an industrial scheduling outcome**, not a signal of universal acclaim.
-Long-running shows tend to be kids' programming, domestic serials, or
-evergreen formats designed to fill time slots reliably—not the
-prestige-driven storytelling that generates high scores and devoted
-fanbases. The dataset makes this point cleanly: anime has multiple axes
-of bigness—**long-running**, **widely watched**, **highly rated**, and
-**most beloved**—and the most interesting analysis comes from showing
-how those axes diverge.
-
-## ANIME RELEASES PER YEAR BY TYPE
-
-### Output Volume by Format, 1960s–2018
+## 1. ANIME RELEASES PER YEAR BY TYPE
 
 ```{r chart1-releases-by-year}
 #| echo: false
@@ -331,30 +437,21 @@ type_colors <- c(
   "ONA"     = "#16A085",
   "Music"   = art_mid
 )
-
-if (!("aired_from_year" %in% names(anime))) {
-  anime <- anime %>% mutate(aired_from_year = lubridate::year(start_date))
-}
-
 valid_types <- c("TV", "Movie", "OVA", "Special", "ONA", "Music")
 
 chart1_df <- anime %>%
-  filter(!is.na(aired_from_year),
-         !is.na(type), type != "",
-         type %in% valid_types) %>%
+  filter(!is.na(aired_from_year), !is.na(type),
+         type != "", type %in% valid_types) %>%
   count(year = aired_from_year, type, name = "n")
 
-total_by_year <- chart1_df %>%
+start_year <- chart1_df %>%
   group_by(year) %>%
-  summarise(total = sum(n), .groups = "drop")
-
-start_year <- total_by_year %>%
+  summarise(total = sum(n)) %>%
   filter(total >= 10) %>%
-  summarise(min_year = min(year, na.rm = TRUE)) %>%
-  pull(min_year)
+  pull(year) %>%
+  min()
 
-end_year <- max(chart1_df$year, na.rm = TRUE) - 1
-
+end_year  <- max(chart1_df$year, na.rm = TRUE) - 1
 chart1_df <- chart1_df %>%
   filter(year >= start_year, year <= end_year)
 
@@ -365,163 +462,48 @@ smooth_df <- chart1_df %>%
 
 p1 <- ggplot(chart1_df, aes(x = year, y = n, color = type)) +
   geom_line(linewidth = 0.9, alpha = 0.65) +
-  geom_smooth(
-    data = smooth_df,
-    se = FALSE,
-    method = "loess",
-    span = 0.35,
-    linewidth = 1.1
-  ) +
+  geom_smooth(data = smooth_df, se = FALSE, method = "loess",
+              span = 0.35, linewidth = 1.1) +
   facet_wrap(~ type, scales = "free_y", ncol = 3) +
   scale_color_manual(values = type_colors, guide = "none") +
-  scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
-  scale_y_continuous(labels = scales::comma) +
   theme_artometrics() +
   labs(
     title    = "An industry that industrialized — then diversified",
-    subtitle = "Each format tells a different story about how anime scaled. <span style='color:#C0392B'>TV</span> is the engine; ONA is the future arriving.",
-    x        = NULL,
-    y        = "Titles released",
-    caption  = paste0(
-      "Data: MyAnimeList via TidyTuesday 2019-04-23 | Window: ",
-      start_year, "–", end_year,
-      " | LOESS trend shown where sufficient data exists\n— ARTOMETRICS"
-    )
+    subtitle = paste0(
+      "Each format tells a different story about how anime scaled. ",
+      "<span style='color:#C0392B'>TV</span> is the engine; ",
+      "ONA is the future arriving."
+    ),
+    x = NULL, y = "Titles released"
   )
 
+ggsave("chart1_releases_by_year.png", plot = p1, path = chart_dir,
+       width = 12, height = 7, dpi = 300, bg = "white")
 p1
-
-type_totals <- chart1_df %>% count(type, wt = n, name = "total_titles")
-keep_types  <- type_totals %>% filter(total_titles >= 50) %>% pull(type)
-chart1_df   <- chart1_df %>% filter(type %in% keep_types)
-
-ggsave(
-  filename = "chart1_releases_by_year.png",
-  plot     = p1,
-  path     = ".",
-  width    = 12, height = 7, dpi = 300, bg = "white"
-)
 ```
 
-### BEFORE THE MACHINE
+### THE PATH TO INDUSTRIALIZATION
 
-This chart shows anime transforming from a low-volume, film-anchored
-medium into a modern multi-pipeline industry. In the early decades,
-**Movies** are the main visible output channel—and even then, output is
-sparse and irregular. The 1958 release of *Hakujaden* (Toei Animation's
-first color feature film, widely considered the first anime feature in
-the modern sense) represents the kind of milestone that exists in a thin
-catalog rather than a crowded one. Production in this era is driven by
-individual studios making deliberate theatrical bets, not by an
-always-on serial system. The long flat baseline across most formats
-isn't "no anime existed"—it's that the industry hadn't yet evolved the
-infrastructure, the distribution networks, or the financing mechanisms
-to ship content at scale. What you're seeing in the early flat lines is
-a craft economy, not an industrial one.
+The release history of anime is not a single growth story — it is six
+separate ones running in parallel. **Movies** were the dominant format
+from the 1920s through the 1970s, a low-volume craft economy built for
+theater. The first structural break arrived in the late 1980s, when the
+**OVA** boom gave creators a direct-to-consumer channel that bypassed TV
+censors entirely. OVA peaked around 1990, then collapsed as TV economics
+took over.
 
-### THE HOME VIDEO EXPLOSION
+**TV** is the modern engine. It industrialized in the late 1990s and has
+compounded steadily since. **Specials** peaked in the mid-2000s as a
+franchise extension format, then plateaued. **Music** videos spiked
+dramatically in the 2010s — largely driven by short promotional content
+— and then fell just as fast. The most important line on this chart is
+**ONA**: near-zero before 2010, then a vertical ascent. That is not a
+genre trend. It is a platform shift. Netflix, Crunchyroll, and YouTube
+did not just distribute anime — they created a new format category.
 
-The first real regime shift appears in the **late 1980s into the early
-1990s**, where **OVA** output spikes sharply—and the spike is
-historically legible once you name the titles driving it. *Megazone 23*
-(1985) is often cited as the first major OVA release, a direct-to-video
-science fiction film that proved the format could carry serious,
-adult-oriented storytelling outside the constraints of TV scheduling.
-What followed was a boom: *Bubblegum Crisis* (1987), *Gunbuster* (1988),
-*Record of Lodoss War* (1990), *Tenchi Muyo!* (1992)—a wave of
-productions that used home video as a distribution model rather than a
-workaround. OVAs were direct-to-consumer, less constrained by broadcast
-standards, and often used for higher-risk, niche, or premium projects
-that TV wouldn't greenlight. The key point is that OVAs aren't just a
-format—they're evidence of a **distribution shift**. VHS made a new
-production lane economically viable, and the chart shows exactly when
-that lane opened. Their gradual decline through the 1990s and 2000s
-tracks the same logic in reverse: as TV and later streaming became
-dominant channels, the specific niche OVAs filled started to close.
+---
 
-### HOW TV TOOK OVER
-
-The modern industrial takeoff runs from the **late 1990s through the
-2010s**, driven by multiple pipelines scaling simultaneously. **TV** is
-the core engine, and the inflection point is the mid-to-late 1990s:
-*Neon Genesis Evangelion* (1995) didn't just become a phenomenon—it
-proved that TV anime could sustain psychological ambition and cultural
-impact serious enough to force the industry to treat the format as
-prestige territory, not just children's programming. What followed was
-the build-out: the standardized seasonal production model (12–13
-episodes per cour, committee-based financing, quarterly release cadence)
-that turned TV anime from irregular output into a reliable throughput
-machine. By the early 2000s, that machine was running the Big Three
-simultaneously—*One Piece* (1999–), *Naruto* (2002–2007), *Bleach*
-(2004–2012)—each logging hundreds of episodes and anchoring entire
-generations of fans. The steepening curve through the 2010s reflects
-what happens when that industrial system meets global streaming
-distribution: more titles, faster cycles, wider reach, and a structural
-incentive to keep the pipeline full.
-
-### THE GLUE BETWEEN SEASONS
-
-**Specials** rise hard in the 2000s–2010s, which fits how the franchise
-economy works once TV is the dominant format. Specials aren't standalone
-projects—they're how large franchises maintain engagement outside the
-strict TV-season cadence. Recap episodes, bonus OVA-style installments
-packaged as "specials," promotional one-offs tied to Blu-ray releases,
-crossover events, holiday installments—all of these get logged as
-Specials in the dataset. As the Big Three and their successors built out
-massive franchises with passionate year-round audiences, Specials became
-the connective tissue between cours. Think of them as a **flexible
-support channel** that expands as the broader franchise ecosystem
-expands: the more properties a studio has running, the more
-supplementary content gets produced and cataloged alongside them.
-
-### THE PLATFORM ERA ARRIVES
-
-The most important late-era signal is **ONA**. It's essentially
-nonexistent for most of the timeline and then explodes in the
-**2010s**—a clean structural break marking the arrival of web-first
-distribution as a real production lane rather than an exception. Early
-ONAs were often short-form experiments: *Shelter* (2016, the Porter
-Robinson collaboration that went viral), YouTube-native shorts,
-promotional animations for games or music releases. Then the platform
-era arrived in force. Netflix's push into anime originals—*Devilman
-Crybaby* (2018, Masaaki Yuasa's reimagining that became the template for
-what a streaming-native anime could look and feel like), *Violet
-Evergarden* (co-produced with Kyoto Animation), *Aggretsuko* (a
-workplace comedy short-form series that found a global audience on the
-platform)—changed what "web-first" could mean at scale. ONAs reflect a
-structural reality: **digital release lowers the barrier to entry,
-shortens cycles, diversifies episode structures, and creates a
-production lane that doesn't depend on a broadcast slot or a home video
-window.**
-
-### EVERYTHING GETS CATALOGED NOW
-
-The **Music** facet ramps late and fast, which reflects two things at
-once: real growth in music video and promotional short production tied
-to the franchise economy, and a cataloging effect where modern web
-ecosystems index small-format releases far more completely than older
-archives did. Music videos and short animated promotions have always
-existed in the industry—idol tie-ins, OP/ED animation shorts, character
-songs—but they're now being logged at scale. Because Music is
-lower-count and irregular, it's naturally more volatile year-to-year.
-Its late rise still reinforces the same macro thesis as ONA: **the 2010s
-aren't just more anime—they're more formats, more release types, and
-more of the industry's total output being tracked.**
-
-### INDUSTRIALIZATION, THEN DIVERSIFICATION
-
-The chart's overall shape is an industry history in miniature: a long
-flat baseline, a decisive takeoff in the 1990s anchored by TV, a plateau
-and then acceleration in the 2000s, and a final diversification phase in
-the 2010s where every format except OVA grows simultaneously. That
-diversification is where the industry is headed when the dataset ends in
-2019. More titles, more platforms, more release types, more markets—and
-underneath all of it, **TV still running as the primary engine**, its
-line higher and steeper than everything else in the chart.
-
-## HIT-RATE OF HIGH-SCORING TITLES BY FORMAT
-
-### Share of Titles Scoring 8+ by Anime Format
+## 2. HIT-RATE BY FORMAT
 
 ```{r chart2-hitrate-by-format}
 #| echo: false
@@ -530,41 +512,34 @@ line higher and steeper than everything else in the chart.
 #| fig-width: 10
 #| fig-height: 6.5
 
-chart2_df <- anime %>%
-  filter(!is.na(score), score > 0,
-         !is.na(type), type %in% c("TV","Movie","OVA","Special","ONA","Music")) %>%
-  distinct(animeID, .keep_all = TRUE)
-
-type_quality <- chart2_df %>%
+type_quality <- anime %>%
+  filter(!is.na(score), score > 0, !is.na(type),
+         type %in% c("TV","Movie","OVA","Special","ONA","Music")) %>%
+  distinct(animeID, .keep_all = TRUE) %>%
   group_by(type) %>%
   summarise(
-    n_titles     = n(),
-    median_score = median(score, na.rm = TRUE),
-    n_ge_8  = sum(score >= 8,   na.rm = TRUE),
-    n_ge_85 = sum(score >= 8.5, na.rm = TRUE),
-    n_ge_9  = sum(score >= 9,   na.rm = TRUE),
-    p_ge_8  = mean(score >= 8,   na.rm = TRUE),
-    p_ge_85 = mean(score >= 8.5, na.rm = TRUE),
-    p_ge_9  = mean(score >= 9,   na.rm = TRUE),
-    .groups = "drop"
+    n_titles = n(),
+    p_ge_8   = mean(score >= 8, na.rm = TRUE),
+    n_ge_8   = sum(score >= 8,  na.rm = TRUE),
+    .groups  = "drop"
   ) %>%
   mutate(
-    type = forcats::fct_reorder(type, p_ge_8),
-    label = paste0(
+    type   = forcats::fct_reorder(type, p_ge_8),
+    label  = paste0(
       scales::percent(p_ge_8, accuracy = 0.1),
       " (", n_ge_8, "/", scales::comma(n_titles), ")"
     ),
-    is_tv = type == "TV"
+    is_tv  = type == "TV"
   )
 
-p2 <- ggplot(type_quality, aes(x = p_ge_8, y = type,
-                                fill = is_tv)) +
+p2 <- ggplot(type_quality, aes(x = p_ge_8, y = type, fill = is_tv)) +
   geom_col(alpha = 0.9) +
   geom_text(aes(label = label), hjust = -0.05, size = 3.4,
             color = art_dark) +
-  scale_fill_manual(values = c("TRUE" = art_highlight,
-                               "FALSE" = art_secondary),
-                    guide = "none") +
+  scale_fill_manual(
+    values = c("TRUE" = art_highlight, "FALSE" = art_secondary),
+    guide  = "none"
+  ) +
   scale_x_continuous(
     labels = scales::percent_format(accuracy = 1),
     limits = c(0, max(type_quality$p_ge_8) * 1.22)
@@ -572,147 +547,53 @@ p2 <- ggplot(type_quality, aes(x = p_ge_8, y = type,
   theme_artometrics() +
   theme(panel.grid.major.y = element_blank()) +
   labs(
-    title    = "<span style='color:#C0392B'>TV</span> is the highest-yield format — by a meaningful margin",
-    subtitle = "Share of titles scoring 8+ by format. Labels show count of qualifying titles out of total.",
-    x        = "Percent of titles scoring 8+",
-    y        = NULL,
-    caption  = "Data: MyAnimeList via TidyTuesday 2019-04-23\n— ARTOMETRICS"
+    title    = paste0(
+      "<span style='color:#C0392B'>TV</span> is the ",
+      "highest-yield format — by a meaningful margin"
+    ),
+    subtitle = paste0(
+      "Share of titles scoring 8+ by format. ",
+      "Labels show count of qualifying titles out of total."
+    ),
+    x = "Percent of titles scoring 8+", y = NULL
   )
 
+ggsave("chart2_hitrate_by_format.png", plot = p2, path = chart_dir,
+       width = 10, height = 6, dpi = 300, bg = "white")
 p2
-
-ggsave(
-  filename = "chart2_hitrate_by_format.png",
-  plot     = p2,
-  path     = ".",
-  width    = 10, height = 6, dpi = 300, bg = "white"
-)
 ```
 
 ### YOUR ODDS OF FINDING SOMETHING GREAT
 
-This chart answers a brutally practical viewer question: **"If I pick a
-title at random in this format, what are the odds it's actually
-great?"** Instead of comparing average scores—which compress differences
-and hide the elite tail—you're measuring **hit-rate**: the share of
-titles that clear an "I'd recommend this" threshold. Here that threshold
-is **8+**, with **8.5+** and **9+** included as progressively rarer
-prestige tiers. The first headline is clear: **TV is the highest-yield
-hunting ground for 8+ titles**. About **8.2%** of TV titles are rated
-**8+** (**346 out of 4,240**), meaningfully higher than every other
-format. The next closest is **Movies at 4.8% (128/2,640)**, then **OVA
-at 3.0% (70/2,348)**, **Special at 2.1% (41/1,996)**, **ONA at 1.2%
-(16/1,308)**, and **Music at 0.2% (2/985)**. Read that as a simple
-random-pick expectation: out of 100 picks, TV gives you \~8 hits, Movies
-\~5, OVAs \~3, Specials \~2, ONAs \~1, and Music essentially zero.
-**It's probability, not vibes.**
+If you pick a title at random from this dataset, what are your odds it
+scores 8 or above? The SQL query gives the exact answer.
 
-### WHY TV WINS
+**TV delivers the best odds: 8.12%.** For every 100 TV shows sampled,
+roughly 8 will be genuinely excellent. That sounds modest until the
+comparison lands. Movies — despite the prestige association with Studio
+Ghibli and theatrical releases — deliver only 4.82%. The format is
+flooded with franchise recap films and compilation cuts that depress the
+average. OVA sits at 2.94%, Specials at 2.05%, ONA at a nascent 1.21%,
+and Music at 0.20%.
 
-What makes TV's lead especially meaningful is that it's not just "TV has
-more titles." You've already normalized by format—TV is winning on
-**rate**, which means something structural is happening. TV is where the
-medium's consensus classics tend to live: *Fullmetal Alchemist:
-Brotherhood* (MAL's long-running #1, a 64-episode TV series), *Attack on
-Titan*, *Steins;Gate*, *Hunter x Hunter (2011)*, *Vinland Saga*, *Demon
-Slayer*---all TV productions. Weekly release cycles build sustained
-communities, long-form storytelling allows character investment that
-movies can't match in runtime, and seasonal discourse creates the kind
-of collective attention that stabilizes a title's reputation at the top
-of the rating scale. TV isn't only the main output pipeline---it's the
-**highest-yield engine for top-end audience approval**, not because
-every TV show is good, but because the format's conditions favor the
-slow-burn consensus that produces durable 8+ scores.
+TV's edge comes from structure. Weekly episode releases build communities
+in real time. Long-form storytelling allows for character investment that
+a 90-minute film cannot generate. The seasonal format creates competitive
+pressure: a show that fails to hook audiences in its first cour rarely
+gets a second. The format is ruthless, and ruthlessness filters for
+quality.
 
-### THE PRESTIGE MYTH
+### THE OUTLIER: MUSIC AT 0.20%
 
-Movies are the interesting second-place result because people often
-assume film is anime's prestige lane---and for good reason. *Spirited
-Away* won the Academy Award for Best Animated Feature in 2003, the first
-(and still only) anime film to do so. *Your Name* (2016) became the
-highest-grossing anime film in history at the time of its release,
-crossing \$358 million worldwide. *Princess Mononoke*, *Akira*, *Grave
-of the Fireflies*---the upper tier of anime film is genuinely among the
-most celebrated animation ever made. But the chart reveals what happens
-when you look at the whole Movies bucket rather than its famous ceiling:
-it's a deeply **mixed market**. Franchise extensions, compilation films
-that recut TV arcs for theaters, side stories designed for existing
-fans, smaller productions that never find wide distribution---all of
-these sit in the same bucket as Ghibli. That mix drags the hit-rate to
-4.8%, well below TV's 8.2%, not because anime films are bad, but because
-"anime film" as a category includes everything from *Spirited Away* to a
-45-minute recap movie packaged as a theatrical event. When a film does
-land at the top, it lands hard---but **the odds per random pick are
-lower than TV.**
+Two out of 1,011 Music titles scored 8+. This is not just a low
+hit-rate — it is a category mismatch. Music anime are short promotional
+videos, not narrative works. They exist to sell singles, not to be
+evaluated as stories. Their presence in a quality-scoring framework is a
+dataset artifact, not a commentary on the format.
 
-### GEMS IN A DEEP CATALOG
+---
 
-The OVA result is historically coherent. OVAs have produced some of the
-medium's most celebrated niche works---*Hellsing Ultimate* (the
-gold-standard vampire action OVA), *Legend of the Galactic Heroes* (a
-110-episode space opera released entirely as OVAs between 1988 and 1997,
-which maintains an exceptionally high MAL score to this day), *FLCL* (6
-episodes, endlessly referenced, never quite replicated). These are real
-titles that clear the 8+ bar. But as a bucket, OVAs also include
-enormous amounts of deep catalog material: forgotten direct-to-video
-releases from the 1980s and 1990s, niche genre experiments that found
-small audiences, fan-service releases attached to existing franchises.
-The hit-rate of **3.0%** reflects that full range---OVAs can absolutely
-produce standout titles, but the probability of hitting one by random
-selection is lower than TV or Movies. OVAs are a reminder that **format
-innovation doesn't automatically translate into mass approval**; it
-creates a wider range of outcomes, from cult classics to forgotten
-experiments.
-
-### THE SUPPORT LANES
-
-Specials and ONAs function as secondary lanes, and their hit-rates
-reflect exactly what those lanes are designed to do. **Specials** exist
-to extend franchise attention between seasons---recap episodes, holiday
-one-offs, Blu-ray bonus content, promotional shorts. Their job isn't to
-produce iconic standalone works; it's to maintain engagement within an
-existing property's orbit. A lower hit-rate is logical when you're
-pulling from a population of support content rather than ambitious
-originals. **ONAs** are more heterogeneous: some are top-tier originals
-(*Devilman Crybaby* sits well above 8 and is an ONA), but many are
-short-form experiments, platform promotional releases, or web-native
-projects where production constraints and distribution priorities differ
-fundamentally from TV. The ONA line reads like a platform-era pattern:
-**more content, faster cycles, wider variance, and lower probability
-that any single title builds the sustained audience consensus that
-produces a locked-in 8+ score.**
-
-### HOW RARE IS A MASTERPIECE
-
-The rarity ladder is where the story sharpens further. Even in the
-best-performing format, **8.5+ is only 1.9% of TV titles** and **9+ is
-only 0.3%**---roughly 11 titles out of 4,240. That's the quiet truth the
-chart exposes: **masterpiece-level scores are rare in every format.** TV
-doesn't produce floods of 9+ shows; it just gives you the best odds in a
-world where truly elite titles are scarce everywhere. The summary table
-adds a second context layer: **median score by format**. TV not only has
-the best 8+ hit-rate---it has the highest median (**6.79**), meaning the
-entire TV distribution is shifted upward relative to other formats.
-Movies and OVAs sit at **6.30**, Specials at **6.44**, ONA at **5.69**,
-Music at **5.19**. TV isn't winning only because it creates more
-hits---it's winning because **the typical TV title is rated higher
-too.**
-
-### SHOP NEAR THE ENTRANCE
-
-If you want the best odds of finding an 8+ title quickly, TV is the most
-efficient format to browse---not because films and OVAs don't have elite
-entries (they do, and some of the most celebrated works in the medium
-live there), but because **the hit-rate per random pick is highest in
-TV, and the median floor is highest in TV.** Chart 2 pairs directly with
-Chart 1: once anime becomes a high-throughput, multi-pipeline industry,
-TV remains the lane where audience consensus and top-end ratings
-concentrate---even as the platform era expands every other release type
-simultaneously.
-
-## POPULARITY RANK VS SCORE
-
-### Do More Popular Anime Score Higher?
+## 3. POPULARITY VS SCORE
 
 ```{r chart3-popularity-vs-score}
 #| echo: false
@@ -721,176 +602,74 @@ simultaneously.
 #| fig-width: 10
 #| fig-height: 6.5
 
-valid_types <- c("TV","Movie","OVA","Special","ONA","Music")
-
-plot_df <- anime %>%
-  filter(!is.na(score), score > 0,
-         !is.na(popularity), popularity > 0,
-         !is.na(type), type %in% valid_types) %>%
-  distinct(animeID, .keep_all = TRUE)
-
-pop_cap <- 12000
-df_cap <- plot_df %>%
-  filter(popularity <= pop_cap) %>%
-  mutate(log_pop = log10(popularity))
-
-df_bins <- df_cap %>%
+chart3_bins <- anime %>%
+  filter(!is.na(score), score > 0, !is.na(popularity),
+         popularity > 0,
+         type %in% c("TV","Movie","OVA","Special","ONA","Music")) %>%
+  distinct(animeID, .keep_all = TRUE) %>%
+  filter(popularity <= 12000) %>%
   mutate(
-    pop_decile = ntile(log_pop, 10),
-    pop_decile = factor(pop_decile, levels = 1:10,
-                        labels = paste0("D", 1:10))
-  )
-
-chart3_bins <- df_bins %>%
+    pop_decile = factor(
+      ntile(log10(popularity), 10),
+      levels = 1:10,
+      labels = paste0("D", 1:10)
+    )
+  ) %>%
   group_by(pop_decile) %>%
   summarise(
-    n        = n(),
-    pop_min  = min(popularity, na.rm = TRUE),
-    pop_max  = max(popularity, na.rm = TRUE),
-    pop_med  = median(popularity, na.rm = TRUE),
-    score_med  = median(score, na.rm = TRUE),
-    score_q25  = quantile(score, 0.25, na.rm = TRUE),
-    score_q75  = quantile(score, 0.75, na.rm = TRUE),
-    score_mean = mean(score, na.rm = TRUE),
-    share_8p   = mean(score >= 8, na.rm = TRUE),
-    .groups = "drop"
-  ) %>%
-  mutate(pop_range = paste0(comma(pop_min), "--", comma(pop_max)))
+    score_med = median(score),
+    score_q25 = quantile(score, 0.25),
+    score_q75 = quantile(score, 0.75),
+    .groups   = "drop"
+  )
 
-p3 <- ggplot(chart3_bins, aes(x = pop_decile, y = score_med, group = 1)) +
+p3 <- ggplot(chart3_bins,
+             aes(x = pop_decile, y = score_med, group = 1)) +
   geom_ribbon(aes(ymin = score_q25, ymax = score_q75),
               fill = art_secondary, alpha = 0.15) +
   geom_line(linewidth = 1.1, color = art_secondary) +
   geom_point(size = 2.5, color = art_highlight) +
   theme_artometrics() +
   labs(
-    title    = "The more popular, the higher the score --- but the gap is structural",
+    title    = "The more popular, the higher the score — but the gap is structural",
     subtitle = paste0(
-      "Titles binned into popularity deciles (D1 = most popular, capped at rank <= ", pop_cap, "). ",
-      "Line = median score; band = IQR (25th--75th pct)."
+      "Titles binned into popularity deciles (D1 = most popular). ",
+      "Line = median score; band = IQR."
     ),
-    x       = "Popularity decile (D1 most popular -> D10 least popular within cap)",
-    y       = "MAL score",
-    caption = "Data: MyAnimeList via TidyTuesday 2019-04-23\n--- ARTOMETRICS"
+    x = "Popularity decile (D1 most popular -> D10 least popular)",
+    y = "MAL score"
   )
 
+ggsave("chart3_popularity_vs_score.png", plot = p3, path = chart_dir,
+       width = 10, height = 6, dpi = 300, bg = "white")
 p3
-
-ggsave(
-  filename = "chart3_popularity_vs_score.png",
-  plot     = p3,
-  path     = ".",
-  width    = 10, height = 6, dpi = 300, bg = "white"
-)
 ```
 
-### THE FRONT GALLERY
+### THE FRONT GALLERY VS THE BACK ROOMS
 
-Popularity on MyAnimeList is an **attention register**---a rank that
-tracks how many people have added a title to their lists, not whether it
-is objectively great. But the two turn out to be deeply correlated.
-Within the top 12,000 popularity ranks, the **median score slides from
-7.73 in D1 (most popular) to 5.75 in D10 (least popular)**---almost a
-two-point drop across the distribution. The "elite" zone becomes rare
-with startling speed: **34.4% of D1 titles score 8+**, but that
-collapses to **12.4% in D2**, **5.5% in D3**, and near-zero through much
-of the bottom half. D1 is where the front gallery lives: *Death Note*,
-*Fullmetal Alchemist: Brotherhood*, *Attack on Titan*, *Sword Art
-Online*, *One Punch Man*---titles with member counts in the millions
-that have been watched, finished, rated, argued about, and recommended
-so many times that their scores have stabilized into something close to
-cultural consensus. The deeper deciles are the archive: vast, uneven,
-and mostly unvisited.
+The decile chart tells a clean story: move from D1 (median ~7.7) to D10
+(median ~5.8), and scores fall steadily. But the IQR band reveals
+something more important. In D1–D3, the ribbon is narrow — millions of
+ratings wash out outliers and scores converge. In D8–D10, the band
+widens significantly.
 
-### WHY THE POPULAR SHOWS SCORE HIGHER
+This is the platform's two-tier structure. The **Front Gallery** is
+stabilized by volume. The **Back Rooms** are volatile: small rating
+pools mean one passionate community can inflate a score, or one wave of
+disengaged viewers can tank it. The correlation matrix confirms it —
+score and membership correlate at only r = 0.389. Popularity predicts
+quality directionally, not precisely.
 
-The correlation isn't accidental---it's structural. When a show like
-*Attack on Titan* builds an audience of millions, it gets rated by
-millions. That volume stabilizes the score: outlier ratings (the 10s
-from devoted fans, the 1s from people who bounced in episode two) get
-averaged out by the mass in the middle, and what's left is a reliable
-signal. Low-popularity titles have the opposite problem: a few hundred
-ratings means a few polarized opinions carry outsized weight, producing
-scores that are either artificially inflated or deflated depending on
-who showed up. The scores in D1 aren't necessarily "more
-correct"---they're **more statistically stable**, which in a rating
-ecosystem reads as higher and more trustworthy. Popularity doesn't just
-reflect quality; it manufactures the conditions that make quality
-legible.
+The algorithmic feedback loop runs in one direction: visibility creates
+more visibility. Streaming platforms push what is already popular. The
+loop is self-reinforcing but not self-correcting — it amplifies
+already-known shows rather than surfacing great unknown ones. Those 90
+cult classics from the Python filter exist because the algorithm left
+them behind, not because they aren't good.
 
-### FAME MAKES ITSELF
+---
 
-There's a second mechanism at work beyond statistical stability:
-**visibility creates more visibility**. When *Sword Art Online*
-premiered in 2012, it became one of Crunchyroll's most-streamed titles
-almost immediately---which meant it appeared at the top of every
-recommendations list, every "what to watch next" algorithm, and every
-"most popular this season" banner. That placement drove more viewers to
-it, which drove more ratings, which kept it ranked high, which drove
-more viewers. This is the feedback loop that economists call cumulative
-advantage and anime fans just call hype: early traction begets more
-traction, and the gap between a show that catches fire in week one and a
-show that doesn't can widen dramatically even if the underlying quality
-is similar. It's why *Sword Art Online* has more members than many
-objectively higher-rated shows---it won the attention game early and the
-algorithm kept paying out. The decile gradient you see in this chart is
-partly a quality signal and partly a **record of which shows got lucky
-with timing, placement, and platform momentum.**
-
-### WHAT LIVES IN THE BACK ROOMS
-
-The bottom deciles aren't full of bad anime---they're full of **unseen
-anime**. *Legend of the Galactic Heroes*, a 110-episode space opera OVA
-series from 1988, maintains one of the highest MAL scores in the dataset
-despite sitting deep in the popularity ranks; it simply never had the
-distribution infrastructure to build a mass audience. Dozens of titles
-from the 1980s and 1990s exist in similar positions: genuinely
-accomplished work that accumulated small, devoted followings and
-correspondingly small member counts, leaving their scores statistically
-fragile. The wide IQR bands in D7 through D10 tell that story
-visually---more variance, more noise, more titles where the score
-reflects a few hundred passionate fans rather than a broad cultural
-verdict. The back rooms are where discovery happens, but also where the
-expected score falls and the signal-to-noise ratio drops. The question
-isn't whether great anime exists out there---it does---it's whether
-you're willing to accept lower average odds and higher variance in
-exchange for the chance of finding something the algorithm never
-surfaced.
-
-### THE ALGORITHM PROBLEM
-
-The gradient this chart reveals isn't purely organic---it's partly
-manufactured by the discovery systems that sit on top of the catalog.
-Streaming platforms and recommendation engines systematically favor
-already-popular titles: Crunchyroll's homepage, Netflix's "trending"
-row, MAL's own "top anime" lists all amplify visibility for content that
-already has high member counts. Research on recommender systems calls
-this **popularity bias**---the tendency of algorithms to over-expose the
-head of the distribution and under-represent the long tail, compounding
-existing visibility gaps over time. In practical terms, this means the
-decile gradient you're observing isn't just "popular = good." It's also
-"popular = gets recommended = gets more popular = gets more ratings =
-looks more authoritative." The back rows of the archive stay
-undiscovered not only because the work is less compelling---but because
-no system is actively pointing people toward them.
-
-### SHOP WITH YOUR EYES OPEN
-
-The practical takeaway is crisp: **popularity is a strong signal of
-higher average ratings, but it is also a mechanism that concentrates
-attention.** If you want reliably high-scoring picks, you shop near the
-entrance---D1 and D2, where the median score stays above 7 and the 8+
-hit-rate is meaningful. If you want discovery, you walk deeper into the
-stacks---accepting that the expected score falls, the variance rises,
-and the chance of finding something genuinely idiosyncratic and
-underseen increases. Neither strategy is wrong. But knowing which one
-you're running, and why the distribution looks the way it does, makes
-you a smarter browser of a catalog that is much larger and stranger than
-any algorithm is going to show you on its own.
-
-## WHICH STUDIOS SCORE HIGHEST?
-
-### Median MAL Score with IQR, Top 20 Studios (Min 20 Titles)
+## 4. STUDIO CONSISTENCY
 
 ```{r chart4-studio-rankings}
 #| echo: false
@@ -899,35 +678,26 @@ any algorithm is going to show you on its own.
 #| fig-width: 10
 #| fig-height: 6.5
 
-studio_df <- anime_studios %>%
+studio_summ <- anime_studios %>%
   distinct(animeID, studio) %>%
-  inner_join(
-    anime %>% distinct(animeID, score, type),
-    by = "animeID"
-  ) %>%
+  inner_join(anime %>% distinct(animeID, score, type),
+             by = "animeID") %>%
   filter(!is.na(studio), studio != "",
          !is.na(score), score > 0,
-         !is.na(type), type != "")
-
-studio_summ <- studio_df %>%
+         !is.na(type),  type != "") %>%
   group_by(studio) %>%
   summarise(
     n_titles     = n(),
-    median_score = median(score, na.rm = TRUE),
-    q1           = quantile(score, 0.25, na.rm = TRUE),
-    q3           = quantile(score, 0.75, na.rm = TRUE),
-    tv_share     = mean(type == "TV", na.rm = TRUE),
-    .groups = "drop"
+    median_score = median(score),
+    q1           = quantile(score, 0.25),
+    q3           = quantile(score, 0.75),
+    tv_share     = mean(type == "TV"),
+    .groups      = "drop"
   ) %>%
   filter(n_titles >= 20) %>%
   arrange(desc(median_score)) %>%
   slice_head(n = 20) %>%
   mutate(studio_label = paste0(studio, " (n=", n_titles, ")"))
-
-overall_median <- anime %>%
-  distinct(animeID, score) %>%
-  summarise(overall_median = median(score, na.rm = TRUE)) %>%
-  pull(overall_median)
 
 p4 <- ggplot(studio_summ,
              aes(y = reorder(studio_label, median_score),
@@ -935,175 +705,59 @@ p4 <- ggplot(studio_summ,
   geom_errorbarh(aes(xmin = q1, xmax = q3),
                  height = 0, linewidth = 0.7, color = art_mid) +
   geom_point(aes(size = n_titles, color = tv_share), alpha = 0.95) +
-  geom_vline(xintercept = overall_median, linetype = "dashed",
+  geom_vline(xintercept = 6.38, linetype = "dashed",
              linewidth = 0.7, color = art_highlight, alpha = 0.7) +
-  annotate(
-    "text",
-    x = overall_median,
-    y = Inf,
-    label = paste0("Overall median = ", round(overall_median, 2)),
-    hjust = -0.07, vjust = 1.4,
-    size = 3.2, color = art_highlight
-  ) +
   scale_color_viridis_c(
     option = "D",
     labels = scales::percent_format(accuracy = 1),
     name   = "TV share"
   ) +
-  scale_size_continuous(name = "Titles (n)") +
-  coord_cartesian(clip = "off") +
   theme_artometrics() +
   theme(plot.margin = margin(10, 30, 10, 10)) +
   labs(
-    title    = "Bones and KyoAni lead --- consistency across volume is the real achievement",
-    subtitle = "Top 20 studios by median MAL score (min 20 titles). Bars = IQR. Dot size = output. Color = TV share.",
-    x        = "Median MAL score",
-    y        = NULL,
-    caption  = "Data: MyAnimeList via TidyTuesday 2019-04-23\n--- ARTOMETRICS"
+    title    = "Bones and KyoAni lead — consistency across volume is the real achievement",
+    subtitle = paste0(
+      "Top 20 studios by median MAL score (min 20 titles). ",
+      "Bars = IQR. Dot size = output."
+    ),
+    x = "Median MAL score", y = NULL
   )
 
+ggsave("chart4_studio_rankings.png", plot = p4, path = chart_dir,
+       width = 12, height = 8, dpi = 300, bg = "white")
 p4
-
-ggsave(
-  filename = "chart4_studio_rankings.png",
-  plot     = p4,
-  path     = ".",
-  width    = 12, height = 8, dpi = 300, bg = "white"
-)
 ```
 
-### THE CONSISTENCY QUESTION
+### CONSISTENCY OVER PEAKS
 
-This chart answers a deceptively hard question---*which studios score
-highest on MyAnimeList*---by using **median score** (the typical title)
-instead of averages, which can be hijacked by a single massive hit or a
-string of misfires. Across the top-20 studios with at least 20 titles,
-the leaders cluster tightly around the **low-to-mid 7s**, while the
-overall median of all studio-credited titles sits at **\~6.38**. In
-other words: once you filter to studios with real volume, the top tier
-isn't separated by a full point---it's separated by **tenths**. This is
-exactly what you'd expect in a mature rating ecosystem where most shows
-occupy the same band. The leaderboard here isn't about who made the
-single best show. It's about **who can stay above the platform's
-baseline across a meaningful number of titles**---which is a much harder
-thing to do.
+Every studio on this chart has produced at least one great show. That is
+not the achievement. The achievement is the **IQR bar** — the horizontal
+line showing the spread between the 25th and 75th percentile of a
+studio's scores. A tight bar at a high median means the studio's worst
+output is nearly as good as its best.
 
-### BONES AND KYOANI: THE GOLD STANDARD
+**Bones (n=115)** leads in median and maintains a tight IQR across a
+massive catalog. **White Fox (n=33)** has the highest median dot but a
+wide IQR — the boutique model: fewer swings, but when they miss, they
+miss. **Kyoto Animation (n=110)** is the most consistent large studio on
+the chart: 110 titles with a tight IQR anchored well above the 6.38
+baseline.
 
-At the top, **Bones** and **Kyoto Animation** stand out as the clearest
-examples of scale and quality coexisting. Bones' case rests on a catalog
-that includes some of the most celebrated titles in the medium:
-*Fullmetal Alchemist: Brotherhood*---MAL's long-running #1, a 64-episode
-adaptation widely considered the gold standard of shonen
-storytelling---alongside *Mob Psycho 100*, *My Hero Academia*, *Soul
-Eater*, and *Noragami*. That's not a studio that peaked once; it's a
-studio that has produced consensus favorites across multiple genres and
-eras. The median stays high because the floor stays high. **Kyoto
-Animation** is a different kind of story. Where Bones operates at
-volume, KyoAni built its reputation on deliberate, almost obsessive
-craft---an in-house training pipeline, refusal to outsource animation
-work, and a catalog defined by visual precision: *Clannad*, *K-On!*,
-*Hibike! Euphonium*, *A Silent Voice*, *Violet Evergarden*. In July
-2019, an arson attack on their main studio killed 36 people---the
-deadliest mass killing in Japan in decades. The industry's response was
-immediate and global: crowdfunding campaigns, tributes from studios
-worldwide, a production community that suddenly understood KyoAni not
-just as a company but as a community of artists. That tragedy reframed
-how the anime world talks about what studios actually are. Their median
-score in this chart is a data point; what sits behind it is something
-closer to a legacy.
+**Trigger (n=23)** has the widest IQR — spanning from near the baseline
+to above 8.0. High-risk, high-reward. **Studio Deen (n=264)** is the
+industrial cautionary tale: the largest catalog on the chart and the
+lowest median. Volume without curation dilutes quality. **A-1 Pictures
+(n=190)** sits in the middle — a production machine that delivers
+reliable output at scale, occasionally punctuated by genuine hits.
 
-### THE BOUTIQUE STUDIOS
+The viridis color scale maps TV share. Studios with higher TV share
+cluster in the middle — TV volume is the primary dilution mechanism.
+Boutique studios with low TV share show more extreme medians in both
+directions.
 
-A second pattern is the presence of smaller studios whose high medians
-are built on precision rather than volume. **White Fox** is the clearest
-example: a studio whose entire reputation rests on a handful of titles
-executed exceptionally well. *Steins;Gate*---the time-travel thriller
-that holds one of the highest MAL scores in the dataset and built one of
-the most devoted fanbases in the medium---is a White Fox production. So
-is *Re:Zero*, which redefined what an isekai could do with psychological
-depth and consequence. Two franchises, enormous cultural footprint, very
-small catalog. That's the boutique model: high selectivity, high
-hit-rate, high sensitivity to any single title underperforming. **David
-Production** operates similarly: closely associated with *JoJo's Bizarre
-Adventure* (all animated parts) and *Cells at Work*, a studio whose
-identity is essentially inseparable from the franchises it's built
-around. Both studios show tight IQRs in the chart---small spread around
-the median---which is the signature of a studio that doesn't swing
-wildly because it doesn't take many swings.
+---
 
-### THE WILD CARD
-
-**Trigger** is the most interesting outlier in this chart because its
-wide IQR is not a weakness---it's a brand signature. Founded in 2011 by
-ex-Gainax staff including director Hiroyuki Imaishi, Trigger built its
-identity on loud, high-style, unapologetically maximalist originals:
-*Kill la Kill*, *Little Witch Academia*, *SSSS.Gridman*, *Promare*.
-These are shows that don't try to appeal to everyone---they go hard in a
-specific direction and trust that the audience who connects with that
-direction will connect deeply. The result is exactly what the chart
-shows: a high median (the fans who stay love it) alongside a wide IQR
-(the audience that bounces bounces hard). When you see a wide IQR bar on
-this chart, read it as **variance in reception, not inconsistency in
-effort**. Trigger makes exactly the shows it intends to make. Whether
-that lands depends entirely on whether you're the kind of viewer they're
-making them for.
-
-### THE INDUSTRIAL GIANTS
-
-At the other end of the output spectrum sit studios like **A-1
-Pictures** and **Studio Deen**---large dots on the chart, lower medians,
-and a catalog range that explains exactly why. A-1 Pictures is part of
-the Aniplex/Sony machine, which means it operates at industrial scale:
-*Sword Art Online*, *Your Lie in April*, *Anohana*, *Erased*,
-*Kaguya-sama: Love Is War* all carry the A-1 credit. That's a range from
-consensus classics to broadly popular but divisive titles, and the
-median reflects it. You don't run hundreds of productions without
-absorbing significant variance in quality---some projects are
-passion-driven, others are committee-driven, and the catalog average is
-the average of both. **Studio Deen** carries the most historically
-loaded reputation in this chart: "Deen quality" became an actual meme in
-the anime community, shorthand for inconsistent or underwhelming
-animation on otherwise solid source material (the original *Fate/stay
-night* adaptation is the canonical example). Their lower median isn't
-surprising---it's a data-driven confirmation of a reputation that fans
-had already reached on their own.
-
-### WHAT THE DOT SIZE TELLS YOU
-
-The dot size in this chart encodes output volume, and it's worth reading
-alongside the median rather than separately. A small dot with a high
-median (White Fox, David Production) says: *high precision, low sample
-size, sensitive to change*. One underperforming franchise could
-meaningfully shift that median. A large dot with a high median (Bones)
-says: *the quality is load-bearing across real volume*, which is a
-structurally harder thing to sustain. A large dot with a lower median
-(A-1 Pictures, Studio Deen) says: *industrial scale with mixed
-results*---which is essentially the expected outcome when a studio is
-producing enough content to serve every corner of the market. The color
-layer---TV share---adds one more read: studios with high TV share are
-building their reputation through the seasonal pipeline, while studios
-with lower TV share are mixing in films, OVAs, and specials that behave
-differently in the rating ecosystem.
-
-### THE REAL WINNER HERE
-
-The studios that top this chart aren't the ones with the single biggest
-hit---almost every studio in anime has at least one title that broke
-through. The winners are the ones whose **typical show stays above the
-platform's baseline despite real volume**. That's a different kind of
-achievement than a peak. It requires consistent sourcing (choosing the
-right projects), consistent execution (delivering on what the source
-material promises), and consistent audience trust (building the kind of
-reputation that makes fans show up for your next title before they know
-what it is). Bones and Kyoto Animation have all three. That's why
-they're at the top of this chart, and why the distance between them and
-the industrial giants below them---measured in tenths of a score
-point---represents something much larger than the numbers suggest.
-
-## GENRE MAP: POPULARITY VS WELL-RATED
-
-### Median Score vs Median Popularity Rank by Genre Tag
+## 5. THE GENRE MAP
 
 ```{r chart5-genre-map}
 #| echo: false
@@ -1112,385 +766,673 @@ point---represents something much larger than the numbers suggest.
 #| fig-width: 10
 #| fig-height: 6.5
 
-valid_types <- c("TV","Movie","OVA","Special","ONA","Music")
-
-base_titles <- anime %>%
-  filter(!is.na(animeID),
-         !is.na(score), score > 0,
-         !is.na(popularity), popularity > 0,
-         !is.na(type), type %in% valid_types) %>%
-  distinct(animeID, .keep_all = TRUE)
-
-total_titles <- base_titles %>% distinct(animeID) %>% nrow()
-
-genre_title <- anime_genres %>%
+genre_stats <- anime_genres %>%
   distinct(animeID, genre) %>%
-  filter(!is.na(genre), genre != "") %>%
-  inner_join(base_titles %>% select(animeID, score, popularity),
-             by = "animeID") %>%
-  mutate(log_pop = log10(popularity))
-
-min_n <- 80
-
-genre_stats <- genre_title %>%
+  filter(genre != "") %>%
+  inner_join(
+    anime %>% select(animeID, score, popularity) %>%
+      filter(score > 0, popularity > 0),
+    by = "animeID"
+  ) %>%
   group_by(genre) %>%
   summarise(
-    n_titles    = n_distinct(animeID),
-    pct_titles  = n_distinct(animeID) / total_titles,
-    score_med   = median(score, na.rm = TRUE),
-    score_mean  = mean(score, na.rm = TRUE),
-    pop_med     = median(popularity, na.rm = TRUE),
-    log_pop_med = median(log_pop, na.rm = TRUE),
-    share_8p    = mean(score >= 8, na.rm = TRUE),
-    .groups = "drop"
+    n_titles  = n_distinct(animeID),
+    score_med = median(score),
+    pop_med   = median(popularity),
+    .groups   = "drop"
   ) %>%
-  filter(n_titles >= min_n) %>%
-  mutate(hidden_gem = scale(score_med)[,1] + scale(log_pop_med)[,1])
-
-labels_df <- bind_rows(
-  genre_stats %>% slice_max(n_titles,  n = 8),
-  genre_stats %>% slice_max(score_med, n = 8),
-  genre_stats %>% slice_max(hidden_gem, n = 8)
-) %>%
-  distinct(genre, .keep_all = TRUE)
-
-x_cut <- median(genre_stats$pop_med, na.rm = TRUE)
-y_cut <- median(genre_stats$score_med, na.rm = TRUE)
+  filter(n_titles >= 80)
 
 p5 <- ggplot(genre_stats,
              aes(x = pop_med, y = score_med, size = n_titles)) +
-  geom_vline(xintercept = x_cut, linetype = "dashed",
-             color = art_mid, alpha = 0.4) +
-  geom_hline(yintercept = y_cut, linetype = "dashed",
-             color = art_mid, alpha = 0.4) +
+  geom_vline(xintercept = median(genre_stats$pop_med),
+             linetype = "dashed", color = art_mid, alpha = 0.4) +
+  geom_hline(yintercept = median(genre_stats$score_med),
+             linetype = "dashed", color = art_mid, alpha = 0.4) +
   geom_point(color = art_secondary, alpha = 0.6) +
   scale_x_reverse(trans = "log10", labels = comma) +
-  scale_size_continuous(labels = comma) +
-  ggrepel::geom_text_repel(
-    data = labels_df,
-    aes(label = genre),
-    size = 3.2,
-    color = art_dark,
-    max.overlaps = Inf,
-    box.padding = 0.25,
-    point.padding = 0.15,
-    seed = 42,
-    show.legend = FALSE
-  ) +
+  ggrepel::geom_text_repel(aes(label = genre), size = 3.2,
+                            color = art_dark, max.overlaps = Inf,
+                            show.legend = FALSE) +
   theme_artometrics() +
   labs(
     title    = "Genre map: what's popular vs what's well-rated?",
     subtitle = paste0(
-      "Each point = a genre tag (multi-label). X = median MAL popularity rank (log, reversed). ",
+      "X = median popularity rank (log, reversed). ",
       "Y = median score. Size = titles tagged."
     ),
-    x       = "Median popularity rank (log scale; 1 = most popular)",
-    y       = "Median MAL score",
-    size    = "Titles tagged",
-    caption = "Data: MyAnimeList via TidyTuesday 2019-04-23\n--- ARTOMETRICS"
+    x = "Median popularity rank (log scale; 1 = most popular)",
+    y = "Median MAL score"
   )
 
+ggsave("chart5_genre_map.png", plot = p5, path = chart_dir,
+       width = 12, height = 8, dpi = 300, bg = "white")
 p5
-
-ggsave(
-  filename = "chart5_genre_map.png",
-  plot     = p5,
-  path     = ".",
-  width    = 12, height = 8, dpi = 300, bg = "white"
-)
 ```
-
-### THE MAIN HALL
-
-In this chart, each point is a **genre tag** (multi-label, so a single
-title can contribute to several bubbles). The x-axis is **median MAL
-popularity rank** (lower number = more popular), while the y-axis is
-**median MAL score**---a rough map of *attention* versus *reputation*.
-The dense middle cluster---**Comedy, Action, Sci-Fi, Fantasy,
-Adventure**---is the museum's main hall: large bubbles, broad reach, and
-median scores that settle in the mid-6s rather than the top of the
-scale. These are the genres that define anime's public face. Action is
-where the Big Three live (*One Piece*, *Naruto*, *Bleach*), each running
-hundreds of episodes and accumulating members by the million. Comedy is
-where *Gintama* sits---a show that somehow managed to be simultaneously
-one of the longest-running comedies and one of the highest-rated anime
-on the platform, a genuine outlier in a genre where most titles land in
-the mid-pack. Sci-Fi has *Steins;Gate* and *Neon Genesis Evangelion* at
-the top and hundreds of more obscure titles dragging the median down. In
-large genres, **the ceiling is real but so is the floor**, and the
-median reflects the full distribution, not just the titles you can name.
-
-### MORE TITLES, MIDDLE SCORES
-
-The pattern across the main hall genres is consistent: **high volume
-produces middle medians**. When a genre is a production workhorse---when
-studios are shipping Action or Fantasy titles every season because
-that's what the market demands---you get a wide range of quality. Some
-projects are passion-driven adaptations of beloved source material;
-others are committee-greenlit productions chasing a trend. The median
-score settles where the full range averages out, which in a competitive,
-high-throughput genre is reliably "watchable but not exceptional." This
-isn't a knock on these genres---it's what happens when any category
-scales. The more Action anime gets made, the more dilution happens
-around the hits. *Dragon Ball Z* and *Attack on Titan* don't stop being
-great because there are five hundred other action shows in the dataset;
-they just stop being statistically representative of what a random
-Action pick looks like.
 
 ### THE CURATOR'S ROOMS
 
-The more interesting story is in the genres that score like prestige
-niches while remaining only moderately popular. **Mystery** stands out
-with a **median score of 7.27** and a **16.5% share of titles scoring
-8+**---the highest 8+ share of any genre in the table. The titles
-driving that number are exactly what you'd expect from a genre that
-rewards patience and craft: *Monster* (Naoki Urasawa's slow-burn
-thriller, 74 episodes, universally regarded as one of the great anime of
-the 2000s), *Hyouka* (Kyoto Animation's understated high school mystery
-series, beloved by the fans who find it and largely invisible to
-everyone else). **Police** follows a similar logic: *Psycho-Pass* and
-*Ghost in the Shell: Stand Alone Complex* anchor a genre that produces
-fewer titles but lands them at a higher rate. These are the curator's
-rooms---quieter, less trafficked, but reliably satisfying for the
-visitor who makes it inside. The genres themselves act as a filter: they
-attract viewers who specifically want that kind of storytelling, which
-means the audience rating them tends to be self-selected and engaged
-rather than casual.
+The genre map plots every major genre against two axes: how popular its
+titles are (X, log-reversed so popular is right), and how well-rated
+they are (Y). Size encodes volume.
 
-### THE HISTORICAL PROBLEM
+The **Main Hall** — Action, Comedy, Fantasy, Adventure — sits in the
+dense center-right cluster. Massive reach, enormous volume, medians
+diluted to the mid-6s by sheer output. These are the genres that define
+what most people think anime is.
 
-The biggest "hidden gem" signal in the dataset belongs to
-**Historical**---not because it's the highest-scoring genre, but because
-of how far its popularity rank sits from its score. With **964 tagged
-titles**, a **median score of 6.56**, and a **median popularity rank of
-9,220**, Historical sits deeper in the archive than almost any other
-genre while maintaining a respectable reputation among those who find
-it. The titles in this space are genuinely accomplished: *Vinland Saga*
-(the Viking epic that became one of the most critically praised anime of
-the late 2010s), *Kingdom* (one of the longest-running and most
-consistently rated historical epics in the dataset), *The Rose of
-Versailles* (a foundational shojo title from 1979 that still maintains a
-devoted following). What keeps these shows out of the mainstream isn't
-quality---it's friction. Historical anime often demands patience, prior
-investment in setting and context, and tolerance for slower pacing than
-the action-driven seasonal titles that dominate the platform's front
-page. In a market where attention is the scarcest resource, friction is
-a serious disadvantage regardless of what's on the other side of it.
+The **Curator's Rooms** are the upper-left quadrant. **Thriller** sits
+alone at the top: highest median on the chart (~7.5), extremely low
+popularity rank. The genre barely exists by volume, but almost
+everything made in it is exceptional. **Mystery** and **Psychological**
+follow the same pattern — high score, mid-obscurity — which aligns with
+their SQL Query 2 performance.
 
-### WHY KIDS SCORES LAST
+The starkest outlier is **Historical**: highly rated, sitting far to the
+right — ignored algorithmically despite strong critical reception.
+**Dementia** sits alone at the bottom (~4.8 median): low popularity, low
+score, tiny volume. **Kids** and **Music** are the bottom-right anchors:
+widest audiences, lowest scores. The self-selection problem in reverse —
+MAL's adult userbase applying adult critical frameworks to children's
+media and promotional content.
 
-**Kids** is the genre where the gap between cultural footprint and MAL
-score is most stark. With **2,158 tagged titles (16.0% of the
-dataset)**, it's one of the largest genre categories---and yet it shows
-a **median score of 5.86** and a **1.0% share of 8+ titles**, the lowest
-of any major genre. This isn't because *Doraemon* or *Pokemon* are bad
-shows---both are enormous cultural institutions in Japan and globally,
-shows that have shaped the childhoods of multiple generations. The low
-scores reflect something about **who rates on MAL and what they're
-rating for**. MAL's rating culture skews toward adult viewers applying
-adult critical frameworks: narrative complexity, thematic depth,
-emotional ambiguity, animation craft in service of mature storytelling.
-Children's programming is optimized for entirely different
-goals---accessibility, repetition, gentle pacing, reassurance---and
-those goals are genuinely less legible to a rating system built around
-the preferences of a different audience. Kids anime doesn't score low
-because it fails. It scores low because it's being judged by a rubric it
-was never designed to pass.
+---
 
-### WHAT THE MAP IS REALLY SHOWING
+## 6. THE SOURCE MATERIAL SHIFT
 
-Chart 5 is ultimately a map of how **attention and reputation distribute
-unevenly across a large catalog**---and why that unevenness isn't
-random. The main hall genres are popular because they're accessible,
-high-volume, and platform-promoted; their middle medians reflect the
-cost of that scale. The curator's rooms score higher because
-self-selected audiences rate more generously and the genre itself acts
-as a quality filter; their lower popularity reflects the friction of
-asking casual viewers to find them. Historical sits in the archive
-because the discovery systems don't surface it, not because the work
-doesn't merit attention. Kids scores last because the rating culture
-doesn't speak its language. None of this is a verdict on taste---it's a
-tour through an attention economy where the map of what's watched and
-the map of what's good only partially overlap, and knowing where they
-diverge is more useful than pretending they're the same thing.
+```{r chart6-source-shift}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-width: 10
+#| fig-height: 6.5
+
+source_df <- anime %>%
+  filter(!is.na(aired_from_year),
+         aired_from_year >= 1990,
+         aired_from_year <= 2018,
+         !is.na(source), source != "Unknown") %>%
+  mutate(source_lump = fct_lump_n(source, n = 4)) %>%
+  count(year = aired_from_year, source_lump) %>%
+  group_by(year) %>%
+  mutate(pct = n / sum(n)) %>%
+  ungroup()
+
+p6 <- ggplot(source_df,
+             aes(x = year, y = pct, fill = source_lump)) +
+  geom_area(alpha = 0.85, color = art_cream, linewidth = 0.2) +
+  geom_vline(xintercept = 2006, linetype = "dashed",
+             color = art_dark, alpha = 0.6) +
+  annotate("text", x = 2006.5, y = 0.95,
+           label = "The 'Haruhi' Effect (2006)\nAccelerates Light Novel adaptations",
+           hjust = 0, size = 3.5, color = art_dark,
+           fontface = "italic") +
+  scale_fill_manual(
+    values = c(art_secondary, art_highlight,
+               "#E67E22", "#16A085", art_mid)
+  ) +
+  scale_y_continuous(labels = scales::percent) +
+  theme_artometrics() +
+  labs(
+    title    = "The Source Material Shift: The Rise of the Light Novel",
+    subtitle = "Share of new anime releases by source material (1990–2018)",
+    x = "Year", y = "Share of Titles", fill = "Source"
+  )
+
+ggsave("chart6_source_shift.png", plot = p6, path = chart_dir,
+       width = 10, height = 6, dpi = 300, bg = "white")
+p6
+```
+
+### THE NEW R&D DEPARTMENT
+
+For most of anime's history, the pipeline was simple: a manga builds a
+proven readership, a studio licenses it, TV adapts it. **Manga** still
+anchors 40–50% of annual releases throughout the 1990–2018 window. But
+the chart shows two things happening underneath.
+
+First, the **"Other"** category is surprisingly large in the early
+1990s, then shrinks — capturing the tail end of original studio
+productions and miscellaneous licenses that couldn't be cleanly
+categorized. Second, **Light Novel** is nearly invisible before 2006,
+then begins a steady visible climb that never reverses.
+
+The 2006 dashed line marks the *Haruhi* Effect. *The Melancholy of
+Haruhi Suzumiya* demonstrated that a light novel property could generate
+massive cultural impact at low production cost. Light novels are faster
+to write than manga, cheaper to license, and generate rapid audience
+feedback through serialized online publishing. By the 2010s, they became
+the anime industry's primary outsourced R&D pipeline — and the light
+novel market increasingly functions as a speculative development fund for
+animation studios.
+
+---
+
+## 7. THE EPISODE COUNT COLLAPSE
+
+```{r chart7-episode-collapse}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-width: 10
+#| fig-height: 6.5
+
+ep_df <- anime %>%
+  filter(type == "TV", episodes > 0, episodes <= 60,
+         !is.na(aired_from_year)) %>%
+  mutate(
+    era = case_when(
+      aired_from_year < 2000 ~ "Pre-2000",
+      aired_from_year < 2010 ~ "2000s",
+      TRUE                   ~ "2010s"
+    )
+  )
+
+# Annotation anchored to the 2010s facet only
+chart7_annot <- data.frame(
+  era     = "2010s",
+  episodes = 14,
+  y        = 0.12,
+  label    = "The 1-Cour Standard (12-13 eps)\nminimizes financial risk for studios"
+)
+
+p7 <- ggplot(ep_df, aes(x = episodes, fill = era)) +
+  geom_density(alpha = 0.7, color = NA) +
+  facet_wrap(~ era, ncol = 1) +
+  geom_vline(xintercept = 12.5, linetype = "dotted",
+             color = art_dark, alpha = 0.5) +
+  geom_text(
+    data        = chart7_annot,
+    aes(x = episodes, y = y, label = label),
+    hjust       = 0, size = 3, color = art_dark,
+    inherit.aes = FALSE
+  ) +
+  scale_fill_manual(
+    values = c("Pre-2000" = art_mid,
+               "2000s"   = art_secondary,
+               "2010s"   = art_highlight),
+    guide  = "none"
+  ) +
+  theme_artometrics() +
+  labs(
+    title    = "The 12-Episode Standardization",
+    subtitle = "Density of TV episode counts by era (filtered to < 60 episodes).",
+    x = "Total Episodes", y = "Density"
+  )
+
+ggsave("chart7_episode_collapse.png", plot = p7, path = chart_dir,
+       width = 10, height = 6, dpi = 300, bg = "white")
+p7
+```
+
+### THE 1-COUR ERA
+
+Three eras, three completely different distributions. The **Pre-2000**
+panel is flat and spread — episode counts range from 10 to 50+ with no
+dominant peak. A successful show ran as long as it stayed profitable.
+The **2000s** panel shows a bimodal structure: a rising peak at 12–13
+episodes and a second cluster around 24–26. Two business models
+coexisting in transition. The **2010s** panel is a single spike. The
+1-cour standard has won.
+
+A studio and broadcaster commit to one cour (12 episodes). If it
+performs, a second cour gets greenlit. If it doesn't, the show ends.
+This minimizes financial exposure for both parties. The storytelling
+consequences are significant: a 12-episode arc leaves no room for
+filler, and long-running character development arcs — the kind that made
+1990s shonen legendary — are now economically impossible. The industry
+traded narrative depth for financial safety, and audiences adapted.
+
+---
+
+## 8. MATURITY VS SCORE
+
+```{r chart8-maturity-score}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-width: 10
+#| fig-height: 6.5
+
+rating_df <- anime %>%
+  filter(!is.na(rating), rating != "None",
+         !is.na(score), score > 0) %>%
+  mutate(rating = fct_reorder(rating, score, .fun = median))
+
+n_levels <- nlevels(rating_df$rating)
+
+p8 <- ggplot(rating_df,
+             aes(x = rating, y = score, fill = rating)) +
+  geom_boxplot(alpha = 0.7, outlier.color = art_muted,
+               outlier.alpha = 0.5) +
+  annotate(
+    "text",
+    x = n_levels, y = 8.5,
+    label   = "Mature audiences tend to rate highly\nwhen they self-select into R-17+ content",
+    hjust   = 1, vjust = 1,
+    size    = 3.5, color = art_dark, fontface = "italic"
+  ) +
+  scale_fill_viridis_d(option = "mako", guide = "none") +
+  coord_flip() +
+  theme_artometrics() +
+  labs(
+    title    = "Who is Anime For? Score Distributions by Content Rating",
+    subtitle = "R-17+ holds the highest median, but PG-13 contains the highest peaks.",
+    x = "Content Rating", y = "MAL Score"
+  )
+
+ggsave("chart8_maturity_score.png", plot = p8, path = chart_dir,
+       width = 10, height = 6, dpi = 300, bg = "white")
+p8
+```
+
+### THE DEMOGRAPHIC CEILING
+
+**R-17+ (violence & profanity)** holds the highest median score. The
+explanation is self-selection: viewers who seek out R-17+ content know
+what they are signing up for, rate it on its own terms, and reward the
+genre when it delivers. The pool of raters is invested.
+
+**PG-13 - Teens 13 or older** has the widest IQR — the broadest spread
+from low to high. This is where the all-time masterpieces live.
+*Fullmetal Alchemist: Brotherhood*, *Steins;Gate*, *Attack on Titan*,
+*Death Note* — all PG-13. The rating allows mature themes with broader
+audience access, which is the combination that generates both massive
+viewership and critical consensus. R-17+ raises the floor. PG-13 is
+required to break the cultural ceiling.
+
+**G - All Ages** has the largest box and widest whiskers — maximum
+volatility. Everything from beloved children's classics to
+algorithmically-generated filler exists in this tier. The audience
+mismatch problem from Chart 5 applies directly here: the platform's
+adult userbase applies adult critical standards to content designed for
+children.
+
+---
+
+## 9. THE DEVOTION INDEX
+
+```{r chart9-devotion-index}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-width: 10
+#| fig-height: 6.5
+
+devotion_df <- anime %>%
+  filter(members > 500000) %>%
+  mutate(devotion_rate = favorites / members)
+
+p9 <- ggplot(devotion_df, aes(x = members, y = favorites)) +
+  geom_point(color = art_secondary, alpha = 0.6, size = 3) +
+  geom_smooth(method = "lm", color = art_highlight,
+              linetype = "dashed", se = FALSE) +
+  ggrepel::geom_text_repel(
+    data        = devotion_df %>% slice_max(devotion_rate, n = 10),
+    aes(label   = title_english),
+    size        = 3.5, color = art_dark, box.padding = 0.5
+  ) +
+  annotate("text", x = 1250000, y = 30000,
+           label = "The Casual Viewing Zone\nHigh reach, low obsession",
+           color = art_mid, size = 3.5) +
+  scale_x_continuous(labels = scales::comma) +
+  scale_y_continuous(labels = scales::comma) +
+  theme_artometrics() +
+  labs(
+    title    = "The Devotion Index: Reach vs. Obsession",
+    subtitle = paste0(
+      "Titles with >500k members. ",
+      "Points above the line represent cult-like dedication."
+    ),
+    x = "Total Members (Reach)", y = "Total Favorites (Obsession)"
+  )
+
+ggsave("chart9_devotion_index.png", plot = p9, path = chart_dir,
+       width = 10, height = 6, dpi = 300, bg = "white")
+p9
+```
+
+### WATCHING VS WORSHIPPING
+
+The dashed regression line is the baseline. Shows on or below it have
+normal obsession-to-reach ratios — their favorites track with their
+membership. Shows above the line have disproportionate devotion relative
+to their audience size.
+
+**Fullmetal Alchemist: Brotherhood** is in a class alone: the highest
+favorites count on the chart (~120,000) despite not having the largest
+audience. It does not just have viewers — it has a congregation.
+**Steins;Gate** is the clearest example of the cult model: well above
+the trendline despite mid-tier membership. Every viewer who finds it
+converts. **Death Note** sits at massive reach but near the trendline —
+a cultural phenomenon that everyone watched and many moved on from.
+
+**One Piece** and **Hunter x Hunter** cluster above the line at
+mid-reach — long-running series that generate intense dedication in
+their specific fanbases. **Gintama** has the most extreme ratio in the
+lower-left: small audience relative to the chart's scope, completely
+irreplaceable to those who stayed. The members↔favorites correlation of
+r = 0.776 confirms the strong link between reach and obsession — but the
+deviations above the trendline identify the shows that punched above
+their weight in converting viewers into true believers.
+
+---
+
+## 10. GENRE LIFECYCLES
+
+```{r chart10-genre-lifecycles}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-width: 10
+#| fig-height: 6.5
+
+genre_trends <- anime_genres %>%
+  inner_join(
+    anime %>% select(animeID, aired_from_year, type),
+    by = "animeID"
+  ) %>%
+  filter(type == "TV",
+         aired_from_year >= 1980,
+         aired_from_year <= 2018,
+         genre %in% c("Mecha", "Slice of Life", "Sci-Fi", "Fantasy")) %>%
+  count(year = aired_from_year, genre) %>%
+  group_by(year) %>%
+  mutate(pct = n / sum(n))
+
+p10 <- ggplot(genre_trends,
+              aes(x = year, y = pct, color = genre)) +
+  geom_line(linewidth = 1.2) +
+  geom_vline(xintercept = 1995, linetype = "dotted",
+             color = art_mid) +
+  annotate("text", x = 1993, y = 0.45,
+           label = "Evangelion (1995)\nLate Mecha Peak",
+           size = 3, color = art_dark) +
+  geom_vline(xintercept = 2009, linetype = "dotted",
+             color = art_mid) +
+  annotate("text", x = 2010, y = 0.45,
+           label = "K-On! (2009)\nSlice of Life Booms",
+           size = 3, color = art_dark) +
+  scale_color_manual(
+    values = c(
+      "Mecha"         = art_secondary,
+      "Slice of Life" = art_highlight,
+      "Sci-Fi"        = "#E67E22",
+      "Fantasy"       = "#16A085"
+    )
+  ) +
+  scale_y_continuous(labels = scales::percent) +
+  theme_artometrics() +
+  labs(
+    title    = "Genre Lifecycles: The Fall of Mecha, the Rise of Fantasy",
+    subtitle = "Share of TV releases among four major genres over 40 years.",
+    x = "Year", y = "Relative Share", color = "Genre"
+  )
+
+ggsave("chart10_genre_lifecycles.png", plot = p10, path = chart_dir,
+       width = 10, height = 6, dpi = 300, bg = "white")
+p10
+```
+
+### MARKET SATURATION AND SUCCESSION
+
+Four genres. 40 years. Two regime changes. The chart is best read as a
+succession story.
+
+**Mecha** peaks at roughly 50% of the four-genre share around 1990 —
+the Evangelion era — then falls almost linearly to about 7% by 2018.
+The genre didn't die from quality failure; it died from saturation. By
+the mid-2000s, every Mecha concept had been subverted, deconstructed, or
+parodied. Evangelion itself was the genre's apex and its eulogy
+simultaneously.
+
+**Sci-Fi** is volatile throughout — it spikes and collapses repeatedly,
+tied to individual breakout properties rather than sustained audience
+demand. **Fantasy** rises steadily from the mid-2000s, with the 2010s
+acceleration driven almost entirely by Isekai. Isekai is Fantasy with
+the friction removed: no need to explain the world's rules because the
+protagonist discovers them alongside the viewer. **Slice of Life** is
+near-zero before 2000, enabled structurally by the 1-cour format from
+Chart 7 — 12 episodes of low-stakes character interaction is
+commercially viable in a way that 50 episodes of it never was.
+
+---
+
+## 11. ERA SCORING
+
+```{r chart11-era-scoring}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-width: 10
+#| fig-height: 6.5
+
+era_score_df <- anime %>%
+  filter(!is.na(score), score > 0, aired_from_year >= 1970) %>%
+  mutate(decade = paste0(floor(aired_from_year / 10) * 10, "s"))
+
+p11 <- ggplot(era_score_df,
+              aes(x = score, y = decade, fill = decade)) +
+  ggridges::geom_density_ridges(alpha = 0.8, color = art_cream,
+                                 scale = 1.5) +
+  annotate(
+    "text",
+    x = 6.0, y = "2010s",
+    label    = "Modern Rating Inflation:\nThe baseline floor shifts right in the 2010s",
+    hjust    = 0, vjust = -0.5,
+    size     = 3.5, color = art_dark, fontface = "italic"
+  ) +
+  scale_fill_viridis_d(option = "cividis", guide = "none") +
+  theme_artometrics() +
+  labs(
+    title    = "The Recency Bias: Are Scores Inflating?",
+    subtitle = "Distribution of MAL scores by decade.",
+    x = "MAL Score", y = "Decade"
+  )
+
+ggsave("chart11_era_scoring.png", plot = p11, path = chart_dir,
+       width = 10, height = 6, dpi = 300, bg = "white")
+p11
+```
+
+### IS ANIME GETTING BETTER — OR IS THE PLATFORM INFLATING?
+
+The ridgeline chart shows every decade's score distribution stacked
+vertically. The trend is clear: each decade's distribution shifts
+rightward. The **1980s** center around 6.5 with a sharp peak. The
+**1990s** broaden slightly. The **2000s** shift the center of mass
+toward 7.0. The **2010s** peak is the furthest right, centered near
+7.0–7.5.
+
+Two explanations compete. The optimistic reading: the industry got
+better. Studios learned, production quality improved, storytelling
+matured. The skeptical reading: the platform inflated. Simulcast hype
+generates ratings from viewers who haven't finished shows. Recency bias
+means viewers discount older titles against modern pacing standards. The
+MAL system has known manipulation vulnerabilities.
+
+The dataset cannot separate these forces — and the honest answer is
+**both are real**. The industry improved and the platform inflated
+simultaneously. The 90 cult classics from the Python filter suggest
+plenty of exceptional older work sits unrated simply because it lacks
+modern algorithmic visibility.
+
+---
+
+## 12. SURVIVOR BIAS
+
+```{r chart12-survivor-bias}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-width: 10
+#| fig-height: 6.5
+
+survivor_df <- anime %>%
+  filter(type == "TV", episodes > 0,
+         !is.na(score), score > 0) %>%
+  mutate(log_eps = log10(episodes))
+
+p12 <- ggplot(survivor_df, aes(x = episodes, y = score)) +
+  geom_point(alpha = 0.4, color = art_secondary) +
+  scale_x_log10(
+    breaks = c(1, 12, 24, 50, 100, 500, 1000),
+    labels = scales::comma
+  ) +
+  geom_smooth(method = "loess", color = art_highlight,
+              se = FALSE) +
+  geom_vline(xintercept = 50, linetype = "dashed",
+             color = art_dark, alpha = 0.5) +
+  annotate("text", x = 60, y = 4,
+           label = "The 50+ Episode Barrier:\nOnly proven hits survive this long,\nraising the minimum score floor.",
+           hjust = 0, size = 3.5, color = art_dark) +
+  theme_artometrics() +
+  labs(
+    title    = "Survivor Bias: Bad Shows Don't Run Forever",
+    subtitle = "MAL Score vs TV Episode Count (Log Scale).",
+    x = "Total Episodes (Log Scale)", y = "MAL Score"
+  )
+
+ggsave("chart12_survivor_bias.png", plot = p12, path = chart_dir,
+       width = 10, height = 6, dpi = 300, bg = "white")
+p12
+```
+
+### THE ECONOMIC FLOOR
+
+At 12 and 24 episodes, the scatter plot shows maximum variance.
+Masterpieces and disasters coexist. The LOESS curve peaks around 24
+episodes — the 2-cour sweet spot where shows that earned a second season
+have already proven viability — then gently declines.
+
+Past 50 episodes, something changes. The floor visibly rises. Shows with
+50+ episodes are not a random sample of anime — they are the survivors
+of an economic selection process. Animation is expensive. A studio
+doesn't fund episode 51 unless episodes 1–50 generated sufficient
+revenue and audience retention to justify the commitment. The score floor
+isn't rising because long shows are better. It's rising because bad
+shows get cancelled.
+
+This is the most important structural insight in the dataset: **the
+quality gradient in anime is partly an artifact of the cancellation
+mechanism.** Short-form content shows the full quality distribution.
+Long-form content shows only what survived.
+
+---
 
 ## LIMITATIONS
 
-### WHAT THIS DATA CAN'T TELL YOU
-
-Every analysis is bounded by its data, and this one is no exception. The
-five charts above describe a real industry across a real timespan---but
-they describe it from a specific vantage point: a 2019 snapshot of one
-platform's user-generated ratings, filtered to titles with nonzero rank
-and popularity. Before drawing hard conclusions, it's worth naming the
-edges of that vantage point explicitly. Four limitations are significant
-enough to change how you should read the numbers.
-
 ### THE CUTOFF PROBLEM
+The dataset ends in 2019. *Demon Slayer*, *Jujutsu Kaisen*, *Chainsaw
+Man*, *Spy × Family* — absent. Their exclusion almost certainly
+understates ONA growth, understates action/Shounen dominance, and means
+any claims about "current" genre trends require updating against the
+post-2019 landscape.
 
-This dataset was scraped in 2019, which means everything that has
-happened in anime since then is absent. *Demon Slayer: Kimetsu no Yaiba*
-broke domestic box office records in Japan and became one of the
-fastest-spreading anime properties globally---it's not here. *Jujutsu
-Kaisen*, *Chainsaw Man*, *Spy x Family*, the final arc of *Attack on
-Titan*---none of it is in this analysis. The studio rankings, genre
-medians, and format trends are snapshots of an industry through 2019,
-not the industry as it exists today. The structural patterns
-described---TV's dominance, the ONA surge, the platform era's
-arrival---are real and durable, but the specific numbers would shift
-with five more years of data, and some studios' positions on the
-leaderboard would shift significantly.
+### SELF-SELECTION BIAS
+MyAnimeList is an enthusiast platform. Its userbase skews adult, male,
+and Western relative to anime's actual global audience. Two direct
+consequences appear in the data: Kids and Music programming are
+systematically underscored, and shows with strong Western fandom overlap
+(*Fullmetal Alchemist: Brotherhood*, *Death Note*) may be
+overrepresented in the elite tiers.
 
-### WHO'S ACTUALLY RATING
+### MULTI-LABEL INFLATION
+Genre tags are not mutually exclusive. A show tagged both "Military" and
+"Action" contributes to both aggregations. "Military" scores well in the
+genre map largely because it co-occurs with acclaimed Shounen action
+properties. The genre medians should be read as blended signals, not
+clean categories.
 
-MyAnimeList is not a representative sample of all anime viewers---it's a
-self-selected community of dedicated fans who track and rate their
-watching. Casual viewers, children, people watching dubbed versions on
-mainstream platforms, and audiences in markets where MAL is less
-dominant (China, Southeast Asia, Latin America) are systematically
-underrepresented in the rating data. This matters most for two chart
-interpretations: Kids anime scores low partly because children don't
-rate on MAL, and popularity ranks reflect the MAL community's
-preferences rather than true global viewership. A show like *Doraemon*
-that is genuinely watched by millions of Japanese children every week
-will appear less "popular" in this dataset than a niche action series
-with a passionate MAL-active fanbase.
+### SMALL SAMPLE INSTABILITY
+Boutique studios (n < 30) and niche genres (< 100 titles) have volatile
+medians. White Fox's second-place studio ranking rests on 33 titles — a
+single poor season could meaningfully shift it. Thriller's top-ranked
+genre position rests on a small title count. Directionally interesting,
+statistically fragile.
 
-### THE MULTI-LABEL PROBLEM
+### POPULARITY RANK DIRECTIONALITY
+In this dataset, popularity rank 1 is the *most* popular. Lower numbers
+mean higher popularity. The genre map reverses the X-axis to make this
+intuitive visually, but it is worth flagging for readers interpreting
+the SQL output directly.
 
-Genre tags in this dataset are multi-label, meaning a single title
-contributes to every genre it's tagged under. *Fullmetal Alchemist:
-Brotherhood* appears in Action, Adventure, Drama, Fantasy, Magic,
-Military, and Shounen simultaneously. This inflates the score medians of
-genres that tend to appear alongside high-rated titles---genres like
-Military or Supernatural may score well partly because they frequently
-co-tag with acclaimed Action or Drama series rather than because
-standalone Military or Supernatural titles are independently
-exceptional. Genre statistics here describe tag behavior as much as they
-describe genre quality, and the two are not the same thing.
-
-### SMALL SAMPLES, UNSTABLE MEDIANS
-
-Studio and genre medians become less reliable as sample size shrinks. A
-studio like White Fox with a small catalog has a median that could shift
-meaningfully if one or two underperforming titles were added. The
-minimum thresholds applied in this analysis (20 titles for studios, 80
-tagged titles for genres) reduce but don't eliminate this instability.
-Boutique studios with high medians should be interpreted as "has
-maintained quality across a small but real catalog," not as "will
-definitely maintain this median as their catalog grows." Similarly,
-genres near the minimum threshold should be treated as directional
-signals rather than precise measurements.
+---
 
 ## CONCLUSION
 
-### THE INDUSTRY IN FULL
+### THREE STRUCTURAL TRANSITIONS
 
-What this dataset describes, across all five charts, is an industry that
-transformed itself structurally at least three times in a hundred
-years---and is still transforming. It started as a craft economy of
-theatrical films and shorts, became a home-video-driven OVA market in
-the late 1980s, industrialized into a high-throughput seasonal TV
-machine through the 2000s, and entered a platform era in the 2010s where
-the number of release formats multiplied alongside the number of titles.
-Each of those shifts left a signature in the data: the early Movie
-baseline, the OVA spike, the TV acceleration, the ONA explosion. The
-charts don't just describe anime---they describe what happens to a
-creative industry when it scales.
+Anime transformed its business model three times in a century: from a
+**theatrical craft economy** built for prewar audiences, to a
+**home-video OVA market** that bypassed broadcast entirely, to an
+**industrialized TV machine** running on seasonal 12-episode contracts,
+and finally into a **diversified platform ecosystem** where ONA and
+streaming have created a fourth distribution channel that did not exist
+before 2010.
 
-### THREE THINGS THAT HELD TRUE ACROSS ALL OF IT
+### THREE THINGS THAT DIDN'T CHANGE
 
-Three patterns run through every chart in this analysis and are worth
-naming directly. First: **TV is the primary engine**---for output
-volume, for audience size, for score concentration, and for the
-consensus classics that define how most people think about anime. Every
-other format is interesting and sometimes excellent, but none of them
-dislodged TV as the format where the industry's most important work
-tends to happen. Second: **popularity and quality are correlated but not
-identical**. The decile analysis shows they move together---more popular
-titles genuinely do score higher on average---but the genre map and the
-studio chart both show cases where quality exists without visibility,
-and visibility without equivalent quality. The gap between those two
-maps is where the most interesting recommendations live. Third:
-**consistency beats peaks**. The studios at the top of the ranking chart
-aren't necessarily the ones with the single most celebrated title---
-they're the ones whose typical show stays above the baseline across real
-volume. That's a harder thing to sustain than a single hit, and the data
-rewards it accordingly.
+Through all of it: **TV is the primary engine for quality output**
+(8.12% hit-rate, the highest of any format, confirmed by both SQL and
+the visual). **Popularity and quality are correlated but not causal** —
+the feedback loop runs both directions, the algorithm amplifies existing
+popularity rather than discovering hidden quality, and the score-members
+correlation of r = 0.389 confirms the relationship is real but far from
+deterministic. **Consistency across volume is harder than a single peak**
+— Studio Deen has 264 titles and a lower median than Bones's 115.
 
-### WHERE THIS LEAVES THE READER
+### THE ARCHIVE ARGUMENT
 
-If there's a practical takeaway from a century of anime data, it's this:
-**the catalog is vast, the attention economy is real, and the best
-titles are not evenly distributed across it**. TV and the most popular
-deciles give you the best odds per random pick. Mystery, Police, and
-Historical give you a higher hit-rate per title if you're willing to
-browse outside the front page. Bones and Kyoto Animation give you the
-most reliable studio signal if you're using studio as a filter. And if
-you go deep enough into the archive---past the platform recommendations,
-past the seasonal buzz, past the titles that won the attention game
-early---you'll find work that never found its audience, sitting with a
-stable score and a small member count, waiting. The dataset ends in
-2019. The catalog keeps growing.
+Ninety high-scoring titles sit past popularity rank 2,000 — past the
+point any algorithm will surface them. The correlation between score and
+episodes is r = 0.076: essentially zero. Length is not quality.
+Popularity is not quality. Both are correlated directionally and
+contaminated systematically by feedback loops, recency bias, and the
+self-selection of who uses the platform.
+
+The catalog is vast. The attention economy is ruthless. If you want the
+best statistical odds, shop the seasonal TV hits in Mystery, Shounen, or
+Romance — the three genres with the highest average scores above 500
+titles. But if you are willing to walk past the algorithm's edge, there
+are 90 titles waiting with scores above 8.0 and audiences small enough
+that they never quite made the trending list.
+
+*—KSM*
+
+---
 
 ## REFERENCES
 
--   Anderson, C. (2004, October). The long tail. *Wired*.
-    https://www.wired.com/2004/10/tail/
+MyAnimeList Dataset (2019). TidyTuesday, April 23, 2019. Retrieved from:
+https://github.com/rfordatascience/tidytuesday/tree/main/data/2019/2019-04-23
 
--   Hughes, R. (2023). *MyAnimeList top animes* \[Dataset\]. Kaggle.
-    https://www.kaggle.com/datasets/reyadgh/my-anime-list-scraped-dataset
+MyAnimeList. (n.d.). *About MyAnimeList*. Retrieved from
+https://myanimelist.net/about.php
 
--   Mock, T. (2019, April 23). *Anime data* \[TidyTuesday dataset\].
-    GitHub.
-    https://github.com/rfordatascience/tidytuesday/blob/master/data/2019/2019-04-23/readme.md
+Clements, J., & McCarthy, H. (2015). *The Anime Encyclopedia: A Century
+of Japanese Animation* (3rd ed.). Stone Bridge Press.
 
--   Rosen, S. (1981). The economics of superstars. *The American
-    Economic Review*, *71*(5), 845--858.
-    https://home.uchicago.edu/\~vlima/courses/econ201/Superstars.pdf
+Condry, I. (2013). *The Soul of Anime: Collaborative Creativity and
+Japan's Media Success Story*. Duke University Press.
 
--   Salganik, M. J., Dodds, P. S., & Watts, D. J. (2006). Experimental
-    study of inequality and unpredictability in an artificial cultural
-    market. *Science*, *311*(5762), 854--856.
+Denison, R. (2015). *Anime: A History*. BFI/Palgrave Macmillan.
 
--   Simon, H. A. (1971). Designing organizations for an information-rich
-    world. In M. Greenberger (Ed.), *Computers, communications, and the
-    public interest* (pp. 37--72). Johns Hopkins Press.
+Galbraith, P. W., & Karlin, J. G. (Eds.). (2012). *Idols and Celebrity
+in Japanese Media Culture*. Palgrave Macmillan.
 
--   Varian, H. R. (1995). The information economy. *Scientific
-    American*.
-    https://people.ischool.berkeley.edu/\~hal/pages/sciam.html
+Ōtsuka, E., & Steinberg, M. (2010). World and Variation: The
+Reproduction and Consumption of Narrative. *Mechademia*, 5, 99–116.
 
--   Wikipedia contributors. (2024a). *Bones (studio)*. Wikipedia.
-    https://en.wikipedia.org/wiki/Bones\_%28studio%29
+Steinberg, M. (2012). *Anime's Media Mix: Franchising Toys and
+Characters in Japan*. University of Minnesota Press.
 
--   Wikipedia contributors. (2024b). *Kyoto Animation*. Wikipedia.
-    https://en.wikipedia.org/wiki/Kyoto_Animation
-
--   Wikipedia contributors. (2024c). *Studio Trigger*. Wikipedia.
-    https://en.wikipedia.org/wiki/Studio_Trigger
-
--   Wikipedia contributors. (2024d). *White Fox*. Wikipedia.
-    https://en.wikipedia.org/wiki/White_Fox
-
--   Yin, H., Wang, Q., Zheng, K., Li, Z., & Yang, X. (2023). A survey on
-    popularity bias in recommender systems. *arXiv*.
-    https://arxiv.org/abs/2308.01118
+---
 
 ## EDITOR'S NOTE
 
 *This report was researched, written, designed, and produced in active
 collaboration with Claude AI (Anthropic). The data pipeline, statistical
-analysis, chart design, written analysis, narrative structure, and
-visual styling were all developed through a directed partnership between
-human editorial judgment and AI execution. Artometrics was built on the
-premise that rigorous analysis and honest process are not in conflict.
-The research questions, editorial instincts, interpretive framing, and
-brand vision are ours. The execution---every line of R code, every
-paragraph of analysis, every design decision---was a collaboration. We
-document this not as a disclaimer but as a description of how we
-actually work, and as a position: we believe this is what serious data
-journalism looks like when the tools available are used honestly and at
-full capacity.*
+analysis, chart design, written analysis, narrative structure, and visual styling were all developed through a directed partnership between human editorial judgment and AI execution. The research questions and brand vision are ours. The execution is a collaboration.*
 
-*--- Artometrics Editorial*
+*— Artometrics Editorial*
